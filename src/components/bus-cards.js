@@ -23,7 +23,7 @@ function BusCards({ travelData }) {
     
     const updateInterval = setInterval(() => {
       updateTravelData();
-    }, 10000);
+    }, 7*60*1000);
 
   
     return () => clearInterval(updateInterval);

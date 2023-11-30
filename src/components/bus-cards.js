@@ -31,10 +31,11 @@ function BusCards({ travelData }) {
             key={tripIndex}  
             name={tripPattern.legs[0].line.name.split(" ")[0]}
             publicCode={tripPattern.legs[0].line.publicCode}
-            startTime={moment(tripPattern.legs[0].expectedStartTime).format("HH:mm")}
-            endTime={moment(tripPattern.legs[0].expectedEndTime).format("HH:mm")}
+            startTime={tripPattern.legs[0].expectedStartTime}
+            endTime={tripPattern.legs[0].expectedEndTime}
             tripIndex={tripIndex}
             minutesUntil={calculateMinutesUntil(tripPattern.legs[0].expectedStartTime)}
+            calculateMinutesUntil={calculateMinutesUntil}
           />
         );
       })}

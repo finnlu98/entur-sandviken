@@ -53,8 +53,24 @@ const fetchData = async () => {
     return response.data;
   } catch (error) {
     console.error("GraphQL request error:", error);
-    throw error; // Re-throw the error so that it can be handled in the component
+    throw error;
   }
 };
 
-export default fetchData;
+const fetchKanyeQuote = async () => {
+  try {
+    const response = await axios.get(
+      "https://api.kanye.rest/"
+    );
+
+    return response.data; 
+  } catch (error) {
+    console.error("Can't get Kanye quote");
+    throw error;
+  }
+};
+
+export default {
+  fetchData,
+  fetchKanyeQuote
+};

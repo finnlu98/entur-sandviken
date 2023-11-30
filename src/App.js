@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
 import BusCards from "./components/bus-cards";
-import fetchData from "./Api";
+import Api from "./Api";
+
 
 function App() {
   const [tripData, setTripData] = useState(null);
+  const [kanyeQoute, setKanyeQoute] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const fetchandSetData = async () => {
     try {
-      const data = await fetchData()
-      setTripData(data);
+      const trips = await Api.fetchData()
+      const qoute = await Api.fetchKanyeQuote()
+      setTripData(trips);
+      setKanyeQoute(qoute.quote)
       setLoading(false); // Set loading to false once data is fetched
     } catch (error) {
       setLoading(false); // Set loading to false in case of an error
@@ -31,6 +34,7 @@ function App() {
     <div className="container mt-4 mb-4">
       <header>
         <h1>Bendiks reiseplanlegger fra Møhlenpris</h1>
+        <p>{kanyeQoute} - Kanye</p>
         <hr />
       </header>
       {tripData && <BusCards travelData={tripData} />}

@@ -21,7 +21,7 @@ function BusCard({
 
     // Cleanup the interval when the component is unmounted
     return () => clearInterval(countdownInterval);
-  }, []);
+  }, [startTime, calculateMinutesUntil]);
 
 
   return (

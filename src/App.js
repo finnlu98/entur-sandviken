@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="container mt-4 mb-4">
       <header>
-        <h1>Bendiks reiseplanlegger fra Møhlenpris</h1>
+        <h1>Bendiks reiseplanlegger: Møhlenpris - NHH</h1>
         <p>{kanyeQoute} - Kanye</p>
         <hr />
       </header>

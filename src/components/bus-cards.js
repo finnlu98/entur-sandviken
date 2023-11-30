@@ -1,6 +1,7 @@
 import moment from "moment";
 import BusCard from "./bus-card";
 import React, { useState, useEffect } from "react";
+import Api from "../Api";
 
 function BusCards({ travelData }) {
   // Assuming there's at least one tripPattern
@@ -8,38 +9,54 @@ function BusCards({ travelData }) {
   const [tripPatterns, settripPatterns] = useState(
     filterBusRides(travelData.data.trip.tripPatterns)
   );
-  
+
   useEffect(() => {
     const countdownInterval = setInterval(() => {
-      settripPatterns((prevTripPatterns) =>
-        filterBusRides(prevTripPatterns)
-      );
+      settripPatterns((prevTripPatterns) => filterBusRides(prevTripPatterns));
     }, 1000);
   
-    // Cleanup the interval when the component is unmounted
     return () => clearInterval(countdownInterval);
-  }, [travelData.data.trip.tripPatterns]); // Add travelData.data.trip.tripPatterns as a dependency
+  }, [tripPatterns]);
   
+
+  useEffect(() => {
+    
+    const updateInterval = setInterval(() => {
+      updateTravelData();
+    }, 10000);
+
+  
+    return () => clearInterval(updateInterval);
+  }, []); 
+
   function filterBusRides(tripPatterns) {
     return tripPatterns
       .map((tripPattern) => ({
         ...tripPattern,
         legs: tripPattern.legs.filter(
           (leg) =>
-            leg.mode === 'bus' &&
+            leg.mode === "bus" &&
             calculateMinutesUntil(leg.expectedStartTime) >= 0
         ),
       }))
       .filter((tripPattern) => tripPattern.legs.length === 1);
   }
-  
+
   function calculateMinutesUntil(startTime) {
     const now = moment().utc();
     const tripStartTime = moment(startTime).utc();
-    const diffInMinutes = tripStartTime.diff(now, 'minutes');
+    const diffInMinutes = tripStartTime.diff(now, "minutes");
     return diffInMinutes;
   }
-  
+
+  async function updateTravelData() {
+    try {
+      const updatedTravelData = await Api.fetchData();
+      settripPatterns(filterBusRides(updatedTravelData.data.trip.tripPatterns));
+    } catch (error) {
+      console.error("Can't update data:", error);
+    }
+  }
 
   return (
     <div>

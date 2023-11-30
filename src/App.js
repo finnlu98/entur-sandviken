@@ -16,9 +16,9 @@ function App() {
       const qoute = await Api.fetchKanyeQuote()
       setTripData(trips);
       setKanyeQoute(qoute.quote)
-      setLoading(false); // Set loading to false once data is fetched
+      setLoading(false);
     } catch (error) {
-      setLoading(false); // Set loading to false in case of an error
+      setLoading(false);
     }
   };
 

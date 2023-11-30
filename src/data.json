@@ -1,0 +1,631 @@
+{
+  "data": {
+    "trip": {
+      "tripPatterns": [
+        {
+          "duration": 1549,
+          "legs": [
+            {
+              "expectedStartTime": "2023-11-29T19:15:08+01:00",
+              "expectedEndTime": "2023-11-29T19:19:28+01:00",
+              "mode": "foot",
+              "distance": 184.6,
+              "fromPlace": {
+                "name": "Origin"
+              },
+              "toPlace": {
+                "name": "Møhlenpris"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:19:28+01:00",
+              "expectedEndTime": "2023-11-29T19:34:57+01:00",
+              "mode": "bus",
+              "distance": 5733.31,
+              "fromPlace": {
+                "name": "Møhlenpris"
+              },
+              "toPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "line": {
+                "id": "SKY:Line:19",
+                "publicCode": "19",
+                "name": "Åsane - Løvstakkskiftet"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:34:57+01:00",
+              "expectedEndTime": "2023-11-29T19:40:57+01:00",
+              "mode": "foot",
+              "distance": 340.61,
+              "fromPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "toPlace": {
+                "name": "Destination"
+              },
+              "line": null
+            }
+          ]
+        },
+        {
+          "duration": 1541,
+          "legs": [
+            {
+              "expectedStartTime": "2023-11-29T19:17:58+01:00",
+              "expectedEndTime": "2023-11-29T19:22:18+01:00",
+              "mode": "foot",
+              "distance": 184.6,
+              "fromPlace": {
+                "name": "Origin"
+              },
+              "toPlace": {
+                "name": "Møhlenpris"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:22:18+01:00",
+              "expectedEndTime": "2023-11-29T19:37:39+01:00",
+              "mode": "bus",
+              "distance": 5733.31,
+              "fromPlace": {
+                "name": "Møhlenpris"
+              },
+              "toPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "line": {
+                "id": "SKY:Line:3",
+                "publicCode": "3",
+                "name": "Støbotn - Vadmyra"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:37:39+01:00",
+              "expectedEndTime": "2023-11-29T19:43:39+01:00",
+              "mode": "foot",
+              "distance": 340.61,
+              "fromPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "toPlace": {
+                "name": "Destination"
+              },
+              "line": null
+            }
+          ]
+        },
+        {
+          "duration": 1526,
+          "legs": [
+            {
+              "expectedStartTime": "2023-11-29T19:23:39+01:00",
+              "expectedEndTime": "2023-11-29T19:27:59+01:00",
+              "mode": "foot",
+              "distance": 184.6,
+              "fromPlace": {
+                "name": "Origin"
+              },
+              "toPlace": {
+                "name": "Møhlenpris"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:27:59+01:00",
+              "expectedEndTime": "2023-11-29T19:43:05+01:00",
+              "mode": "bus",
+              "distance": 5733.31,
+              "fromPlace": {
+                "name": "Møhlenpris"
+              },
+              "toPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "line": {
+                "id": "SKY:Line:4",
+                "publicCode": "4",
+                "name": "Flaktveit - Hesjaholtet"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:43:05+01:00",
+              "expectedEndTime": "2023-11-29T19:49:05+01:00",
+              "mode": "foot",
+              "distance": 340.61,
+              "fromPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "toPlace": {
+                "name": "Destination"
+              },
+              "line": null
+            }
+          ]
+        },
+        {
+          "duration": 1525,
+          "legs": [
+            {
+              "expectedStartTime": "2023-11-29T19:28:23+01:00",
+              "expectedEndTime": "2023-11-29T19:32:43+01:00",
+              "mode": "foot",
+              "distance": 184.6,
+              "fromPlace": {
+                "name": "Origin"
+              },
+              "toPlace": {
+                "name": "Møhlenpris"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:32:43+01:00",
+              "expectedEndTime": "2023-11-29T19:47:48+01:00",
+              "mode": "bus",
+              "distance": 5733.31,
+              "fromPlace": {
+                "name": "Møhlenpris"
+              },
+              "toPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "line": {
+                "id": "SKY:Line:3",
+                "publicCode": "3",
+                "name": "Støbotn - Vadmyra"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:47:48+01:00",
+              "expectedEndTime": "2023-11-29T19:53:48+01:00",
+              "mode": "foot",
+              "distance": 340.61,
+              "fromPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "toPlace": {
+                "name": "Destination"
+              },
+              "line": null
+            }
+          ]
+        },
+        {
+          "duration": 1340,
+          "legs": [
+            {
+              "expectedStartTime": "2023-11-29T19:34:40+01:00",
+              "expectedEndTime": "2023-11-29T19:39:00+01:00",
+              "mode": "foot",
+              "distance": 184.6,
+              "fromPlace": {
+                "name": "Origin"
+              },
+              "toPlace": {
+                "name": "Møhlenpris"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:39:00+01:00",
+              "expectedEndTime": "2023-11-29T19:51:00+01:00",
+              "mode": "bus",
+              "distance": 5733.31,
+              "fromPlace": {
+                "name": "Møhlenpris"
+              },
+              "toPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "line": {
+                "id": "SKY:Line:4",
+                "publicCode": "4",
+                "name": "Flaktveit - Hesjaholtet"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:51:00+01:00",
+              "expectedEndTime": "2023-11-29T19:57:00+01:00",
+              "mode": "foot",
+              "distance": 340.61,
+              "fromPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "toPlace": {
+                "name": "Destination"
+              },
+              "line": null
+            }
+          ]
+        },
+        {
+          "duration": 1517,
+          "legs": [
+            {
+              "expectedStartTime": "2023-11-29T19:38:27+01:00",
+              "expectedEndTime": "2023-11-29T19:42:47+01:00",
+              "mode": "foot",
+              "distance": 184.6,
+              "fromPlace": {
+                "name": "Origin"
+              },
+              "toPlace": {
+                "name": "Møhlenpris"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:42:47+01:00",
+              "expectedEndTime": "2023-11-29T19:57:44+01:00",
+              "mode": "bus",
+              "distance": 5733.31,
+              "fromPlace": {
+                "name": "Møhlenpris"
+              },
+              "toPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "line": {
+                "id": "SKY:Line:3",
+                "publicCode": "3",
+                "name": "Støbotn - Vadmyra"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:57:44+01:00",
+              "expectedEndTime": "2023-11-29T20:03:44+01:00",
+              "mode": "foot",
+              "distance": 340.61,
+              "fromPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "toPlace": {
+                "name": "Destination"
+              },
+              "line": null
+            }
+          ]
+        },
+        {
+          "duration": 1680,
+          "legs": [
+            {
+              "expectedStartTime": "2023-11-29T19:41:00+01:00",
+              "expectedEndTime": "2023-11-29T19:45:20+01:00",
+              "mode": "foot",
+              "distance": 184.6,
+              "fromPlace": {
+                "name": "Origin"
+              },
+              "toPlace": {
+                "name": "Møhlenpris"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:45:20+01:00",
+              "expectedEndTime": "2023-11-29T19:47:17+01:00",
+              "mode": "bus",
+              "distance": 763.38,
+              "fromPlace": {
+                "name": "Møhlenpris"
+              },
+              "toPlace": {
+                "name": "Festplassen"
+              },
+              "line": {
+                "id": "SKY:Line:485",
+                "publicCode": "485",
+                "name": "Ravnanger - Hanevik - Kleppestø - Bergen busstasjo"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:50:07+01:00",
+              "expectedEndTime": "2023-11-29T20:03:00+01:00",
+              "mode": "bus",
+              "distance": 4969.93,
+              "fromPlace": {
+                "name": "Festplassen"
+              },
+              "toPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "line": {
+                "id": "SKY:Line:12",
+                "publicCode": "12",
+                "name": "Lønborglien - Lægdene - Montana"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T20:03:00+01:00",
+              "expectedEndTime": "2023-11-29T20:09:00+01:00",
+              "mode": "foot",
+              "distance": 340.61,
+              "fromPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "toPlace": {
+                "name": "Destination"
+              },
+              "line": null
+            }
+          ]
+        },
+        {
+          "duration": 1517,
+          "legs": [
+            {
+              "expectedStartTime": "2023-11-29T19:43:48+01:00",
+              "expectedEndTime": "2023-11-29T19:48:08+01:00",
+              "mode": "foot",
+              "distance": 184.6,
+              "fromPlace": {
+                "name": "Origin"
+              },
+              "toPlace": {
+                "name": "Møhlenpris"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:48:08+01:00",
+              "expectedEndTime": "2023-11-29T20:03:05+01:00",
+              "mode": "bus",
+              "distance": 5733.31,
+              "fromPlace": {
+                "name": "Møhlenpris"
+              },
+              "toPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "line": {
+                "id": "SKY:Line:4",
+                "publicCode": "4",
+                "name": "Flaktveit - Hesjaholtet"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T20:03:05+01:00",
+              "expectedEndTime": "2023-11-29T20:09:05+01:00",
+              "mode": "foot",
+              "distance": 340.61,
+              "fromPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "toPlace": {
+                "name": "Destination"
+              },
+              "line": null
+            }
+          ]
+        },
+        {
+          "duration": 1517,
+          "legs": [
+            {
+              "expectedStartTime": "2023-11-29T19:48:27+01:00",
+              "expectedEndTime": "2023-11-29T19:52:47+01:00",
+              "mode": "foot",
+              "distance": 184.6,
+              "fromPlace": {
+                "name": "Origin"
+              },
+              "toPlace": {
+                "name": "Møhlenpris"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:52:47+01:00",
+              "expectedEndTime": "2023-11-29T20:07:44+01:00",
+              "mode": "bus",
+              "distance": 5733.31,
+              "fromPlace": {
+                "name": "Møhlenpris"
+              },
+              "toPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "line": {
+                "id": "SKY:Line:3",
+                "publicCode": "3",
+                "name": "Støbotn - Vadmyra"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T20:07:44+01:00",
+              "expectedEndTime": "2023-11-29T20:13:44+01:00",
+              "mode": "foot",
+              "distance": 340.61,
+              "fromPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "toPlace": {
+                "name": "Destination"
+              },
+              "line": null
+            }
+          ]
+        },
+        {
+          "duration": 1517,
+          "legs": [
+            {
+              "expectedStartTime": "2023-11-29T19:53:48+01:00",
+              "expectedEndTime": "2023-11-29T19:58:08+01:00",
+              "mode": "foot",
+              "distance": 184.6,
+              "fromPlace": {
+                "name": "Origin"
+              },
+              "toPlace": {
+                "name": "Møhlenpris"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T19:58:08+01:00",
+              "expectedEndTime": "2023-11-29T20:13:05+01:00",
+              "mode": "bus",
+              "distance": 5733.31,
+              "fromPlace": {
+                "name": "Møhlenpris"
+              },
+              "toPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "line": {
+                "id": "SKY:Line:4",
+                "publicCode": "4",
+                "name": "Flaktveit - Hesjaholtet"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T20:13:05+01:00",
+              "expectedEndTime": "2023-11-29T20:19:05+01:00",
+              "mode": "foot",
+              "distance": 340.61,
+              "fromPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "toPlace": {
+                "name": "Destination"
+              },
+              "line": null
+            }
+          ]
+        },
+        {
+          "duration": 1517,
+          "legs": [
+            {
+              "expectedStartTime": "2023-11-29T19:58:27+01:00",
+              "expectedEndTime": "2023-11-29T20:02:47+01:00",
+              "mode": "foot",
+              "distance": 184.6,
+              "fromPlace": {
+                "name": "Origin"
+              },
+              "toPlace": {
+                "name": "Møhlenpris"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T20:02:47+01:00",
+              "expectedEndTime": "2023-11-29T20:17:44+01:00",
+              "mode": "bus",
+              "distance": 5733.31,
+              "fromPlace": {
+                "name": "Møhlenpris"
+              },
+              "toPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "line": {
+                "id": "SKY:Line:3",
+                "publicCode": "3",
+                "name": "Støbotn - Vadmyra"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T20:17:44+01:00",
+              "expectedEndTime": "2023-11-29T20:23:44+01:00",
+              "mode": "foot",
+              "distance": 340.61,
+              "fromPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "toPlace": {
+                "name": "Destination"
+              },
+              "line": null
+            }
+          ]
+        },
+        {
+          "duration": 1638,
+          "legs": [
+            {
+              "expectedStartTime": "2023-11-29T20:01:42+01:00",
+              "expectedEndTime": "2023-11-29T20:06:02+01:00",
+              "mode": "foot",
+              "distance": 184.6,
+              "fromPlace": {
+                "name": "Origin"
+              },
+              "toPlace": {
+                "name": "Møhlenpris"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T20:06:02+01:00",
+              "expectedEndTime": "2023-11-29T20:10:44+01:00",
+              "mode": "bus",
+              "distance": 1669.84,
+              "fromPlace": {
+                "name": "Møhlenpris"
+              },
+              "toPlace": {
+                "name": "Bryggen"
+              },
+              "line": {
+                "id": "SKY:Line:10",
+                "publicCode": "10",
+                "name": "Wergeland/Søndre Skogveien - Mulen"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T20:10:44+01:00",
+              "expectedEndTime": "2023-11-29T20:11:16+01:00",
+              "mode": "foot",
+              "distance": 40.68,
+              "fromPlace": {
+                "name": "Bryggen"
+              },
+              "toPlace": {
+                "name": "Bryggen"
+              },
+              "line": null
+            },
+            {
+              "expectedStartTime": "2023-11-29T20:14:22+01:00",
+              "expectedEndTime": "2023-11-29T20:23:00+01:00",
+              "mode": "bus",
+              "distance": 4020.42,
+              "fromPlace": {
+                "name": "Bryggen"
+              },
+              "toPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "line": {
+                "id": "SKY:Line:12",
+                "publicCode": "12",
+                "name": "Lønborglien - Lægdene - Montana"
+              }
+            },
+            {
+              "expectedStartTime": "2023-11-29T20:23:00+01:00",
+              "expectedEndTime": "2023-11-29T20:29:00+01:00",
+              "mode": "foot",
+              "distance": 340.61,
+              "fromPlace": {
+                "name": "Handelshøyskolen"
+              },
+              "toPlace": {
+                "name": "Destination"
+              },
+              "line": null
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

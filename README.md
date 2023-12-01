@@ -1,6 +1,11 @@
-# Getting Started with Create React App
+# Entur-villaveien
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My roommate wanted a dashboard for when the busses from Møhlenpris leaves for NHH. With the Entur API I created a simple overview of when the busses leaves for an Ipad in our shared flat.
+
+It also gives you a random Kanye West quote on load.
+
+Frontend: React and Bootstrap
+
 
 ## Available Scripts
 

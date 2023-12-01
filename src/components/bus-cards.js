@@ -14,20 +14,17 @@ function BusCards({ travelData }) {
     const countdownInterval = setInterval(() => {
       settripPatterns((prevTripPatterns) => filterBusRides(prevTripPatterns));
     }, 1000);
-  
+
     return () => clearInterval(countdownInterval);
   }, [tripPatterns]);
-  
 
   useEffect(() => {
-    
     const updateInterval = setInterval(() => {
       updateTravelData();
-    }, 7*60*1000);
+    }, 7 * 60 * 1000);
 
-  
     return () => clearInterval(updateInterval);
-  }, []); 
+  }, []);
 
   function filterBusRides(tripPatterns) {
     return tripPatterns

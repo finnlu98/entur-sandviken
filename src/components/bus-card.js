@@ -1,6 +1,7 @@
 import moment from "moment";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { FaBus } from "react-icons/fa";
+import "./bus-card.css";
 
 function BusCard({
   tripIndex,
@@ -9,38 +10,66 @@ function BusCard({
   startTime,
   endTime,
   minutesUntil,
-  calculateMinutesUntil
+  calculateMinutesUntil,
 }) {
-
   const [minutes, setMinutes] = useState(minutesUntil);
+  const [badTime, setBadTime] = useState(evalBadTime(minutes));
+  
 
   useEffect(() => {
     const countdownInterval = setInterval(() => {
       setMinutes(calculateMinutesUntil(startTime));
+      setBadTime(evalBadTime(minutes))
     }, 1000);
 
     // Cleanup the interval when the component is unmounted
     return () => clearInterval(countdownInterval);
   }, [startTime, calculateMinutesUntil]);
 
+  function evalBadTime(time) {
+    if (time > 7) {
+      return "general-time";
+    }
+  
+    if (time > 4) {
+      return 'good-time';
+    }
+  
+    if (time > 2) {
+      return 'medium-time';
+    }
+  
+    return 'bad-time';
+  }
 
   return (
-    <div key={tripIndex} className="card text-white bg-dark mb-3">
+    <div key={tripIndex} className="bus-card card text-white bg-dark mb-3 container">
       <div className="card-body">
-        <div style={{ display: "flex" }}>
-          <div style={{ paddingRight: "10px" }}>
-            <FaBus />
-          </div>
+        <div className="row">
+          <div className="col-md-10 public">
+            <div className="d-flex">
+              <div className="public-icon">
+                <FaBus />
+              </div>
 
-          <div>
-            <h5 className="card-title">
-              {name} {publicCode} - {moment(startTime).format("HH:mm")} ({minutes} min)
-            </h5>
-          </div>
-        </div>
+              <div className="public-header">
+                <h5 className="card-title">
+                  {name} {publicCode} - {moment(startTime).format("HH:mm")}
+                </h5>
+              </div>
+            </div>
 
-        <div>
-          <p className="list-group-item">Forventet ankomst: {moment(endTime).format("HH:mm")}</p>
+            <div>
+              <p className="list-group-item">
+                Forventet ankomst: {moment(endTime).format("HH:mm")}
+              </p>
+            </div>
+          </div>
+          <div className={`col-md-2 d-flex flex-column align-items-center minutes ${badTime}`}>
+          <h1>{minutes}</h1>
+          <p>min</p>
+
+          </div>
         </div>
       </div>
     </div>

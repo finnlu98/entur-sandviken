@@ -6,6 +6,7 @@ It also gives you a random Kanye West quote on load.
 
 Frontend: React and Bootstrap
 
+![Screenshot of dashboard 01.12.23](img/dash.png)
 
 ## Available Scripts
 

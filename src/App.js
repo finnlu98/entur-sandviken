@@ -49,7 +49,7 @@ function App() {
 
   return (
     <div className="app">
-      <div className="container mt-4 mb-4">
+      <div className="dash-container container mt-4 mb-4">
         <Header kanyeQoute={kanyeQoute}/>
         {tripData && <BusCards travelData={tripData} />}
       </div>

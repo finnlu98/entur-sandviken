@@ -43,7 +43,7 @@ function BusCard({
   return (
     <div
       key={tripIndex}
-      className="bus-card card text-white bg-dark mb-3 container"
+      className="bus-card card text-white bg-dark mb-2 container"
     >
       <div className="card-body">
         <div className="row">

@@ -1,3 +1,7 @@
+.bus-card {
+    border: 3px solid silver;
+}
+
 .public {
     font-size: larger;
 }
@@ -17,11 +21,11 @@
 }
 
 .public-header {
-    padding: 5px 0;
+    padding: 3px 0;
 }
 
 .general-time {
-    color: darkgray
+    color: darkgray;
 }
 
 .bad-time {

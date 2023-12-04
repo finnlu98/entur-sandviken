@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import BusCards from "./components/bus-cards";
 import Api from "./Api";
 import { TailSpin } from "react-loader-spinner";
+import Header from "./components/header/header";
 
 function App() {
   const [tripData, setTripData] = useState(null);
@@ -40,7 +41,7 @@ function App() {
             wrapperClass=""
             visible={true}
           />
-          <div className="mt-4">Loading</div>
+          <div className="mt-4">Loading...</div>
         </div>
       </div>
     );
@@ -49,11 +50,7 @@ function App() {
   return (
     <div className="app">
       <div className="container mt-4 mb-4">
-        <header>
-          <h1>"Skyss er ikke godt nok" - Bendik Gran Johnson</h1>
-          <p>{kanyeQoute}</p>
-          <hr />
-        </header>
+        <Header kanyeQoute={kanyeQoute}/>
         {tripData && <BusCards travelData={tripData} />}
       </div>
     </div>

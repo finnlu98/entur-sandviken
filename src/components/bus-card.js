@@ -14,15 +14,13 @@ function BusCard({
 }) {
   const [minutes, setMinutes] = useState(minutesUntil);
   const [badTime, setBadTime] = useState(evalBadTime(minutes));
-  
 
   useEffect(() => {
     const countdownInterval = setInterval(() => {
       setMinutes(calculateMinutesUntil(startTime));
-      setBadTime(evalBadTime(minutes))
+      setBadTime(evalBadTime(minutes));
     }, 1000);
 
-    // Cleanup the interval when the component is unmounted
     return () => clearInterval(countdownInterval);
   }, [startTime, calculateMinutesUntil]);
 
@@ -30,20 +28,23 @@ function BusCard({
     if (time > 7) {
       return "general-time";
     }
-  
+
     if (time > 4) {
-      return 'good-time';
+      return "good-time";
     }
-  
+
     if (time > 2) {
-      return 'medium-time';
+      return "medium-time";
     }
-  
-    return 'bad-time';
+
+    return "bad-time";
   }
 
   return (
-    <div key={tripIndex} className="bus-card card text-white bg-dark mb-3 container">
+    <div
+      key={tripIndex}
+      className="bus-card card text-white bg-dark mb-3 container"
+    >
       <div className="card-body">
         <div className="row">
           <div className="col-md-10 public">
@@ -65,10 +66,11 @@ function BusCard({
               </p>
             </div>
           </div>
-          <div className={`col-md-2 d-flex flex-column align-items-center minutes ${badTime}`}>
-          <h1>{minutes}</h1>
-          <p>min</p>
-
+          <div
+            className={`col-md-2 d-flex flex-column align-items-center minutes ${badTime}`}
+          >
+            <h1>{minutes}</h1>
+            <p>min</p>
           </div>
         </div>
       </div>

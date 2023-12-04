@@ -1,0 +1,65 @@
+.header-style {
+  position: relative;
+  background-image: url("./img/mohlenpris.jpg"); 
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.header-style::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    60,
+    60,
+    60,
+    0.4
+  ); 
+  border-radius: 10px;
+  z-index: 1; 
+}
+
+.header-row {
+  display: flex; 
+  flex-wrap: wrap; 
+}
+
+.header-column {
+  margin: 5px;
+}
+
+
+.header-text {
+  margin: 0px 20px 0px 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.header-text-clock {
+  text-align: right;
+}
+
+
+@media only screen and (max-width: 750px) {
+  .header-text,
+  .header-text-clock {
+    text-align: center;
+  }
+
+  
+  .header-row {
+    display: block; /* Stack columns vertically */
+  }
+
+  .header-column {
+    flex: none; 
+    width: 100%; 
+  }
+}

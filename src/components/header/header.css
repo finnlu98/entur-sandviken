@@ -56,7 +56,7 @@
 
   
   .header-row {
-    display: block; /* Stack columns vertically */
+    display: block; 
   }
 
   .header-column {

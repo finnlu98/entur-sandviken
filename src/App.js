@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BusCards from "./components/bus-cards";
@@ -13,6 +14,9 @@ function App() {
   const [kanyeQoute, setKanyeQoute] = useState(null);
   const [electrictyPrices, setElectrictyPrices] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const reloadHour = 5;
+  const reloadMinute = 30
 
   const fetchandSetData = async () => {
     try {
@@ -30,6 +34,28 @@ function App() {
 
   useEffect(() => {
     fetchandSetData();
+  }, []);
+
+  useEffect(() => {
+    
+    const shouldReload = () => {
+      const now = moment();
+      return now.hour() === reloadHour && now.minute() === reloadMinute && now.second() === 0;
+    };
+
+  
+    const reloadAtTargetHour = () => {
+      if (shouldReload()) {
+        window.location.reload(true); 
+      }
+    };
+
+    reloadAtTargetHour();
+
+    const intervalId = setInterval(reloadAtTargetHour, 1000);
+
+   
+    return () => clearInterval(intervalId);
   }, []);
 
   if (loading) {
@@ -56,7 +82,10 @@ function App() {
     <div className="app">
       <div className="dash-container container mt-4 mb-4">
         <div className="row">
+         
           <Header kanyeQoute={kanyeQoute} />
+         
+          
         </div>
 
         <div className="row">

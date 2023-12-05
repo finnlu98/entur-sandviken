@@ -1,7 +1,7 @@
 import moment from "moment";
 import BusCard from "./bus-card";
 import React, { useState, useEffect } from "react";
-import Api from "../Api";
+import Api from "../../Api";
 
 function BusCards({ travelData }) {
   // Assuming there's at least one tripPattern

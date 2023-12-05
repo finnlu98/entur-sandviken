@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import BusCards from "./components/bus-cards";
+import BusCards from "./components/bus-cards/bus-cards";
 import Api from "./Api";
 import { TailSpin } from "react-loader-spinner";
 import Header from "./components/header/header";
-import Dailyweather from "./components/daily-weather";
-import ElectrictyPrices from "./components/electricity-prices";
+import Dailyweather from "./components/weather-widget/daily-weather";
+import ElectrictyPrices from "./components/electricity-prices/electricity-prices";
 
 function App() {
   const [tripData, setTripData] = useState(null);
@@ -16,7 +16,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   const reloadHour = 5;
-  const reloadMinute = 30
+  const reloadMinute = 30;
 
   const fetchandSetData = async () => {
     try {
@@ -37,16 +37,18 @@ function App() {
   }, []);
 
   useEffect(() => {
-    
     const shouldReload = () => {
       const now = moment();
-      return now.hour() === reloadHour && now.minute() === reloadMinute && now.second() === 0;
+      return (
+        now.hour() === reloadHour &&
+        now.minute() === reloadMinute &&
+        now.second() === 0
+      );
     };
 
-  
     const reloadAtTargetHour = () => {
       if (shouldReload()) {
-        window.location.reload(true); 
+        window.location.reload(true);
       }
     };
 
@@ -54,7 +56,6 @@ function App() {
 
     const intervalId = setInterval(reloadAtTargetHour, 1000);
 
-   
     return () => clearInterval(intervalId);
   }, []);
 
@@ -80,19 +81,16 @@ function App() {
 
   return (
     <div className="app">
-      <div className="dash-container container mt-4 mb-4">
+      <div className="dash-container container mt-2 mb-4">
         <div className="row">
-         
           <Header kanyeQoute={kanyeQoute} />
-         
-          
         </div>
 
-        <div className="row">
-          <div className="col-7">
+        <div className="row dash-rows">
+          <div className="col-md-7 col-12">
             {tripData && <BusCards travelData={tripData} />}
           </div>
-          <div className="col-5">
+          <div className="col-md-5 col-12">
             <div className="row mb-2">
               <Dailyweather />
             </div>

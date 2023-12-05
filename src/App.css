@@ -6,3 +6,14 @@
     height: 100vh;
     text-align: center;
 }
+
+
+@media only screen and (max-width: 750px) {
+    
+    .dash-rows {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

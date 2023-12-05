@@ -89,10 +89,10 @@ function App() {
         </div>
 
         <div className="row">
-          <div className="col-8">
+          <div className="col-7">
             {tripData && <BusCards travelData={tripData} />}
           </div>
-          <div className="col-4">
+          <div className="col-5">
             <div className="row mb-2">
               <Dailyweather />
             </div>

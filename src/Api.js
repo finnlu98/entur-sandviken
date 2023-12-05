@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 
 const fetchData = async () => {
   try {
@@ -70,7 +71,27 @@ const fetchKanyeQuote = async () => {
   }
 };
 
+
+const fetchElectricityPrices = async () => {
+  try {
+    const year = moment().year();
+    const month = moment().month() + 1;
+    const day = moment().format('DD');
+
+    const response = await axios.get(
+      `https://www.hvakosterstrommen.no/api/v1/prices/${year}/${month}-${day}_NO5.json`
+    );
+
+    return response.data; 
+  } catch (error) {
+    console.error("Can't get electrictyprices quote");
+    throw error;
+  }
+}
+
+
 export default {
   fetchData,
-  fetchKanyeQuote
+  fetchKanyeQuote,
+  fetchElectricityPrices
 };

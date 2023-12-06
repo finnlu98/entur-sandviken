@@ -1,42 +1,41 @@
 .bus-card {
-    border: 3px solid silver;
-    background-color: #020A14;
+  border: 3px solid silver;
+  background-color: #020a14;
 }
 
 .public {
-    font-size: larger;
+  font-size: larger;
 }
 
 @media only screen and (max-width: 750px) {
-    
-    .public {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+  .public {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .public-icon {
-    padding-right: 8px;
+  padding-right: 8px;
 }
 
 .public-header {
-    padding: 3px 0;
+  padding: 3px 0;
 }
 
 .general-time {
-    color: darkgray;
+  color: darkgray;
 }
 
 .bad-time {
-    color: firebrick;
+  color: firebrick;
 }
 
 .medium-time {
-    color: lightsalmon;
+  color: lightsalmon;
 }
 
 .good-time {
-    color: mediumseagreen;
+  color: mediumseagreen;
 }

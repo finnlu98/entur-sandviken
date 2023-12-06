@@ -1,0 +1,30 @@
+.laundry-week {
+  color: white;
+  border: 3px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.laundry-week-header {
+  text-align: center;
+  padding: 2px;
+  margin-top: 5px;
+}
+
+.rodt-slogan {
+  display: flex;
+  padding: 5px;
+  font-style: italic;
+  font-weight: bold;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.laundry-filter {
+  font-size: smaller;
+}
+
+.laundry-filter input {
+  transform: scale(0.85);
+  margin-left: 4px;
+}

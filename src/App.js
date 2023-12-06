@@ -8,6 +8,7 @@ import { TailSpin } from "react-loader-spinner";
 import Header from "./components/header/header";
 import Dailyweather from "./components/weather-widget/daily-weather";
 import ElectrictyPrices from "./components/electricity-prices/electricity-prices";
+import LaundryWeek from "./components/laundry-week/laundry-week";
 
 function App() {
   const [tripData, setTripData] = useState(null);
@@ -94,8 +95,12 @@ function App() {
             <div className="row mb-2">
               <Dailyweather />
             </div>
-            <div className="row">
+            <div className="row mb-2">
               <ElectrictyPrices electrictyPrices={electrictyPrices} />
+            </div>
+            <div className="row mb-2">
+              <LaundryWeek />
+
             </div>
           </div>
         </div>

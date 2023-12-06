@@ -2,6 +2,7 @@ import moment from "moment";
 import BusCard from "./bus-card";
 import React, { useState, useEffect } from "react";
 import Api from "../../Api";
+import "./bus-cards.css";
 
 function BusCards({ travelData }) {
   // Assuming there's at least one tripPattern
@@ -57,22 +58,27 @@ function BusCards({ travelData }) {
 
   return (
     <div>
-      {tripPatterns.map((tripPattern, tripIndex) => {
-        return (
-          <BusCard
-            key={tripIndex}
-            name={tripPattern.legs[0].line.name.split(" ")[0]}
-            publicCode={tripPattern.legs[0].line.publicCode}
-            startTime={tripPattern.legs[0].expectedStartTime}
-            endTime={tripPattern.legs[0].expectedEndTime}
-            tripIndex={tripIndex}
-            minutesUntil={calculateMinutesUntil(
-              tripPattern.legs[0].expectedStartTime
-            )}
-            calculateMinutesUntil={calculateMinutesUntil}
-          />
-        );
-      })}
+      <div className="busstider-header mb-2">
+        <h5>Møhlenpris - NHH</h5>
+      </div>
+      <div>
+        {tripPatterns.slice(0, 6).map((tripPattern, tripIndex) => {
+          return (
+            <BusCard
+              key={tripIndex}
+              name={tripPattern.legs[0].line.name.split(" ")[0]}
+              publicCode={tripPattern.legs[0].line.publicCode}
+              startTime={tripPattern.legs[0].expectedStartTime}
+              endTime={tripPattern.legs[0].expectedEndTime}
+              tripIndex={tripIndex}
+              minutesUntil={calculateMinutesUntil(
+                tripPattern.legs[0].expectedStartTime
+              )}
+              calculateMinutesUntil={calculateMinutesUntil}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

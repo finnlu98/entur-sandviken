@@ -1,0 +1,9 @@
+.busstider-header {
+  color: white;
+  border: 3px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
+}

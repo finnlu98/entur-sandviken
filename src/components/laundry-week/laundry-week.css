@@ -20,11 +20,10 @@
   margin-bottom: 10px;
 }
 
-.laundry-filter {
-  font-size: smaller;
-}
-
-.laundry-filter input {
-  transform: scale(0.85);
-  margin-left: 4px;
+.expand-icon {
+  margin-bottom: 10px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

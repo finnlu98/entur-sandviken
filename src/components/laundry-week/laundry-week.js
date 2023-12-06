@@ -5,6 +5,8 @@ import laundryData from "./laundry-week-data.json";
 import "./laundry-week.css";
 import logo from "./img/rodt_logo.png";
 
+import { SlArrowDown } from "react-icons/sl";
+import { SlArrowUp } from "react-icons/sl";
 import {
   Table,
   Header,
@@ -53,17 +55,7 @@ function LaundryWeek() {
       <div className="laundry-week-header">
         <h5>Vasking uke {currentWeek}</h5>
       </div>
-      <div className="laundry-filter">
-        <label htmlFor="complete">
-          Utvid:
-          <input
-            id="complete"
-            type="checkbox"
-            checked={isHide}
-            onChange={() => setHide(!isHide)}
-          />
-        </label>
-      </div>
+      
 
       <Table data={data} theme={theme}>
         {(tableList) => (
@@ -88,6 +80,10 @@ function LaundryWeek() {
           </>
         )}
       </Table>
+      <div className="expand-icon" onClick={() => setHide(!isHide)}>
+        {!isHide ?  <SlArrowDown /> : <SlArrowUp />} 
+      </div>
+
       <div className="rodt-slogan">
         <img src={logo} width={40} height={40}></img>
         <p>Fordi felleskap fungerer</p>

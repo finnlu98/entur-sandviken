@@ -21,7 +21,7 @@ import {
 import { useTheme } from "@table-library/react-table-library/theme";
 
 function LaundryWeek() {
-  const currentWeek = moment().week();
+  const currentWeek = moment().isoWeekday(1).isoWeek();
   const [isHide, setHide] = useState(false);
   const [highlightRow, setHighlightRow] = useState(false);
 

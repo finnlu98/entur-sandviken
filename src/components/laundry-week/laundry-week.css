@@ -21,9 +21,48 @@
 }
 
 .expand-icon {
+  margin-top: 10px;
   margin-bottom: 10px;
   background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.week-table-header {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  width: 75%;
+  margin: 0 auto;
+  align-items: center;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.week-table-header div {
+  flex: 1;
+  text-align: center;
+}
+
+.week-row {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  color: black;
+  width: 75%;
+  margin: 0 auto;
+  align-items: center;
+  font-weight: bold;
+  padding: 5px;
+  
+}
+
+.week-row div {
+  flex: 1;
+  text-align: center;
+}
+
+.week-row.highlight {
+  background-color: lightblue;
 }

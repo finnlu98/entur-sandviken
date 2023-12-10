@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 
 import laundryData from "./laundry-week-data.json";
@@ -7,24 +7,12 @@ import logo from "./img/rodt_logo.png";
 
 import { SlArrowDown } from "react-icons/sl";
 import { SlArrowUp } from "react-icons/sl";
-import {
-  Table,
-  Header,
-  HeaderRow,
-  Body,
-  Row,
-  HeaderCell,
-  Cell,
-  useCustom,
-} from "@table-library/react-table-library/table";
 
-import { useTheme } from "@table-library/react-table-library/theme";
 
 function LaundryWeek() {
   const currentWeek = moment().isoWeekday(1).isoWeek();
   const [isHide, setHide] = useState(false);
-  const [highlightRow, setHighlightRow] = useState(false);
-
+  
   let data = { nodes: laundryData };
 
   data = {
@@ -33,53 +21,27 @@ function LaundryWeek() {
       : data.nodes,
   };
 
-  const theme = useTheme({
-    HeaderRow: `
-        .th {
-          border-bottom: 1px solid #a0a8ae;
-          background-color: transparent; 
-          color: white;
-        }
-      `,
-
-    BaseCell: `
-        
-    background-color: transparent;   
-        text-align: center;
-        font-weight: bold;
-      `,
-  });
 
   return (
     <div className="laundry-week">
       <div className="laundry-week-header">
         <h5>Vasking uke {currentWeek}</h5>
       </div>
+      <div className="week-table-header">
+        <div>Uke</div>
+        <div>Stue osv.</div>
+        <div>Bas osv.</div>
+      </div>
+      {data.nodes.map((week) => {
+        return (
+          <div className={`week-row ${week.week === currentWeek && isHide ? 'highlight' : ''}`}>
+            <div>{week.week}</div>
+            <div>{week.stue}</div>
+            <div>{week.bad}</div>
+          </div>
+        )
+      })}
       
-
-      <Table data={data} theme={theme}>
-        {(tableList) => (
-          <>
-            <Header>
-              <HeaderRow>
-                <HeaderCell>Uke</HeaderCell>
-                <HeaderCell>Stue osv.</HeaderCell>
-                <HeaderCell>Bad osv.</HeaderCell>
-              </HeaderRow>
-            </Header>
-
-            <Body>
-              {tableList.map((week) => (
-                <Row key={week.week} item={week} className={week.className}>
-                  <Cell>{week.week}</Cell>
-                  <Cell>{week.stue}</Cell>
-                  <Cell>{week.bad}</Cell>
-                </Row>
-              ))}
-            </Body>
-          </>
-        )}
-      </Table>
       <div className="expand-icon" onClick={() => setHide(!isHide)}>
         {!isHide ?  <SlArrowDown /> : <SlArrowUp />} 
       </div>

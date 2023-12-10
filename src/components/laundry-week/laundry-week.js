@@ -9,6 +9,7 @@ import { SlArrowDown } from "react-icons/sl";
 import { SlArrowUp } from "react-icons/sl";
 
 
+
 function LaundryWeek() {
   const currentWeek = moment().isoWeekday(1).isoWeek();
   const [isHide, setHide] = useState(false);
@@ -32,9 +33,9 @@ function LaundryWeek() {
         <div>Stue osv.</div>
         <div>Bas osv.</div>
       </div>
-      {data.nodes.map((week) => {
+      {data.nodes.map((week, weekIndex) => {
         return (
-          <div className={`week-row ${week.week === currentWeek && isHide ? 'highlight' : ''}`}>
+          <div className={`week-row ${week.week === currentWeek && isHide ? 'highlight' : ''}`} key={weekIndex}>
             <div>{week.week}</div>
             <div>{week.stue}</div>
             <div>{week.bad}</div>

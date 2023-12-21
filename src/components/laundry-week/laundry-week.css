@@ -11,14 +11,28 @@
   margin-top: 5px;
 }
 
-.rodt-slogan {
+.week-table-footer {
   display: flex;
+  justify-content: space-between;
   padding: 5px;
   font-style: italic;
   font-weight: bold;
   gap: 10px;
   margin-bottom: 10px;
 }
+
+
+.week-table-footer button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.rodt-slogan {
+  display: flex;
+  gap: 10px;
+}
+
 
 .expand-icon {
   margin-top: 10px;

@@ -75,7 +75,7 @@ const fetchKanyeQuote = async () => {
 const fetchElectricityPrices = async () => {
   try {
     const year = moment().year();
-    const month = moment().month() + 1;
+    const month =  moment().format('MM');
     const day = moment().format('DD');
 
     const response = await axios.get(

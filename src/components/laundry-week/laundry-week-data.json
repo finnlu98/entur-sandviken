@@ -1,22 +1,57 @@
 [
   {
-    "week": 48,
+    "week": 4,
+    "stue": "Bendik",
+    "bad": "Finn"
+  },
+  {
+    "week": 5,
+    "stue": "Harald",
+    "bad": "Finn"
+  },
+  {
+    "week": 6,
+    "stue": "Harald",
+    "bad": "Ragnild"
+  },
+  {
+    "week": 7,
+    "stue": "Sigurd",
+    "bad": "Ragnild"
+  },
+  {
+    "week": 8,
+    "stue": "Sigurd",
+    "bad": "Bendik"
+  },
+  {
+    "week": 9,
+    "stue": "Ragnild",
+    "bad": "Bendik"
+  },
+  {
+    "week": 10,
     "stue": "Ragnild",
     "bad": "Harald"
   },
   {
-    "week": 49,
-    "stue": "Willem",
+    "week": 11,
+    "stue": "Finn",
     "bad": "Harald"
   },
   {
-    "week": 50,
-    "stue": "Willem",
-    "bad": "Bendik"
+    "week": 12,
+    "stue": "Finn",
+    "bad": "Sigurd"
   },
   {
-    "week": 51,
-    "stue": "Finn",
-    "bad": "Bendik"
+    "week": 13,
+    "stue": "Påske",
+    "bad": "Påske"
+  },
+  {
+    "week": 14,
+    "stue": "Bendik",
+    "bad": "Sigurd"
   }
 ]

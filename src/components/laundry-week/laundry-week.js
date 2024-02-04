@@ -31,7 +31,7 @@ function LaundryWeek() {
       <div className="week-table-header">
         <div>Uke</div>
         <div>Stue osv.</div>
-        <div>Bas osv.</div>
+        <div>Bad osv.</div>
       </div>
       {data.nodes.map((week, weekIndex) => {
         return (

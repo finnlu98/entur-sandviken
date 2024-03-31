@@ -90,8 +90,39 @@ const fetchElectricityPrices = async () => {
 }
 
 
+const setTrafficLight = async(color) => {
+  try {
+    
+    var serverColor = "off"
+
+    if(color === 1) {
+      serverColor = "red"
+    }
+
+    if(color === 2) {
+      serverColor = "orange"
+    }
+
+    if(color === 3) {
+      serverColor = "green"
+    }
+
+
+    const response = await axios.get(
+      `http://192.168.68.50:5000/${serverColor}`
+    );
+
+    return "success"; 
+  } catch (error) {
+    console.error("Can`t reach server");
+    throw error;
+  }
+}
+
+
 export default {
   fetchData,
   fetchKanyeQuote,
-  fetchElectricityPrices
+  fetchElectricityPrices,
+  setTrafficLight
 };

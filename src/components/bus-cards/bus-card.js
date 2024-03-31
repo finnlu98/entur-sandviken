@@ -10,7 +10,7 @@ function BusCard({
   startTime,
   endTime,
   minutesUntil,
-  calculateMinutesUntil,
+  calculateMinutesUntil
 }) {
   const [minutes, setMinutes] = useState(minutesUntil);
   const [badTime, setBadTime] = useState(evalBadTime(minutes));
@@ -24,6 +24,7 @@ function BusCard({
     return () => clearInterval(countdownInterval);
   }, [startTime, calculateMinutesUntil]);
 
+
   function evalBadTime(time) {
     if (time > 7) {
       return "general-time";
@@ -36,7 +37,6 @@ function BusCard({
     if (time > 2) {
       return "medium-time";
     }
-
     return "bad-time";
   }
 

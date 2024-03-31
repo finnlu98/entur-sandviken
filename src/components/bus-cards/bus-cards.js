@@ -3,10 +3,16 @@ import BusCard from "./bus-card";
 import React, { useState, useEffect } from "react";
 import Api from "../../Api";
 import "./bus-cards.css";
+import TrafficLightColor from "./TrafficLightColor";
+
+
+
 
 function BusCards({ travelData }) {
   // Assuming there's at least one tripPattern
 
+  const [color, setColor] = useState(TrafficLightColor.OFF);
+  
   const [tripPatterns, settripPatterns] = useState(
     filterBusRides(travelData.data.trip.tripPatterns)
   );
@@ -26,6 +32,46 @@ function BusCards({ travelData }) {
 
     return () => clearInterval(updateInterval);
   }, []);
+
+  
+  // Update traffic
+  // Needs refactoring in functions and dup code in bus-card
+  useEffect(() => {
+    
+    var maxColor = 0;
+    
+    tripPatterns.forEach(tripPattern => {
+  
+      const minUntil = calculateMinutesUntil(tripPattern.legs[0].expectedStartTime);
+      var tripColor = 0;
+
+      if (minUntil < 8) {
+        tripColor = TrafficLightColor.GREEN
+      }
+  
+      if (minUntil < 5) {
+        tripColor = TrafficLightColor.ORANGE
+      }
+  
+      if (minUntil < 3) {
+
+        tripColor = TrafficLightColor.RED
+      }
+
+      if(tripColor > maxColor) {
+        maxColor = tripColor;
+      }
+      
+    }) 
+
+    if (maxColor != color) {
+      setColor(maxColor);
+      Api.setTrafficLight(maxColor);
+    }
+
+  }, [tripPatterns]); 
+
+
 
   function filterBusRides(tripPatterns) {
     return tripPatterns

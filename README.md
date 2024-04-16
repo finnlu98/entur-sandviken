@@ -6,16 +6,16 @@ The minutes color is updated based on when it is best to leave the apartment. Ba
 
 Other features:
 
-**Random kanye west quote**
+**Random kanye west quote**:
 Gives you a random Kanye West quote on load.
 
-**Daily weather**
+**Daily weather**:
 Shows daily weather from yr.no in Bergen
 
-**Electricity prices**
+**Electricity prices**:
 Shows what the spot prices are distributed for the current day. Data is from hvaerstrommen.no
 
-**Laundry list**
+**Laundry list**:
 List over who in the shared flat is responsible for cleaning. Stored in a simple json file.
 
 

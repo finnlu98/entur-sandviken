@@ -53,5 +53,30 @@
     "week": 14,
     "stue": "Bendik",
     "bad": "Sigurd"
+  },
+  {
+    "week": 17,
+    "stue": "Finn",
+    "bad": "Bendik"
+  },
+  {
+    "week": 18,
+    "stue": "Willem",
+    "bad": "Harald"
+  },
+  {
+    "week": 19,
+    "stue": "Ragnild",
+    "bad": "Sigurd"
+  },
+  {
+    "week": 20,
+    "stue": "Bendik",
+    "bad": "Finn"
+  },
+  {
+    "week": 21,
+    "stue": "Harald",
+    "bad": "Willem"
   }
 ]

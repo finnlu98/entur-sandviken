@@ -109,7 +109,7 @@ const setTrafficLight = async(color) => {
 
 
     const response = await axios.get(
-      `http://192.168.68.50:5000/${serverColor}`
+      `http://192.168.68.51:5000/${serverColor}`
     );
 
     return "success"; 

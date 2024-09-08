@@ -3,11 +3,11 @@
   background-image: url("./img/mohlenpris.jpg");
   background-size: cover;
   background-position: center;
-  color: white;
+  color: rgb(248, 248, 248);
   padding: 5px;
   border-radius: 10px;
   margin-bottom: 10px;
-  border: 3px solid silver;
+  border: 3px solid rgb(248, 248, 248);
 }
 
 .header-style::after {
@@ -17,7 +17,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(20, 2, 13, 0.4);
+  background-color: rgba(116, 75, 100, 0.4);
   border-radius: 10px;
   z-index: 1;
 }

@@ -68,7 +68,7 @@ function BusCards({ travelData }) {
   return (
     <div>
       <div className="busstider-header mb-2">
-        <h5>Møhlenpris - NHH</h5>
+        <h5>Sandvikstorget - NHH</h5>
       </div>
       <div>
         {tripPatterns.slice(0, 6).map((tripPattern, tripIndex) => {

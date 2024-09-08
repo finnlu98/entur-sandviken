@@ -33,43 +33,6 @@ function BusCards({ travelData }) {
     return () => clearInterval(updateInterval);
   }, []);
 
-  
-  // Update traffic
-  // Needs refactoring in functions and dup code in bus-card
-  useEffect(() => {
-    
-    var maxColor = 0;
-    
-    tripPatterns.forEach(tripPattern => {
-  
-      const minUntil = calculateMinutesUntil(tripPattern.legs[0].expectedStartTime);
-      var tripColor = 0;
-
-      if (minUntil < 8) {
-        tripColor = TrafficLightColor.GREEN
-      }
-  
-      if (minUntil < 5) {
-        tripColor = TrafficLightColor.ORANGE
-      }
-  
-      if (minUntil < 3) {
-
-        tripColor = TrafficLightColor.RED
-      }
-
-      if(tripColor > maxColor) {
-        maxColor = tripColor;
-      }
-      
-    }) 
-
-    if (maxColor != color) {
-      setColor(maxColor);
-      Api.setTrafficLight(maxColor);
-    }
-
-  }, [tripPatterns]); 
 
 
 

@@ -18,7 +18,7 @@ function Header({ kanyeQoute }) {
       <div className="row header-row">
         <div className="header-column col-8">
           <header className="header-text">
-            <h1>"Skyss er ikke godt nok"</h1>
+            <h1>Pernilles Kollektiv:D</h1>
             <p>{kanyeQoute}</p>
           </header>
         </div>

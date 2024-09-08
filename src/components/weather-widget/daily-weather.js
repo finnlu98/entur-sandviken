@@ -4,11 +4,11 @@ import './daily-weather.css'
 
 function Dailyweather() {
 
-  const [widget, setWidget] = useState("https://www.yr.no/en/content/1-92416/card.html")
+  const [widget, setWidget] = useState("https://www.yr.no/nb/innhold/1-92416/card.html")
 
   useEffect(() => {
     const countdownInterval = setInterval(() => {
-      setWidget("https://www.yr.no/en/content/1-92416/card.html");
+      setWidget("https://www.yr.no/nb/innhold/1-92416/card.html");
     }, 1000*60);
 
     return () => clearInterval(countdownInterval);

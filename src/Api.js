@@ -8,8 +8,8 @@ const fetchData = async () => {
         trip(
           from: {
             coordinates: {
-              latitude: 60.407031725927254
-              longitude: 5.322168653633666
+              latitude: 60.402454718386124
+              longitude: 5.320983980882447
             }
           },
           to: {

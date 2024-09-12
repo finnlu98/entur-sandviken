@@ -14,7 +14,7 @@ function LaundryWeek() {
   const currentWeek = moment().isoWeekday(1).isoWeek();
   const [isHide, setHide] = useState(false);
   
-  let data = { nodes: laundryData };
+  let data = { nodes: createLaundryList(37, 49, ["Karen", "Pernille", "Line"]) };
 
   data = {
     nodes: !isHide
@@ -23,22 +23,43 @@ function LaundryWeek() {
   };
 
 
+  function createLaundryList(startWeek, endWeek, names) {
+    const records = [];
+    const totalNames = names.length;
+    
+    for (let week = startWeek; week <= endWeek; week++) {
+      
+      const nameIndex = (week - startWeek) % totalNames;
+      records.push({
+        week: week,
+        name: names[nameIndex]
+      });
+    }
+
+    return records;
+  }  
+
+  /** 
+  if (!isHide) {
+    return (
+      
+    );
+  }*/
+
+
+
   return (
     <div className="laundry-week">
       <div className="laundry-week-header">
         <h5>Vasking uke {currentWeek}</h5>
       </div>
       <div className="week-table-header">
-        <div>Uke</div>
-        <div>Stue osv.</div>
-        <div>Bad osv.</div>
       </div>
       {data.nodes.map((week, weekIndex) => {
         return (
           <div className={`week-row ${week.week === currentWeek && isHide ? 'highlight' : ''}`} key={weekIndex}>
-            <div>{week.week}</div>
-            <div>{week.stue}</div>
-            <div>{week.bad}</div>
+            <div>{week.name}</div>
+            
           </div>
         )
       })}

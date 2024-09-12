@@ -9,6 +9,7 @@
   text-align: center;
   padding: 2px;
   margin-top: 5px;
+  text-decoration: underline;
 }
 
 .rodt-slogan {
@@ -48,13 +49,14 @@
 .week-row {
   display: flex;
   justify-content: space-between;
-  background-color: white;
-  color: black;
+  color: white;
   width: 90%;
   margin: 0 auto;
   align-items: center;
   font-weight: bold;
   padding: 5px;
+  font-size: 25px;
+  
   
 }
 

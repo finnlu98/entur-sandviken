@@ -46,6 +46,10 @@
   text-align: center;
 }
 
+.week-row.expand {
+  font-size: 17px;
+}
+
 .week-row {
   display: flex;
   justify-content: space-between;
@@ -56,9 +60,9 @@
   font-weight: bold;
   padding: 5px;
   font-size: 25px;
-  
-  
 }
+
+
 
 .week-row div {
   flex: 1;

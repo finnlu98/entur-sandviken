@@ -26,15 +26,15 @@ function BusCard({
 
 
   function evalBadTime(time) {
-    if (time > 7) {
+    if (time > 13) {
       return "general-time";
     }
 
-    if (time > 4) {
+    if (time > 9) {
       return "good-time";
     }
 
-    if (time > 2) {
+    if (time > 6) {
       return "medium-time";
     }
     return "bad-time";

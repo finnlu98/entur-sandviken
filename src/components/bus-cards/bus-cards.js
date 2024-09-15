@@ -43,7 +43,7 @@ function BusCards({ travelData }) {
         legs: tripPattern.legs.filter(
           (leg) =>
             leg.mode === "bus" &&
-            calculateMinutesUntil(leg.expectedStartTime) >= 0
+            calculateMinutesUntil(leg.expectedStartTime) >= 5
         ),
       }))
       .filter((tripPattern) => tripPattern.legs.length === 1);

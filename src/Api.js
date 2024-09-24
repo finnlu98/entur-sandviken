@@ -1,23 +1,76 @@
 import axios from "axios";
 import moment from "moment";
 
-const fetchData = async () => {
+// const fetchData = async (fromCoordinates, toCoordinates) => {
+//   try {
+//     const graphqlQuery = `
+//       {
+//         trip(
+//           from: {
+//             coordinates: {
+//               latitude: ${fromCoordinates.lat} 
+//               longitude: ${fromCoordinates.lon}
+//             }
+//           },
+//           to: {
+//             coordinates: {
+//               latitude: ${toCoordinates.lat}
+//               longitude: ${toCoordinates.lon}
+//             }, 
+//           }
+//         ) {
+//           tripPatterns {
+//             duration
+//             legs {
+//               expectedStartTime
+//               expectedEndTime
+//               mode
+//               distance
+//               fromPlace {
+//                 name
+//               }
+//               toPlace {
+//                 name
+//               }
+//               line {
+//                 id
+//                 publicCode
+//                 name
+//               }
+//             }
+//           }
+//         }
+//       }
+//     `;
+
+//     const endpoint = "https://api.entur.io/journey-planner/v3/graphql";
+
+//     const response = await axios.post(
+//       endpoint,
+//       { query: graphqlQuery },
+//       { headers: { "ET-Client-Name": "FinnGriggsProduksjoner-Villaveien" } }
+//     );
+
+//     return response.data;
+//   } catch (error) {
+//     console.error("GraphQL request error:", error);
+//     throw error;
+//   }
+// };
+
+
+const fetchData = async (fromPlace, toPlace) => {
   try {
     const graphqlQuery = `
       {
         trip(
           from: {
-            coordinates: {
-              latitude: 60.402454718386124
-              longitude: 5.320983980882447
-            }
+            place: "${fromPlace}"       
           },
           to: {
-            coordinates: {
-              latitude: 60.42327833524445
-              longitude: 5.302355076497197
-            }, 
-          }
+            place: "${toPlace}" 
+          },
+          maximumTransfers: 1
         ) {
           tripPatterns {
             duration
@@ -57,6 +110,15 @@ const fetchData = async () => {
     throw error;
   }
 };
+
+
+const fetchNhhBusRides = async () => {
+    return fetchData("NSR:Quay:53241", "NSR:Quay:53245")
+}
+
+const fetchCenterBusRides = async () => {
+  return fetchData("NSR:Quay:53301", "NSR:Quay:53118")
+}
 
 const fetchKanyeQuote = async () => {
   try {
@@ -121,7 +183,8 @@ const setTrafficLight = async(color) => {
 
 
 export default {
-  fetchData,
+  fetchNhhBusRides,
+  fetchCenterBusRides,
   fetchKanyeQuote,
   fetchElectricityPrices,
   setTrafficLight

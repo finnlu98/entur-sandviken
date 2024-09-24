@@ -1,9 +1,9 @@
 import moment from "moment";
 import React, { useState, useEffect } from "react";
-import "./bus-card.css";
 import { FaBus } from "react-icons/fa";
+import "./main-bus-card.css";
 
-function BusCard({
+function MainBusCard({
   tripIndex,
   name,
   publicCode,
@@ -12,7 +12,6 @@ function BusCard({
   minutesUntil,
   calculateMinutesUntil,
   configColors
-
 }) {
   const [minutes, setMinutes] = useState(minutesUntil);
   const [badTime, setBadTime] = useState(evalBadTime(minutes));
@@ -46,11 +45,12 @@ function BusCard({
     <div key={tripIndex} className="bus-card card text-white mb-2 container">
       <div className="card-body">
         <div className="row">
-          <div className="col-md-9 public">
+          <div className="col-md-10 public">
             <div className="d-flex">
-            <div className="public-icon">
+              <div className="public-icon">
                 <FaBus />
               </div>
+
               <div className="public-header">
                 <h5 className="card-title">
                   {name} {publicCode} - {moment(startTime).format("HH:mm")}
@@ -58,12 +58,17 @@ function BusCard({
               </div>
             </div>
 
+            <div>
+              <p className="list-group-item">
+                Forventet ankomst: {moment(endTime).format("HH:mm")}
+              </p>
+            </div>
           </div>
           <div
-            className={`col-md-3 d-flex flex-column align-items-center minutes ${badTime}`}
+            className={`col-md-2 flex-column align-items-center minutes ${badTime}`}
           >
-            <h5>{minutes} min</h5>
-            
+            <h1>{minutes}</h1>
+            <p>min</p>
           </div>
         </div>
       </div>
@@ -71,4 +76,4 @@ function BusCard({
   );
 }
 
-export default BusCard;
+export default MainBusCard;

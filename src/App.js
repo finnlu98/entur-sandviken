@@ -109,7 +109,7 @@ function App() {
             </div>
             <div>
               {tripData && <BusCards 
-                title={"Øvre Sandviksvei - Olav Kyrres gate"} 
+                title={"Øvre Sandviksvei - Sentrum"} 
                 travelData={cityCenterData} 
                 configCard={{numRows: 3, minFilter: 1}} 
                 configColors={{

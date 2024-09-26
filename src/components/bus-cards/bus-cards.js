@@ -3,12 +3,12 @@ import BusCard from "./bus-card";
 import React, { useState, useEffect } from "react";
 import Api from "../../Api";
 import "./bus-cards.css";
-import MainBusCard from "./main-bus-card";
 
 
 
 
-function BusCards({ title, travelData, configCard, configColors }) {
+
+function BusCards({ title, travelData, configCard, configColors, fetchData }) {
   
   const { numRows, minFilter } = configCard;
   
@@ -55,10 +55,10 @@ function BusCards({ title, travelData, configCard, configColors }) {
     return diffInMinutes;
   }
 
-  // Pass the function...
+  
   async function updateTravelData() {
     try {
-      const updatedTravelData = await Api.fetchData();
+      const updatedTravelData = await fetchData();
       settripPatterns(filterBusRides(updatedTravelData.data.trip.tripPatterns));
     } catch (error) {
       console.error("Can't update data:", error);
@@ -71,27 +71,9 @@ function BusCards({ title, travelData, configCard, configColors }) {
       <div className="busstider-header mb-2">
           <h5><strong>{title}</strong></h5>
         </div>
+        
         <div>
-          {tripPatterns.slice(0, 1).map((tripPattern, tripIndex) => {
-            return (
-              <MainBusCard
-                key={tripIndex}
-                name={tripPattern.legs[0].line.name.split(" ")[0]}
-                publicCode={tripPattern.legs[0].line.publicCode}
-                startTime={tripPattern.legs[0].expectedStartTime}
-                endTime={tripPattern.legs[0].expectedEndTime}
-                tripIndex={tripIndex}
-                minutesUntil={calculateMinutesUntil(
-                  tripPattern.legs[0].expectedStartTime
-                )}
-                calculateMinutesUntil={calculateMinutesUntil}
-                configColors={configColors}
-              />
-            );
-          })}
-        </div>
-        <div>
-          {tripPatterns.slice(1, numRows).map((tripPattern, tripIndex) => {
+          {tripPatterns.slice(0, numRows).map((tripPattern, tripIndex) => {
             return (
               <BusCard
                 key={tripIndex}
@@ -105,6 +87,7 @@ function BusCards({ title, travelData, configCard, configColors }) {
                 )}
                 calculateMinutesUntil={calculateMinutesUntil}
                 configColors={configColors}
+                mainCard={true}
               />
             );
           })}

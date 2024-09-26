@@ -1,63 +1,6 @@
 import axios from "axios";
 import moment from "moment";
 
-// const fetchData = async (fromCoordinates, toCoordinates) => {
-//   try {
-//     const graphqlQuery = `
-//       {
-//         trip(
-//           from: {
-//             coordinates: {
-//               latitude: ${fromCoordinates.lat} 
-//               longitude: ${fromCoordinates.lon}
-//             }
-//           },
-//           to: {
-//             coordinates: {
-//               latitude: ${toCoordinates.lat}
-//               longitude: ${toCoordinates.lon}
-//             }, 
-//           }
-//         ) {
-//           tripPatterns {
-//             duration
-//             legs {
-//               expectedStartTime
-//               expectedEndTime
-//               mode
-//               distance
-//               fromPlace {
-//                 name
-//               }
-//               toPlace {
-//                 name
-//               }
-//               line {
-//                 id
-//                 publicCode
-//                 name
-//               }
-//             }
-//           }
-//         }
-//       }
-//     `;
-
-//     const endpoint = "https://api.entur.io/journey-planner/v3/graphql";
-
-//     const response = await axios.post(
-//       endpoint,
-//       { query: graphqlQuery },
-//       { headers: { "ET-Client-Name": "FinnGriggsProduksjoner-Villaveien" } }
-//     );
-
-//     return response.data;
-//   } catch (error) {
-//     console.error("GraphQL request error:", error);
-//     throw error;
-//   }
-// };
-
 
 const fetchData = async (fromPlace, toPlace) => {
   try {
@@ -113,11 +56,11 @@ const fetchData = async (fromPlace, toPlace) => {
 
 
 const fetchNhhBusRides = async () => {
-    return fetchData("NSR:Quay:53241", "NSR:Quay:53245")
+    return fetchData("NSR:StopPlace:30924", "NSR:StopPlace:30927")
 }
 
 const fetchCenterBusRides = async () => {
-  return fetchData("NSR:Quay:53301", "NSR:Quay:53118")
+  return fetchData("NSR:StopPlace:30960", "NSR:StopPlace:59838")
 }
 
 const fetchKanyeQuote = async () => {

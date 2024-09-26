@@ -98,23 +98,25 @@ function App() {
                 title={"Skutevikstoget - NHH"} 
                 travelData={tripData}  
                 configCard={{
-                  numRows: 4, 
+                  numRows: 5, 
                   minFilter: 5
                 }} 
                 configColors={{
                   general: 13, 
                   green: 9, 
-                  yellow: 6} }/>}
+                  yellow: 6}} 
+                fetchData={Api.fetchNhhBusRides} />}
             </div>
             <div>
               {tripData && <BusCards 
                 title={"Øvre Sandviksvei - Olav Kyrres gate"} 
                 travelData={cityCenterData} 
-                configCard={{numRows: 2, minFilter: 1}} 
+                configCard={{numRows: 3, minFilter: 1}} 
                 configColors={{
                   general: 7, 
                   green: 5, 
-                  yellow: 2} }/>}
+                  yellow: 2}} 
+                fetchData={Api.fetchCenterBusRides} />}
             </div>            
           </div>
           

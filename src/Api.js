@@ -1,23 +1,19 @@
 import axios from "axios";
 import moment from "moment";
 
-const fetchData = async () => {
+
+const fetchData = async (fromPlace, toPlace) => {
   try {
     const graphqlQuery = `
       {
         trip(
           from: {
-            coordinates: {
-              latitude: 60.402454718386124
-              longitude: 5.320983980882447
-            }
+            place: "${fromPlace}"       
           },
           to: {
-            coordinates: {
-              latitude: 60.42327833524445
-              longitude: 5.302355076497197
-            }, 
-          }
+            place: "${toPlace}" 
+          },
+          maximumTransfers: 1
         ) {
           tripPatterns {
             duration
@@ -57,6 +53,15 @@ const fetchData = async () => {
     throw error;
   }
 };
+
+
+const fetchNhhBusRides = async () => {
+    return fetchData("NSR:StopPlace:30924", "NSR:StopPlace:30927")
+}
+
+const fetchCenterBusRides = async () => {
+  return fetchData("NSR:StopPlace:30960", "NSR:StopPlace:59838")
+}
 
 const fetchKanyeQuote = async () => {
   try {
@@ -121,7 +126,8 @@ const setTrafficLight = async(color) => {
 
 
 export default {
-  fetchData,
+  fetchNhhBusRides,
+  fetchCenterBusRides,
   fetchKanyeQuote,
   fetchElectricityPrices,
   setTrafficLight

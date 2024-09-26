@@ -3,15 +3,15 @@ import BusCard from "./bus-card";
 import React, { useState, useEffect } from "react";
 import Api from "../../Api";
 import "./bus-cards.css";
-import TrafficLightColor from "./TrafficLightColor";
 
 
 
 
-function BusCards({ travelData }) {
-  // Assuming there's at least one tripPattern
 
-  const [color, setColor] = useState(TrafficLightColor.OFF);
+function BusCards({ title, travelData, configCard, configColors, fetchData }) {
+  
+  const { numRows, minFilter } = configCard;
+  
   
   const [tripPatterns, settripPatterns] = useState(
     filterBusRides(travelData.data.trip.tripPatterns)
@@ -35,7 +35,6 @@ function BusCards({ travelData }) {
 
 
 
-
   function filterBusRides(tripPatterns) {
     return tripPatterns
       .map((tripPattern) => ({
@@ -43,7 +42,7 @@ function BusCards({ travelData }) {
         legs: tripPattern.legs.filter(
           (leg) =>
             leg.mode === "bus" &&
-            calculateMinutesUntil(leg.expectedStartTime) >= 5
+            calculateMinutesUntil(leg.expectedStartTime) >= minFilter
         ),
       }))
       .filter((tripPattern) => tripPattern.legs.length === 1);
@@ -56,9 +55,10 @@ function BusCards({ travelData }) {
     return diffInMinutes;
   }
 
+  
   async function updateTravelData() {
     try {
-      const updatedTravelData = await Api.fetchData();
+      const updatedTravelData = await fetchData();
       settripPatterns(filterBusRides(updatedTravelData.data.trip.tripPatterns));
     } catch (error) {
       console.error("Can't update data:", error);
@@ -67,27 +67,33 @@ function BusCards({ travelData }) {
 
   return (
     <div>
+    <div className="bus-card-contianter">
       <div className="busstider-header mb-2">
-        <h5><strong>Skutevikstorget - NHH</strong></h5>
-      </div>
-      <div>
-        {tripPatterns.slice(0, 6).map((tripPattern, tripIndex) => {
-          return (
-            <BusCard
-              key={tripIndex}
-              name={tripPattern.legs[0].line.name.split(" ")[0]}
-              publicCode={tripPattern.legs[0].line.publicCode}
-              startTime={tripPattern.legs[0].expectedStartTime}
-              endTime={tripPattern.legs[0].expectedEndTime}
-              tripIndex={tripIndex}
-              minutesUntil={calculateMinutesUntil(
-                tripPattern.legs[0].expectedStartTime
-              )}
-              calculateMinutesUntil={calculateMinutesUntil}
-            />
-          );
-        })}
-      </div>
+          <h5><strong>{title}</strong></h5>
+        </div>
+        
+        <div>
+          {tripPatterns.slice(0, numRows).map((tripPattern, tripIndex) => {
+            return (
+              <BusCard
+                key={tripIndex}
+                name={tripPattern.legs[0].line.name.split(" ")[0]}
+                publicCode={tripPattern.legs[0].line.publicCode}
+                startTime={tripPattern.legs[0].expectedStartTime}
+                endTime={tripPattern.legs[0].expectedEndTime}
+                tripIndex={tripIndex}
+                minutesUntil={calculateMinutesUntil(
+                  tripPattern.legs[0].expectedStartTime
+                )}
+                calculateMinutesUntil={calculateMinutesUntil}
+                configColors={configColors}
+                mainCard={true}
+              />
+            );
+          })}
+        </div>
+    </div>
+      
     </div>
   );
 }

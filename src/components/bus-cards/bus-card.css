@@ -1,6 +1,10 @@
 .bus-card {
-  border: 3px solid rgb(248, 248, 248);
+  border-top: none;
+  border-bottom: 3px solid rgba(248, 248, 248, 0.611);
+  border-left: none;
+  border-right: none;
   background-color: #ebb9d1;
+  border-radius: 0px;
 }
 
 .public {
@@ -14,10 +18,6 @@
     align-items: center;
     justify-content: center;
   }
-}
-
-.public-icon {
-  padding-right: 8px;
 }
 
 .public-header {

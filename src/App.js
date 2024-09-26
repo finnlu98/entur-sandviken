@@ -12,6 +12,8 @@ import LaundryWeek from "./components/laundry-week/laundry-week";
 
 function App() {
   const [tripData, setTripData] = useState(null);
+  const [cityCenterData, setCityCenterData] = useState(null)
+
   const [kanyeQoute, setKanyeQoute] = useState(null);
   const [electrictyPrices, setElectrictyPrices] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -21,10 +23,12 @@ function App() {
 
   const fetchandSetData = async () => {
     try {
-      const trips = await Api.fetchData();
+      const trips = await Api.fetchNhhBusRides();
+      const cityTrips = await Api.fetchCenterBusRides();
       const qoute = await Api.fetchKanyeQuote();
       const elecPries = await Api.fetchElectricityPrices();
       setTripData(trips);
+      setCityCenterData(cityTrips);
       setKanyeQoute(qoute.quote);
       setElectrictyPrices(elecPries);
       setLoading(false);
@@ -89,8 +93,33 @@ function App() {
 
         <div className="row dash-rows">
           <div className="col-md-7 col-12">
-            {tripData && <BusCards travelData={tripData} />}
+            <div className="mb-2">
+              {tripData && <BusCards 
+                title={"Skutevikstoget - NHH"} 
+                travelData={tripData}  
+                configCard={{
+                  numRows: 5, 
+                  minFilter: 5
+                }} 
+                configColors={{
+                  general: 13, 
+                  green: 9, 
+                  yellow: 6}} 
+                fetchData={Api.fetchNhhBusRides} />}
+            </div>
+            <div>
+              {tripData && <BusCards 
+                title={"Øvre Sandviksvei - Sentrum"} 
+                travelData={cityCenterData} 
+                configCard={{numRows: 3, minFilter: 1}} 
+                configColors={{
+                  general: 7, 
+                  green: 5, 
+                  yellow: 2}} 
+                fetchData={Api.fetchCenterBusRides} />}
+            </div>            
           </div>
+          
           <div className="col-md-5 col-12">
             <div className="row mb-2">
               <Dailyweather />

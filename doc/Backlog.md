@@ -10,11 +10,9 @@
 ## MVP launch fix tilbakemeldinger
 
 - fix on hover on tablet
-- cache issues on server - grow to large
 - upload banner issue in prod
 - need to fix calender name
-- look at modal size
-- fix one registry for fetching interval
+- move config for header from home profile
 
 ## Hard launch
 

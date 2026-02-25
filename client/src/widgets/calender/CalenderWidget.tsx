@@ -5,6 +5,7 @@ import { WidgetDefinition, WidgetEnum } from "../core/model/widget-type";
 import { CalendarEvent } from "./api/calender-ical-fetcher";
 import { useCalenderQueries } from "./hook/calender-hook";
 import CalenderDocumentation from "./components/documentation/calender-documentation";
+import { CALENDER_FETCH_INTERVAL } from "./calender-constants";
 
 export const CalenderWidget: WidgetDefinition<CalenderConfig, CalendarEvent[]> = {
   id: WidgetEnum.calender,
@@ -18,7 +19,7 @@ export const CalenderWidget: WidgetDefinition<CalenderConfig, CalendarEvent[]> =
   },
   defaultColSpan: 12,
   defaultRowSpan: 8,
-  fetchtingInterval: 24 * 60 * 60 * 1000,
+  fetchtingInterval: CALENDER_FETCH_INTERVAL,
 };
 
 export interface CalenderConfig {

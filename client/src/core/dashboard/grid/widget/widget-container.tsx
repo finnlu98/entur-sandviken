@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 import GridService from "../service/grid-service";
 import { ResizeHandles } from "../resize-handles";
 import "./widget-container.css";
-import { Widgets } from "../../../../widgets/core/model/wigets";
+import { Widgets } from "../../../../widgets/core/model/widgets";
 import { useWidgetQueryResult } from "../../../../widgets/core/hooks/useWidgetQueryResult";
 import { useWidgetConfig } from "../../../../widgets/core/hooks/useWidgetConfig";
 import { CiEdit } from "react-icons/ci";

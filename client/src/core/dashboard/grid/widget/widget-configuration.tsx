@@ -2,7 +2,7 @@ import Tab from "../../../shared/tab/Tab";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiCircleInfo } from "react-icons/ci";
 import "./widget-configuration.css";
-import { Widgets } from "../../../../widgets/core/model/wigets";
+import { Widgets } from "../../../../widgets/core/model/widgets";
 import { WidgetEnum } from "../../../../widgets/core/model/widget-type";
 import { useWidgetQuery } from "../../../../widgets/core/hooks/useWidgetQueryResult";
 import { useWidgetConfig } from "../../../../widgets/core/hooks/useWidgetConfig";

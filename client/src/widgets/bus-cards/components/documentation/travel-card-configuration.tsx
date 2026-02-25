@@ -1,6 +1,6 @@
 import DocumentationBase from "../../../core/components/DocumentationBase";
 
-const TRAVEL_CARD_FETCH_INTERVAL = 7 * 60 * 1000;
+import { TRAVEL_CARD_FETCH_INTERVAL } from "../../bus-cards-constants";
 
 const TravelCardDocumentation = () => (
   <DocumentationBase

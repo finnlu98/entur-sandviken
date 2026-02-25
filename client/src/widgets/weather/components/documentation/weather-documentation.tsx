@@ -1,6 +1,6 @@
 import DocumentationBase from "../../../core/components/DocumentationBase";
 
-const WEATHER_FETCH_INTERVAL = 60 * 60 * 1000;
+import { WEATHER_FETCH_INTERVAL } from "../../weather-constants";
 
 const WeatherDocumentation = () => {
   return (

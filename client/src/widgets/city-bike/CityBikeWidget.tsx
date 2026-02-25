@@ -1,11 +1,11 @@
 import { GrBike } from "react-icons/gr";
 import CityBike from "./components/card/city-bike";
 import CityBikeConfiguration from "./components/configuration/cityBikeConfiguration";
-import DocumentationBase from "../core/components/DocumentationBase";
 import { WidgetDefinition, WidgetEnum } from "../core/model/widget-type";
 import { CityBikeData } from "./model/CityBikeData";
 import { useMappedStatusQuery } from "./hook/city-bike-hook";
 import CityBikeDocumentation from "./components/documentation/city-bike-documentation";
+import { CITY_BIKE_FETCH_INTERVAL } from "./city-bike-constants";
 
 export const CityBikeWidget: WidgetDefinition<CityBikeConfig, CityBikeData> = {
   id: WidgetEnum.cityBike,
@@ -19,7 +19,7 @@ export const CityBikeWidget: WidgetDefinition<CityBikeConfig, CityBikeData> = {
   },
   defaultColSpan: 8,
   defaultRowSpan: 8,
-  fetchtingInterval: 3 * 60 * 1000,
+  fetchtingInterval: CITY_BIKE_FETCH_INTERVAL,
 };
 
 export interface CityBikeConfig {

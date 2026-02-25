@@ -7,13 +7,13 @@ export default abstract class BaseFetcher implements IFetcher {
 
   constructor(cacheLength: number) {
     this.TTL_MS = cacheLength;
-    this.caches = new Caches();
+    this.caches = new Caches(this.TTL_MS);
   }
 
   abstract fetchData(): Promise<any>;
 
   async getData(key: string = ""): Promise<any> {
-    const cache = this.caches.returnCache(key, this.TTL_MS);
+    const cache = this.caches.returnCache(key);
     if (cache) {
       console.log(`Returning cached request for key: ${key}`);
       return cache.data;

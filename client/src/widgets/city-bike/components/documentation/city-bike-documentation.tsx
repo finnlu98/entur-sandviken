@@ -1,6 +1,6 @@
 import DocumentationBase from "../../../core/components/DocumentationBase";
 
-const CITY_BIKE_FETCH_INTERVAL = 3 * 60 * 1000;
+import { CITY_BIKE_FETCH_INTERVAL } from "../../city-bike-constants";
 
 const CityBikeDocumentation = () => (
     <DocumentationBase

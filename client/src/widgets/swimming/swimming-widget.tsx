@@ -6,6 +6,7 @@ import { useSwimmingQuery } from "./hook/swimming-hook";
 import SwimmingConfiguration from "./components/configuration/swimming-configuration";
 import { Address } from "../../model/Adress";
 import SwimmingDocumentation from "./components/documentation/swimming-documentation";
+import { SWIMMING_FETCH_INTERVAL } from "./swimming-constants";
 
 export const SwimmingWidget: WidgetDefinition<SwimmingConfig, SwimmingResponse[]> = {
   id: WidgetEnum.swimming,
@@ -19,6 +20,7 @@ export const SwimmingWidget: WidgetDefinition<SwimmingConfig, SwimmingResponse[]
   },
   defaultColSpan: 6,
   defaultRowSpan: 6,
+  fetchtingInterval: SWIMMING_FETCH_INTERVAL,
 };
 
 export interface SwimmingConfig {

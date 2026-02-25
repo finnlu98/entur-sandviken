@@ -3,6 +3,7 @@ import Dailyweather from "./components/card/daily-weather";
 import WeatherConfiguration from "./components/configuration/weatherConfiguration";
 import { useWeatherQuery } from "./hooks/useWeatherQuery";
 import { WidgetDefinition, WidgetEnum } from "../core/model/widget-type";
+import { WEATHER_FETCH_INTERVAL } from "./weather-constants";
 import { WeatherData } from "./model/data/WeatherData";
 import WeatherDocumentation from "./components/documentation/weather-documentation";
 
@@ -18,7 +19,7 @@ export const WeatherWidget: WidgetDefinition<WeatherConfig, WeatherData> = {
   },
   defaultColSpan: 12,
   defaultRowSpan: 6,
-  fetchtingInterval: 60 * 60 * 1000, 
+  fetchtingInterval: WEATHER_FETCH_INTERVAL,
 };
 
 export interface WeatherConfig {

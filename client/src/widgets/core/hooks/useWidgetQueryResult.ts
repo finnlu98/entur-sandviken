@@ -1,5 +1,5 @@
 import { WidgetEnum } from "../model/widget-type";
-import { Widgets } from "../model/wigets";
+import { Widgets } from "../model/widgets";
 import { useWidgetConfig } from "./useWidgetConfig";
 
 export function useWidgetQueryResult<TConfig>(widget: WidgetEnum) {

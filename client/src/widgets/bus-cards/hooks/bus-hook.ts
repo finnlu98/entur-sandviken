@@ -3,8 +3,7 @@ import { busApi } from "../api/bus-time-fetcher";
 import { BusData } from "../model/BusData";
 import type { TravelCardConfig } from "../TravelCardWidget";
 
-const TRAVEL_CARD_FETCH_INTERVAL = 7 * 60 * 1000;
-
+import { TRAVEL_CARD_FETCH_INTERVAL } from "../bus-cards-constants";
 
 export function useBusQueries(config: TravelCardConfig | undefined): { data: BusData[] | undefined } {
   const routes = config?.travelRoutes ?? [];

@@ -8,7 +8,7 @@ import { CityBikeStatusResponse } from "../model/CityBikeStatusResponse";
 import { cityBikeStatusMapper } from "../mapper/city-bike-mapper";
 import cityBikeApi from "../api/city-bike-fetcher";
 
-const CITY_BIKE_FETCH_INTERVAL = 3 * 60 * 1000;
+import { CITY_BIKE_FETCH_INTERVAL, CITY_BIKE_STATIONS_FETCH_INTERVAL } from "../city-bike-constants";
 
 export function useCityBikeStatusQuery(config: CityBikeConfig | undefined) {
   return useWidgetQuery<CityBikeStatusResponse | undefined>({
@@ -29,7 +29,7 @@ export function useCityBikeStationQuery() {
     queryFn: async () => {
         return await cityBikeApi.getCityBikeStations();
     },
-    refetchInterval: 15 * 60 * 1000,
+    refetchInterval: CITY_BIKE_STATIONS_FETCH_INTERVAL,
     staleTime: 10 * 60 * 1000,
   });
 }

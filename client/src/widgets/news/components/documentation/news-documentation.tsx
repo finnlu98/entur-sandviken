@@ -1,6 +1,6 @@
 import DocumentationBase from "../../../core/components/DocumentationBase";
 
-const NEWS_FETCH_INTERVAL = 15 * 60 * 1000;
+import { NEWS_FETCH_INTERVAL } from "../../news-constants";
 
 const NewsDocumentation = () => (
   <DocumentationBase

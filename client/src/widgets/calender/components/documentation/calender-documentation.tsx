@@ -1,6 +1,6 @@
 import DocumentationBase from "../../../core/components/DocumentationBase";
 
-const CALENDER_FETCH_INTERVAL = 24 * 60 * 60 * 1000;
+import { CALENDER_FETCH_INTERVAL } from "../../calender-constants";
 
 const CalenderDocumentation = () => (
   <DocumentationBase

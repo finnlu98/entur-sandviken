@@ -1,0 +1,1 @@
+export const CALENDER_FETCH_INTERVAL = 24 * 60 * 60 * 1000;

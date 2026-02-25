@@ -3,7 +3,7 @@ import swimmingApi from "../api/swimming-fetcher";
 import { SwimmingResponse } from "../model/swimming-response";
 import { SwimmingConfig } from "../swimming-widget";
 
-const SWIMMING_FETCH_INTERVAL = 2 * 60 * 60 * 1000; // 2 hours
+import { SWIMMING_FETCH_INTERVAL } from "../swimming-constants";
 
 export function useSwimmingQuery(config: SwimmingConfig | undefined) {
   return useWidgetQuery<SwimmingResponse[] | undefined>({

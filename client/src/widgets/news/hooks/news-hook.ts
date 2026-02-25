@@ -2,7 +2,7 @@ import { useWidgetQuery } from "../../core/hooks/useWidgetQuery";
 import newsApi from "../api/news-fetcher";
 import { NewsResponse } from "../model/NewsResponse";
 
-const NEWS_FETCH_INTERVAL = 15 * 60 * 1000;
+import { NEWS_FETCH_INTERVAL } from "../news-constants";
 
 export function useNewsQuery() {
   return useWidgetQuery<NewsResponse | undefined>({

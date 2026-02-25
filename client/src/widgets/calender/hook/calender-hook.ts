@@ -4,7 +4,7 @@ import { CalenderConfig } from "../CalenderWidget";
 import { calenderMapper } from "../mapper/calender-mappers";
 import { AlertVariant } from "../../../feedback/alert/model/AlertTypes";
 
-const CALENDER_FETCH_INTERVAL = 24 * 60 * 60 * 1000;
+import { CALENDER_FETCH_INTERVAL } from "../calender-constants";
 
 export function useCalenderQueries(config: CalenderConfig | undefined) {
   const results = useQueries({

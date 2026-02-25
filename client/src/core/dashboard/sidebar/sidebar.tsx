@@ -7,7 +7,7 @@ import Profile from "../../auth/Profile";
 import { FaAngleDoubleLeft, FaAngleDoubleRight, FaCaretRight } from "react-icons/fa";
 import EditEntity from "../editMode/edit-entity";
 import { EditingKey } from "../model/EditMode";
-import { Widgets } from "../../../widgets/core/model/wigets";
+import { Widgets } from "../../../widgets/core/model/widgets";
 import { IoSettingsOutline } from "react-icons/io5";
 import { AiOutlineLayout } from "react-icons/ai";
 

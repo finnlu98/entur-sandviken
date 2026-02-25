@@ -7,6 +7,7 @@ import { WidgetDefinition, WidgetEnum } from "../core/model/widget-type";
 import { BusData } from "./model/BusData";
 import { useBusQueries } from "./hooks/bus-hook";
 import TravelCardDocumentation from "./components/documentation/travel-card-configuration";
+import { TRAVEL_CARD_FETCH_INTERVAL } from "./bus-cards-constants";
 
 export const TravelCardWidget: WidgetDefinition<TravelCardConfig, BusData[]> = {
   id: WidgetEnum.busCards,
@@ -20,7 +21,7 @@ export const TravelCardWidget: WidgetDefinition<TravelCardConfig, BusData[]> = {
   },
   defaultColSpan: 12,
   defaultRowSpan: 8,
-  fetchtingInterval: 7 * 60 * 1000,
+  fetchtingInterval: TRAVEL_CARD_FETCH_INTERVAL,
 };
 
 export interface TravelCardConfig {

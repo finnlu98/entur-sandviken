@@ -1,6 +1,5 @@
 import DocumentationBase from "../../../core/components/DocumentationBase";
-
-const ELECTRICITY_FETCH_INTERVAL = 60 * 60 * 1000;
+import { ELECTRICITY_FETCH_INTERVAL } from "../../electricity-constants";
 
 const ElectricityDocumentation = () => (
   <DocumentationBase

@@ -3,7 +3,7 @@ import weatherApi from "../api/WeatherApi";
 import type { WeatherConfig } from "../WeatherWidget";
 import { useWidgetQuery } from "../../core/hooks/useWidgetQuery";
 
-const WEATHER_FETCH_INTERVAL = 60 * 60 * 1000;
+import { WEATHER_FETCH_INTERVAL } from "../weather-constants";
 
 export function useWeatherQuery(config: WeatherConfig | undefined) {
   return useWidgetQuery<WeatherData | undefined>({

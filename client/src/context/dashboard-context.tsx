@@ -13,7 +13,7 @@ import { isDefaultView } from "../core/dashboard/util/isDefaultView";
 import { useAlert } from "../feedback/alert/provider/AltertProvider";
 import { AlertVariant } from "../feedback/alert/model/AlertTypes";
 import { WidgetDefinition, WidgetEnum } from "../widgets/core/model/widget-type";
-import { WidgetConfigs, Widgets } from "../widgets/core/model/wigets";
+import { WidgetConfigs, Widgets } from "../widgets/core/model/widgets";
 import ScreenSize from "../core/dashboard/model/ScreenSize";
 
 type DashboardActions = {

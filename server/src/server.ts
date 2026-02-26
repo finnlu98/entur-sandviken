@@ -24,7 +24,7 @@ class Server {
     app.use(sessionMiddleware);
 
     app.use(globalLimiter);
-    const router = new Routes(app);
+    new Routes(app);
     app.listen(PORT, "0.0.0.0", () => {
       console.log(`Server is running on http://localhost:${PORT}`);
     });

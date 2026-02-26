@@ -7,12 +7,6 @@
 - negative minutes for bustimes
 - bustime fetch is not updated on new route and route name is always 1
 
-## MVP launch fix tilbakemeldinger
-
-- fix on hover on tablet
-- upload banner issue in prod
-- need to fix calender name
-- move config for header from home profile
 
 ## Hard launch
 
@@ -22,6 +16,14 @@
 - write about privacy etc.
 - Go through security requirements for server
 - update data should be displayed as small spinner in right corner
+
+- fix on hover on tablet
+- upload banner issue in prod
+- need to fix calender name
+- move config for header from home profile
+
+- add linting rules to repo
+- implement shared cache for dashboards
 
 ## Improvements
 

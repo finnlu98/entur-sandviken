@@ -21,7 +21,7 @@ export default abstract class BaseFetcher implements IFetcher {
 
     console.log(`Sending request to get data for key: ${key}`);
 
-    var res = await this.fetchData();
+    const res = await this.fetchData();
     if (res && "data" in res) {
       this.caches.addCache(key, res.data);
       return res.data;

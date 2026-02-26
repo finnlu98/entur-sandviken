@@ -2,10 +2,7 @@ import { WeatherResponse, TimeSeries } from "../response/WeatherResponse";
 import moment from "moment";
 
 export class WeatherForecast {
-    // Constructor
     constructor(weatherData: WeatherResponse) {
-
-        // This needs to be checked
         this.air_temperature = weatherData.properties.timeseries[0].data.instant.details.air_temperature;
         this.precipitation_amount = weatherData.properties.timeseries[0].data.next_1_hours.details.precipitation_amount;
         this.symbol_code = weatherData.properties.timeseries[0].data.next_1_hours.summary.symbol_code;
@@ -18,10 +15,10 @@ export class WeatherForecast {
     forecast_next_hours: ForecastNextHours[]
 
     getIntervals(timeSeries: TimeSeries[]) : ForecastNextHours[] {
-        var hour = moment().hour()
-        var intervalls = [0, 6, 12, 18]
-        var start = Math.floor(hour / 6) * 6;
-        var end = (start + 6) % 24;
+        const hour = moment().hour()
+        let intervalls = [0, 6, 12, 18]
+        const start = Math.floor(hour / 6) * 6;
+        const end = (start + 6) % 24;
         intervalls = this.rotateFrom(intervalls, end)
         
         const forecasts = intervalls

@@ -44,8 +44,8 @@ const TravelCardConfiguration: React.FC<TravelCardConfigurationProps> = ({ confi
   const endStopRef = useRef<SearchStopHandle>(null);
 
   function removeTravelRoute(startPlace: TravelStop, stopPlace: TravelStop) {
-    var updatedRoutes = config.travelRoutes.filter((t) => t.startPlace !== startPlace && t.stopPlace !== stopPlace);
-    var updatedConfig = {
+    const updatedRoutes = config.travelRoutes.filter((t) => t.startPlace !== startPlace && t.stopPlace !== stopPlace);
+    const updatedConfig = {
       ...config,
       travelRoutes: updatedRoutes,
     };

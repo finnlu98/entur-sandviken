@@ -1,0 +1,1 @@
+export const TRAVEL_CARD_FETCH_INTERVAL = 7 * 60 * 1000;

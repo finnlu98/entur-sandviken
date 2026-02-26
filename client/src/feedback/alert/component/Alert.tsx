@@ -1,8 +1,11 @@
-import { AlertItem, AlertTypeIcons } from "../model/AlertTypes";
-import "./Alert.css";
-import { IoMdClose } from "react-icons/io";
+import { AlertTypeIcons, type AlertItem } from '../model/alert-types';
+import './alert.css';
+import { IoMdClose } from 'react-icons/io';
 
-const AlertContainer: React.FC<{ alerts: AlertItem[]; onDismiss: (id: string) => void }> = ({ alerts, onDismiss }) => {
+const AlertContainer: React.FC<{ alerts: AlertItem[]; onDismiss: (id: string) => void }> = ({
+  alerts,
+  onDismiss,
+}) => {
   return (
     <div className="alert-container surface column">
       {alerts.map((alert) => {
@@ -13,7 +16,11 @@ const AlertContainer: React.FC<{ alerts: AlertItem[]; onDismiss: (id: string) =>
               <Icon />
             </span>
             <span className="alert-message">{alert.message}</span>
-            <button className="secondary" onClick={() => onDismiss(alert.id)} aria-label="Close alert">
+            <button
+              className="secondary"
+              onClick={() => onDismiss(alert.id)}
+              aria-label="Close alert"
+            >
               <IoMdClose />
             </button>
           </div>

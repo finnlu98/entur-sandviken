@@ -1,7 +1,7 @@
 export enum Mode {
-  bus = "BUS",
-  metro = "METRO",
-  tram = "TRAM",
-  leg = "LEG",
-  foot = "FOOT",
+  Bus = 'BUS',
+  Metro = 'METRO',
+  Tram = 'TRAM',
+  Leg = 'LEG',
+  Foot = 'FOOT',
 }

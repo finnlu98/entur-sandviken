@@ -1,15 +1,15 @@
-import { useDraggable } from "@dnd-kit/core";
-import { GridItem, GridMetaData } from "../model/grid-models";
-import { useDashboard } from "../../../../context/dashboard-context";
-import { MdDelete } from "react-icons/md";
-import GridService from "../service/grid-service";
-import { ResizeHandles } from "../resize-handles";
-import "./widget-container.css";
-import { Widgets } from "../../../../widgets/core/model/wigets";
-import { useWidgetQueryResult } from "../../../../widgets/core/hooks/useWidgetQueryResult";
-import { useWidgetConfig } from "../../../../widgets/core/hooks/useWidgetConfig";
-import { CiEdit } from "react-icons/ci";
-import { EditingKey } from "../../model/EditMode";
+import { useDraggable } from '@dnd-kit/core';
+import type { GridItem, GridMetaData } from '../model/grid-models';
+import { useDashboard } from '../../../../context/dashboard-context';
+import { MdDelete } from 'react-icons/md';
+import GridService from '../service/grid-service';
+import { ResizeHandles } from '../resize-handles';
+import './widget-container.css';
+import { Widgets } from '../../../../widgets/core/model/widgets';
+import { useWidgetQueryResult } from '../../../../widgets/core/hooks/use-widget-query-result';
+import { useWidgetConfig } from '../../../../widgets/core/hooks/use-widget-config';
+import { CiEdit } from 'react-icons/ci';
+import type { EditingKey } from '../../model/edit-mode';
 
 interface WidgetContainerProps {
   gridItem: GridItem;
@@ -27,12 +27,12 @@ const WidgetContainer: React.FC<WidgetContainerProps> = ({ gridItem, gridData })
     gridItem,
     moveTransform,
     gridData,
-    editMode.editMode,
+    editMode.editMode
   );
 
   return (
     <div
-      className={`${Widgets[gridItem.widget].defaultWidgetStyling !== false ? "widget-container" : "widget-container-no-bg"}`}
+      className={`${Widgets[gridItem.widget].defaultWidgetStyling !== false ? 'widget-container' : 'widget-container-no-bg'}`}
       ref={setNodeRef}
       {...(editMode.editMode ? listeners : {})}
       {...(editMode.editMode ? attributes : {})}

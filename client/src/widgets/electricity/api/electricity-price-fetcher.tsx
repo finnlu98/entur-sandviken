@@ -1,30 +1,27 @@
-import axios from "axios";
-import moment from "moment";
-import Configuration from "../../../Configuration";
-import { ElectricityPrice } from "../model/ElectricityPrices";
+import axios from 'axios';
+import moment from 'moment';
+import Configuration from '../../../configuration';
+import type { ElectricityPrice } from '../model/electricity-prices';
 const FetchElectricityPrices = async () => {
   try {
     const year = moment().year();
-    const month =  moment().format('MM');
+    const month = moment().format('MM');
     const day = moment().format('DD');
 
-    var endpoint = Configuration.getElectricityEndpoint()
+    let endpoint = Configuration.getElectricityEndpoint();
 
     endpoint = endpoint
-                .replace(":year", year.toString())
-                .replace(":month", month.toString())
-                .replace(":day", day.toString())
+      .replace(':year', year.toString())
+      .replace(':month', month.toString())
+      .replace(':day', day.toString());
 
+    const response = await axios.get<ElectricityPrice[]>(endpoint);
 
-    const response = await axios.get<ElectricityPrice[]>(
-      endpoint
-    );
-
-    return response.data; 
+    return response.data;
   } catch (error) {
     console.error("Can't get electrictyprices quote");
     throw error;
   }
-}
+};
 
-export default FetchElectricityPrices
+export default FetchElectricityPrices;

@@ -1,10 +1,10 @@
-import { useQueries } from "@tanstack/react-query";
-import calenderApi, { CalendarEvent } from "../api/calender-ical-fetcher";
-import { CalenderConfig } from "../CalenderWidget";
-import { calenderMapper } from "../mapper/calender-mappers";
-import { AlertVariant } from "../../../feedback/alert/model/AlertTypes";
+import { useQueries } from '@tanstack/react-query';
+import calenderApi, { type CalendarEvent } from '../api/calender-ical-fetcher';
+import type { CalenderConfig } from '../calender-widget';
+import { calenderMapper } from '../mapper/calender-mappers';
+import { AlertVariant } from '../../../feedback/alert/model/alert-types';
 
-const CALENDER_FETCH_INTERVAL = 24 * 60 * 60 * 1000;
+import { CALENDER_FETCH_INTERVAL } from '../calender-constants';
 
 export function useCalenderQueries(config: CalenderConfig | undefined) {
   const results = useQueries({
@@ -33,7 +33,7 @@ export function useCalenderQueries(config: CalenderConfig | undefined) {
 
 export function createCalenderQuery(endpoint: string) {
   return {
-    queryKey: ["calenderEvents", endpoint],
+    queryKey: ['calenderEvents', endpoint],
     queryFn: async () => {
       try {
         const response = await calenderApi.fetchICalEvents(endpoint);
@@ -64,14 +64,14 @@ export async function validateCalenderEndpoint(endpoint: string): Promise<{
       events,
       message:
         events.length === 2
-          ? "Great news! We found your calendar, but no events were found. A common reason for this is that the events in your calender are not publicly available. Read about this from your calendar provider. Do you want to proceed with adding the calend"
+          ? 'Great news! We found your calendar, but no events were found. A common reason for this is that the events in your calender are not publicly available. Read about this from your calendar provider. Do you want to proceed with adding the calend'
           : undefined,
     };
-  } catch (error) {
+  } catch {
     return {
       isValid: false,
       alertVariant: AlertVariant.ERROR,
-      message: "Oops! This url is not a valid iCal feed. Try another url.",
+      message: 'Oops! This url is not a valid iCal feed. Try another url.',
     };
   }
 }

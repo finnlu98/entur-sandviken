@@ -1,0 +1,2 @@
+export const CITY_BIKE_FETCH_INTERVAL = 3 * 60 * 1000;
+export const CITY_BIKE_STATIONS_FETCH_INTERVAL = 15 * 60 * 1000;

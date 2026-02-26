@@ -1,9 +1,9 @@
-import apiClient from "../../../api/ApiClient";
-import { StockResponse } from "../model/StockResponse";
+import apiClient from '../../../api/api-client';
+import type { StockResponse } from '../model/stock-response';
 
 const StockFetcher = async (tickers: string[]) => {
   try {
-    const endpoint = process.env.REACT_APP_STOCK_ENDPOINT ?? "";
+    const endpoint = import.meta.env.VITE_STOCK_ENDPOINT ?? '';
     const res = await apiClient.post<StockResponse>(endpoint, {
       tickers: tickers,
     });

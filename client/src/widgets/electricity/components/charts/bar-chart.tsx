@@ -1,8 +1,16 @@
-import { ComponentData } from "../../model/ElectricityPrices";
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend, ChartOptions } from "chart.js";
-import annotationPlugin, { AnnotationOptions } from "chartjs-plugin-annotation";
+import type { ComponentData } from '../../model/electricity-prices';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Tooltip,
+  Legend,
+  type ChartOptions,
+} from 'chart.js';
+import annotationPlugin, { type AnnotationOptions } from 'chartjs-plugin-annotation';
 
-import { Bar } from "react-chartjs-2";
+import { Bar } from 'react-chartjs-2';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend, annotationPlugin);
 
 interface BarChartProps {
@@ -12,7 +20,7 @@ interface BarChartProps {
 }
 
 const BarChart: React.FC<BarChartProps> = ({ title, chartData, meanMax }) => {
-  const options: ChartOptions<"bar"> = {
+  const options: ChartOptions<'bar'> = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -22,56 +30,56 @@ const BarChart: React.FC<BarChartProps> = ({ title, chartData, meanMax }) => {
       title: {
         display: true,
         text: title,
-        color: "white",
+        color: 'white',
       },
       annotation: {
         annotations: {
           currentLevel: {
-            type: "line",
+            type: 'line',
             yMin: 2,
             yMax: 2,
-            borderColor: "white",
+            borderColor: 'white',
             borderWidth: 1,
             label: {
               display: true,
-              content: "",
-              position: "end",
+              content: '',
+              position: 'end',
               yAdjust: -15,
-              backgroundColor: "rgba(0,0,0,0)",
-              color: "white",
+              backgroundColor: 'rgba(0,0,0,0)',
+              color: 'white',
             },
-          } as AnnotationOptions<"line">,
+          } as AnnotationOptions<'line'>,
           avgLine: {
-            type: "line",
+            type: 'line',
             yMin: meanMax,
             yMax: meanMax,
-            borderColor: "white",
+            borderColor: 'white',
             borderWidth: 1,
             borderDash: [6, 6],
             label: {
               display: true,
               content: `(Avg peak ${meanMax} kwh)`,
-              position: "end",
+              position: 'end',
               yAdjust: -13,
-              backgroundColor: "rgba(0,0,0,0)",
-              color: "white",
+              backgroundColor: 'rgba(0,0,0,0)',
+              color: 'white',
               font: {
-                weight: "normal",
+                weight: 'normal',
                 size: 12,
               },
             },
-          } as AnnotationOptions<"line">,
+          } as AnnotationOptions<'line'>,
         },
       },
     },
     scales: {
       x: {
         grid: { display: false },
-        ticks: { color: "white" },
+        ticks: { color: 'white' },
       },
       y: {
         grid: { display: false },
-        ticks: { color: "white" },
+        ticks: { color: 'white' },
       },
     },
   };

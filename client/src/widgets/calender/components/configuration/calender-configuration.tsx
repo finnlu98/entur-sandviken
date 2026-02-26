@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { MdDelete, MdOutlineVerified } from "react-icons/md";
-import { IoAddCircle } from "react-icons/io5";
-import { validateCalenderEndpoint } from "../../hook/calender-hook";
-import AlertResponse from "../../../../feedback/alert/component/AlertResponse";
-import { AlertVariant } from "../../../../feedback/alert/model/AlertTypes";
-import { CalenderConfig } from "../../CalenderWidget";
-import PopupButton from "../../../../core/shared/popup/Popup";
+import React, { useState } from 'react';
+import { MdDelete, MdOutlineVerified } from 'react-icons/md';
+import { IoAddCircle } from 'react-icons/io5';
+import { validateCalenderEndpoint } from '../../hook/calender-hook';
+import AlertResponse from '../../../../feedback/alert/component/alert-response';
+import { AlertVariant } from '../../../../feedback/alert/model/alert-types';
+import type { CalenderConfig } from '../../calender-widget';
+import PopupButton from '../../../../core/shared/popup/popup';
 
 interface CalenderConfigurationProps {
   config?: CalenderConfig;
@@ -13,15 +13,18 @@ interface CalenderConfigurationProps {
 }
 
 const defaultConfig: CalenderConfig = {
-  calenderId: "",
-  calenderKey: "",
+  calenderId: '',
+  calenderKey: '',
   calenderICalEndpoints: [],
 };
 
-const norwegianHolidaysEndpoint = "https://calendars.icloud.com/holidays/no_nb.ics/";
+const norwegianHolidaysEndpoint = 'https://calendars.icloud.com/holidays/no_nb.ics/';
 
-const CalenderConfiguration: React.FC<CalenderConfigurationProps> = ({ config = defaultConfig, setConfig }) => {
-  const [newEndpoint, setNewEndpoint] = useState<string>("");
+const CalenderConfiguration: React.FC<CalenderConfigurationProps> = ({
+  config = defaultConfig,
+  setConfig,
+}) => {
+  const [newEndpoint, setNewEndpoint] = useState<string>('');
   const [validEndpoint, setValidEndpoint] = useState<{
     isValid: boolean;
     alertVariant?: AlertVariant;
@@ -33,7 +36,7 @@ const CalenderConfiguration: React.FC<CalenderConfigurationProps> = ({ config = 
       ...config,
       ...newConfig,
     });
-    setNewEndpoint("");
+    setNewEndpoint('');
   };
 
   const removeEndpoint = (index: number) => {
@@ -44,7 +47,11 @@ const CalenderConfiguration: React.FC<CalenderConfigurationProps> = ({ config = 
   const verifyEndpiont = (endpoint: string) => {
     validateCalenderEndpoint(endpoint).then((result) => {
       if (!result.isValid) {
-        setValidEndpoint({ isValid: false, alertVariant: result.alertVariant, error: result.message });
+        setValidEndpoint({
+          isValid: false,
+          alertVariant: result.alertVariant,
+          error: result.message,
+        });
       } else {
         addEndpoint({ calenderICalEndpoints: [...config.calenderICalEndpoints, endpoint] });
         setValidEndpoint(null);
@@ -67,7 +74,12 @@ const CalenderConfiguration: React.FC<CalenderConfigurationProps> = ({ config = 
       <div className="h-column gap-xlarge">
         <div className="h-row fill-width">
           <label>iCal links:</label>
-          <PopupButton position="bottom" surface="surface" buttonHiearchy="secondary small" align="start">
+          <PopupButton
+            position="bottom"
+            surface="surface"
+            buttonHiearchy="secondary small"
+            align="start"
+          >
             {(closePopup) => [
               <span>Default calendars</span>,
               <button
@@ -87,7 +99,9 @@ const CalenderConfiguration: React.FC<CalenderConfigurationProps> = ({ config = 
           {config?.calenderICalEndpoints?.map((endpoint, index) => (
             <div className="h-row gap-large fill-width" key={index}>
               <div>
-                <p title={endpoint}>{endpoint.length > 50 ? `${endpoint.substring(0, 50)}...` : endpoint}</p>
+                <p title={endpoint}>
+                  {endpoint.length > 50 ? `${endpoint.substring(0, 50)}...` : endpoint}
+                </p>
               </div>
               <div className="h-row gap-small">
                 <MdOutlineVerified />
@@ -107,14 +121,17 @@ const CalenderConfiguration: React.FC<CalenderConfigurationProps> = ({ config = 
                 if (!validEndpoint?.isValid) setValidEndpoint(null);
               }}
             />
-            <button onClick={() => verifyEndpiont(newEndpoint)} disabled={validEndpoint?.isValid === false}>
+            <button
+              onClick={() => verifyEndpiont(newEndpoint)}
+              disabled={validEndpoint?.isValid === false}
+            >
               <IoAddCircle />
             </button>
           </div>
           {validEndpoint && !validEndpoint.isValid && (
             <div>
               <AlertResponse
-                message={validEndpoint.error ?? "Unknown error"}
+                message={validEndpoint.error ?? 'Unknown error'}
                 variant={validEndpoint.alertVariant ?? AlertVariant.ERROR}
                 buttonAction={
                   validEndpoint.alertVariant === AlertVariant.INFO ? (

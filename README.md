@@ -6,14 +6,9 @@ Heimr is a home dashboard that provides useful information about your household 
 
 # Why Heimr
 
-Heimr brings together all the information you need to start your day:
+Heimr brings together all the information you need to start your day. 
 
-- **Live transit times** for your commute
-- **Real-time electricity prices** to optimize your energy usage
-- **Local weather** and conditions
-- **News updates** from your favorite sources
-- **City bike availability** in your area
-- **Customizable widgets** to fit your household's needs
+With a focus on modularity, you can add or remove cards as you see fit.
 
 Currently only supporting data from Norway and some cards are Oslo specific.
 

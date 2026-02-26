@@ -1,0 +1,1 @@
+export const WEATHER_FETCH_INTERVAL = 60 * 60 * 1000;

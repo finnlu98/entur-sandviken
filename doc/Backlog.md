@@ -22,6 +22,8 @@
 - need to fix calender name
 - move config for header from home profile
 
+- fix standard icon system
+
 - implement shared cache for dashboards
 
 ## Improvements

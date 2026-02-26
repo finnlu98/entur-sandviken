@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import BaseRouter from "../Common/BaseRouter";
 import BrokerFetcher from "./BrokerFetcher";
 

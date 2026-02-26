@@ -1,12 +1,12 @@
-import BaseRouter from "../Common/BaseRouter";
-import { Request, Response } from "express";
-import { UserService } from "./UserFetcher";
+import BaseRouter from '../Common/BaseRouter';
+import type { Request, Response } from 'express';
+import { UserService } from './UserFetcher';
 
 export class UserRouter extends BaseRouter {
   fetcher: UserService;
 
   constructor() {
-    super("/user");
+    super('/user');
     this.fetcher = new UserService();
     this.setRoute();
   }
@@ -16,19 +16,19 @@ export class UserRouter extends BaseRouter {
       try {
         const { id } = req.query;
 
-        if (!id || typeof id !== "string") {
-          return res.status(400).json({ error: "User ID is required" });
+        if (!id || typeof id !== 'string') {
+          return res.status(400).json({ error: 'User ID is required' });
         }
 
         const user = await this.fetcher.getUserById(id);
 
         if (!user) {
-          return res.status(404).json({ error: "User not found" });
+          return res.status(404).json({ error: 'User not found' });
         }
 
         res.status(200).json(user);
-      } catch (error) {
-        res.status(500).json({ error: "Failed to fetch user" });
+      } catch {
+        res.status(500).json({ error: 'Failed to fetch user' });
       }
     });
 
@@ -37,18 +37,16 @@ export class UserRouter extends BaseRouter {
         const { email } = req.body;
 
         if (!email) {
-          return res.status(400).json({ error: "Email is required" });
+          return res.status(400).json({ error: 'Email is required' });
         }
 
         const user = await this.fetcher.createUser(email);
         res.status(201).json(user);
       } catch (error: any) {
-        if (error.code === "P2002") {
-          return res
-            .status(409)
-            .json({ error: "User with this email already exists" });
+        if (error.code === 'P2002') {
+          return res.status(409).json({ error: 'User with this email already exists' });
         }
-        res.status(500).json({ error: "Failed to create user" });
+        res.status(500).json({ error: 'Failed to create user' });
       }
     });
   }

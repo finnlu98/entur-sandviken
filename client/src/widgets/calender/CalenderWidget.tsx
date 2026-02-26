@@ -1,15 +1,15 @@
-import { SlCalender } from "react-icons/sl";
-import Calender from "./components/card/calender";
-import CalenderConfiguration from "./components/configuration/calender-configuration";
-import { WidgetDefinition, WidgetEnum } from "../core/model/widget-type";
-import { CalendarEvent } from "./api/calender-ical-fetcher";
-import { useCalenderQueries } from "./hook/calender-hook";
-import CalenderDocumentation from "./components/documentation/calender-documentation";
-import { CALENDER_FETCH_INTERVAL } from "./calender-constants";
+import { SlCalender } from 'react-icons/sl';
+import Calender from './components/card/calender';
+import CalenderConfiguration from './components/configuration/calender-configuration';
+import { WidgetEnum, type WidgetDefinition } from '../core/model/widget-type';
+import type { CalendarEvent } from './api/calender-ical-fetcher';
+import { useCalenderQueries } from './hook/calender-hook';
+import CalenderDocumentation from './components/documentation/calender-documentation';
+import { CALENDER_FETCH_INTERVAL } from './calender-constants';
 
 export const CalenderWidget: WidgetDefinition<CalenderConfig, CalendarEvent[]> = {
   id: WidgetEnum.calender,
-  friendlyName: "Calender",
+  friendlyName: 'Calender',
   widgetIcon: <SlCalender />,
   useQuery: useCalenderQueries,
   widgetComponent: Calender,

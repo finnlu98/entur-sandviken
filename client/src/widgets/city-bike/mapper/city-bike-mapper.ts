@@ -1,6 +1,6 @@
 import { CityBikeData } from "../model/CityBikeData";
-import { CityBikeResponse, Station } from "../model/CityBikeResponse";
-import { CityBikeStatusResponse } from "../model/CityBikeStatusResponse";
+import type { CityBikeResponse, Station } from "../model/CityBikeResponse";
+import type { CityBikeStatusResponse } from "../model/CityBikeStatusResponse";
 
 export function cityBikeStatusMapper(keepStations: string[], stations: CityBikeResponse, status: CityBikeStatusResponse,  ) {
     const keepIds = new Set(keepStations.map((id) => Number(id)));

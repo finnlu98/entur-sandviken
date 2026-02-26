@@ -1,7 +1,6 @@
-import React, { createContext, useCallback, useContext, useMemo, useState } from "react";
-import AlertContainer from "../component/Alert";
-
-import { AlertItem, AlertVariant } from "../model/AlertTypes";
+import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import AlertContainer from '../component/Alert';
+import { AlertVariant, type AlertItem } from '../model/AlertTypes';
 type AlertContextValue = {
   showAlert: (message: string, variant?: AlertVariant, durationMs?: number) => string;
   removeAlert: (id: string) => void;
@@ -27,7 +26,7 @@ export const AlertProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
       return id;
     },
-    [removeAlert],
+    [removeAlert]
   );
 
   const value = useMemo(() => ({ showAlert, removeAlert }), [showAlert, removeAlert]);
@@ -43,7 +42,7 @@ export const AlertProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 export const useAlert = (): AlertContextValue => {
   const ctx = useContext(AlertContext);
   if (!ctx) {
-    throw new Error("useAlert must be used within AlertProvider");
+    throw new Error('useAlert must be used within AlertProvider');
   }
   return ctx;
 };

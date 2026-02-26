@@ -1,14 +1,11 @@
-import configFile from "./Configuration.json";
+import configFile from './Configuration.json';
 
 class AppConfig {
-    private readonly configuration: AppConfiguration;
+  configuration: object;
 
-    constructor() {
-        this.configuration = configFile as AppConfiguration;
-    }
-}
-
-interface AppConfiguration {
+  constructor() {
+    this.configuration = configFile;
+  }
 }
 
 const appConfig = new AppConfig();

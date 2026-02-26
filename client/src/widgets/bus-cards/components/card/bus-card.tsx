@@ -1,7 +1,7 @@
 import moment from "moment";
 import React, { useState, useEffect, useCallback } from "react";
 import "./bus-card.css";
-import { ConfigColor } from "./ConfigColor";
+import type { ConfigColor } from "./ConfigColor";
 import { FaBusAlt, FaTrain } from "react-icons/fa";
 import { Mode } from "../../model/enum/Mode";
 import { TbCircleLetterT } from "react-icons/tb";

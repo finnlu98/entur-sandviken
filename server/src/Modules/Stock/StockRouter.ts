@@ -1,6 +1,6 @@
 import BaseRouter from "../Common/BaseRouter";
 import StockFetcher from "./StockFetcher";
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 
 interface SetTickersRequest {
     tickers: string[];

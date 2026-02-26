@@ -8,7 +8,7 @@ import BarChart from "../charts/bar-chart";
 import { ElectricityLevelFormatter } from "../../model/enum/ElectricityLevel";
 import LoadingHelperWidget from "../../../core/components/LoadingHelperWidget";
 import { WidgetEnum } from "../../../core/model/widget-type";
-import { ElectricityData } from "../../model/ElectricityData";
+import type { ElectricityData } from "../../model/ElectricityData";
 
 interface ElectricityConsumptionProps {
   data?: ElectricityData;

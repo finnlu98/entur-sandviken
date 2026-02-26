@@ -4,7 +4,7 @@ import { IoAddCircle } from "react-icons/io5";
 import { validateCalenderEndpoint } from "../../hook/calender-hook";
 import AlertResponse from "../../../../feedback/alert/component/AlertResponse";
 import { AlertVariant } from "../../../../feedback/alert/model/AlertTypes";
-import { CalenderConfig } from "../../CalenderWidget";
+import type { CalenderConfig } from "../../CalenderWidget";
 import PopupButton from "../../../../core/shared/popup/Popup";
 
 interface CalenderConfigurationProps {

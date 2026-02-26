@@ -7,48 +7,46 @@ export enum ElectricityLevel {
 }
 
 export enum ElectricityLevelFixedPrice {
-    Level1 = 125,
-    Level2 = 190,
-    Level3 = 300,
-    Level4 = 410,
-    Level5 = 520,
+  Level1 = 125,
+  Level2 = 190,
+  Level3 = 300,
+  Level4 = 410,
+  Level5 = 520,
 }
 
 export const GetSortedElectricityLevel = () => {
-    return Object.values(ElectricityLevel)
-            .filter(v => typeof v === "number") as number[]
-}
+  return Object.values(ElectricityLevel).filter((v) => typeof v === 'number') as number[];
+};
 
 export const GetElectricityLevel = (value: number) => {
-    const sorted = GetSortedElectricityLevel(); 
+  const sorted = GetSortedElectricityLevel();
 
-    for (const threshold of sorted) {
-        if (value <= threshold) {
-            return threshold as ElectricityLevel;
-        }
+  for (const threshold of sorted) {
+    if (value <= threshold) {
+      return threshold as ElectricityLevel;
     }
+  }
 
-    return undefined;
-}
+  return undefined;
+};
 
-export namespace ElectricityLevelFormatter {
-    export function formatLevel(level: ElectricityLevel | undefined): string {
-        if (level === undefined) return "";
-        const key = ElectricityLevel[level]; 
-        const number = key.replace("Level", "");
-        return number;
-    }
-    
-    export function formatInterval(level: ElectricityLevel| undefined): string {
-        if(!level)
-            return "Unkown"
-        
-        const values = GetSortedElectricityLevel().sort((a, b) => a-b) 
+export class ElectricityLevelFormatter {
+  static formatLevel(level: ElectricityLevel | undefined): string {
+    if (level === undefined) return '';
+    const key = ElectricityLevel[level];
+    const number = key.replace('Level', '');
+    return number;
+  }
 
-        const max = level;
-        const index = values.indexOf(level);
-        const min = index === 0 ? 0 : values[index - 1];
+  static formatInterval(level: ElectricityLevel | undefined): string {
+    if (!level) return 'Unkown';
 
-        return `${min}–${max}`;
-    }
+    const values = GetSortedElectricityLevel().sort((a, b) => a - b);
+
+    const max = level;
+    const index = values.indexOf(level);
+    const min = index === 0 ? 0 : values[index - 1];
+
+    return `${min}–${max}`;
+  }
 }

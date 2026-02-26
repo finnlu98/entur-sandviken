@@ -1,6 +1,7 @@
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import globals from 'globals';
 
 export default tseslint.config(
   // --- Base recommended rules for all files ---
@@ -18,7 +19,6 @@ export default tseslint.config(
       '**/build/**',
       '**/__generated__/**',
       '**/generated/**',
-
     ],
   },
 
@@ -27,12 +27,15 @@ export default tseslint.config(
     files: ['client/**/*.{ts,tsx}', 'server/**/*.ts'],
     rules: {
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports' }],
+      '@typescript-eslint/consistent-type-imports': [
+        'warn',
+        { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
+      ],
       'prefer-const': 'error',
       'no-var': 'error',
       eqeqeq: ['error', 'always'],
       'no-duplicate-imports': 'error',
+      '@typescript-eslint/no-explicit-any': 'off', // Disabled for now
     },
   },
 
@@ -51,4 +54,24 @@ export default tseslint.config(
       'no-console': 'off', // Server code legitimately uses console for logging
     },
   },
+
+  // --- Browser JS files (index.js, etc.) — declare browser globals ---
+  {
+    files: ['client/**/*.js', 'client/**/*.jsx'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+    },
+  },
+
+  // --- Test files — declare Jest globals ---
+  {
+    files: ['**/*.test.js', '**/*.test.ts', '**/*.spec.js', '**/*.spec.ts'],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
+    },
+  }
 );

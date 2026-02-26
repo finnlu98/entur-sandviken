@@ -1,5 +1,5 @@
-import { Component, ErrorInfo, ReactNode } from "react";
-import "./error-boundary.css";
+import { Component, type ReactNode, type ErrorInfo } from 'react';
+import './error-boundary.css';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -21,7 +21,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("Error caught by boundary:", error, errorInfo);
+    console.error('Error caught by boundary:', error, errorInfo);
   }
 
   render() {

@@ -2,8 +2,8 @@ import BusCards from "./bus-cards";
 import "./travel-card.css";
 import LoadingHelperWidget from "../../../core/components/LoadingHelperWidget";
 import { WidgetEnum } from "../../../core/model/widget-type";
-import { BusData } from "../../model/BusData";
-import { TravelCardConfig } from "../../TravelCardWidget";
+import type { BusData } from "../../model/BusData";
+import type { TravelCardConfig } from "../../TravelCardWidget";
 import { TripIdentifier } from "../../model/enum/TripIdentifier";
 
 interface TravelCardProps {

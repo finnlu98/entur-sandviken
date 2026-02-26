@@ -1,14 +1,19 @@
-import React, { useEffect, useRef } from "react";
-import { DndContext, DragEndEvent, DragMoveEvent, UniqueIdentifier } from "@dnd-kit/core";
-import { PreviewState } from "./model/grid-models";
-import WidgetContainer from "./widget/widget-container";
-import GridService from "./service/grid-service";
-import { MoveType } from "./model/move-type";
-import { ResizeDirection } from "./model/resize-direction";
-import { useDashboard } from "../../../context/dashboard-context";
-import DefaultDashboardActions from "../default/DefaultDashboardActions";
-import "./grid.css";
-import { isDefaultView } from "../util/isDefaultView";
+import React, { useEffect, useRef } from 'react';
+import {
+  DndContext,
+  type DragEndEvent,
+  type DragMoveEvent,
+  type UniqueIdentifier,
+} from '@dnd-kit/core';
+import type { PreviewState } from './model/grid-models';
+import WidgetContainer from './widget/widget-container';
+import GridService from './service/grid-service';
+import { MoveType } from './model/move-type';
+import { ResizeDirection } from './model/resize-direction';
+import { useDashboard } from '../../../context/dashboard-context';
+import DefaultDashboardActions from '../default/DefaultDashboardActions';
+import './grid.css';
+import { isDefaultView } from '../util/isDefaultView';
 
 const COLUMNS = 24;
 const GAP = 5;
@@ -63,7 +68,14 @@ export const Grid: React.FC = () => {
     const moveType = isResize ? MoveType.resize : MoveType.move;
     const direction = getDirectionFromId(id);
 
-    const shadowBox = GridService.computeShadow(id, current, gridMetaData, delta, moveType, direction);
+    const shadowBox = GridService.computeShadow(
+      id,
+      current,
+      gridMetaData,
+      delta,
+      moveType,
+      direction
+    );
     if (shadowBox) setPreview(shadowBox);
   };
 
@@ -83,11 +95,11 @@ export const Grid: React.FC = () => {
     if (box && gridMetaData) {
       if (id.toString().includes(MoveType.resize)) {
         const direction = getDirectionFromId(id.toString());
-        var updateItemResize = GridService.computeResize(box, gridMetaData, delta, direction);
+        const updateItemResize = GridService.computeResize(box, gridMetaData, delta, direction);
         setPreview(null);
         updateWidget(updateItemResize);
       } else {
-        var updateItemMove = GridService.computeMove(box, gridMetaData, delta);
+        const updateItemMove = GridService.computeMove(box, gridMetaData, delta);
         setPreview(null);
         updateWidget(updateItemMove);
       }
@@ -107,22 +119,24 @@ export const Grid: React.FC = () => {
   }
 
   function getBaseId(id: UniqueIdentifier): string {
-    return id.toString().replace(/-resize.*$/, "");
+    return id.toString().replace(/-resize.*$/, '');
   }
 
   const gridStyle: React.CSSProperties = {
-    position: "relative",
-    width: "100%",
-    height: "100%",
-    backgroundSize: gridMetaData ? `${gridMetaData.colWidth}px ${gridMetaData.colHeight}px` : undefined,
-    border: editMode.editMode || isDefaultView(widgets) ? "1px solid #ddd" : undefined,
+    position: 'relative',
+    width: '100%',
+    height: '100%',
+    backgroundSize: gridMetaData
+      ? `${gridMetaData.colWidth}px ${gridMetaData.colHeight}px`
+      : undefined,
+    border: editMode.editMode || isDefaultView(widgets) ? '1px solid #ddd' : undefined,
     backgroundImage:
       editMode.editMode || isDefaultView(widgets)
-        ? "linear-gradient(to right, #eee 1px, transparent 1px)," +
-          "linear-gradient(to bottom, #eee 1px, transparent 1px)"
+        ? 'linear-gradient(to right, #eee 1px, transparent 1px),' +
+          'linear-gradient(to bottom, #eee 1px, transparent 1px)'
         : undefined,
-    backgroundColor: editMode.editMode ? "#d3d3d33f" : undefined,
-    transition: "background-color 0.3s ease, border 0.3s ease",
+    backgroundColor: editMode.editMode ? '#d3d3d33f' : undefined,
+    transition: 'background-color 0.3s ease, border 0.3s ease',
   };
 
   return (
@@ -134,20 +148,22 @@ export const Grid: React.FC = () => {
       )}
       <DndContext onDragMove={handleDragMove} onDragEnd={handleDragEnd}>
         {gridMetaData &&
-          widgets.map((item) => <WidgetContainer key={item.id} gridItem={item} gridData={gridMetaData} />)}
+          widgets.map((item) => (
+            <WidgetContainer key={item.id} gridItem={item} gridData={gridMetaData} />
+          ))}
 
         {preview && gridMetaData && (
           <div
             style={{
-              position: "absolute",
+              position: 'absolute',
               left: preview.col * gridMetaData?.colWidth,
               top: preview.row * gridMetaData?.colHeight,
               width: preview.colSpan * gridMetaData?.colWidth,
               height: preview.rowSpan * gridMetaData?.colHeight,
               borderRadius: 8,
-              border: "2px dashed rgba(0,0,0,0.4)",
-              background: "rgba(0,0,0,0.05)",
-              pointerEvents: "none",
+              border: '2px dashed rgba(0,0,0,0.4)',
+              background: 'rgba(0,0,0,0.05)',
+              pointerEvents: 'none',
               zIndex: 999,
             }}
           />

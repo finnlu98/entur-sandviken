@@ -1,14 +1,14 @@
-import { FaRegNewspaper } from "react-icons/fa";
-import News from "./components/card/news";
-import { WidgetDefinition, WidgetEnum } from "../core/model/widget-type";
-import { useNewsQuery } from "./hooks/news-hook";
-import { NewsResponse } from "./model/NewsResponse";
-import NewsDocumentation from "./components/documentation/news-documentation";
-import { NEWS_FETCH_INTERVAL } from "./news-constants";
+import { FaRegNewspaper } from 'react-icons/fa';
+import News from './components/card/news';
+import { WidgetEnum, type WidgetDefinition } from '../core/model/widget-type';
+import { useNewsQuery } from './hooks/news-hook';
+import type { NewsResponse } from './model/NewsResponse';
+import NewsDocumentation from './components/documentation/news-documentation';
+import { NEWS_FETCH_INTERVAL } from './news-constants';
 
-export const NewsWidget: WidgetDefinition<NewsConfig, NewsResponse> = {
+export const NewsWidget: WidgetDefinition<object, NewsResponse> = {
   id: WidgetEnum.news,
-  friendlyName: "News",
+  friendlyName: 'News',
   widgetIcon: <FaRegNewspaper />,
   widgetComponent: News,
   useQuery: useNewsQuery,
@@ -19,5 +19,3 @@ export const NewsWidget: WidgetDefinition<NewsConfig, NewsResponse> = {
   defaultRowSpan: 8,
   fetchtingInterval: NEWS_FETCH_INTERVAL,
 };
-
-export interface NewsConfig {}

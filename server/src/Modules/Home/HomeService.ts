@@ -1,5 +1,5 @@
 import prisma from "../../Lib/prisma";
-import { HomeConfigDto } from "../../Model/data/Home/HomeConfigDto";
+import type { HomeConfigDto } from "../../Model/data/Home/HomeConfigDto";
 
 export default class HomeService {
   async getHomeConfig(userId: string): Promise<HomeConfigDto | null> {

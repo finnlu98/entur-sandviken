@@ -1,5 +1,5 @@
 import { IoAddCircle } from "react-icons/io5";
-import { LaundryWeekConfig } from "../LaundryWeekWidget";
+import type { LaundryWeekConfig } from "../LaundryWeekWidget";
 import { MdDelete } from "react-icons/md";
 import { useState } from "react";
 

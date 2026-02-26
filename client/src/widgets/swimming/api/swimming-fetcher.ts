@@ -1,7 +1,7 @@
 import configuration from "../../../Configuration";
-import { Address } from "../../../model/Adress";
+import type { Address } from "../../../model/Adress";
 import BaseWidgetApi from "../../core/api/BaseWidgetApi";
-import { SwimmingResponse } from "../model/swimming-response";
+import type { SwimmingResponse } from "../model/swimming-response";
 
 class SwimmingApi extends BaseWidgetApi {
   async getSwimmingData(adress: Address): Promise<SwimmingResponse[] | undefined> {

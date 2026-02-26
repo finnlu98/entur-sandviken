@@ -1,5 +1,5 @@
-import React from "react";
-import { AlertTypeIcons, AlertVariant } from "../model/AlertTypes";
+import React from 'react';
+import { AlertTypeIcons, type AlertVariant } from '../model/AlertTypes';
 
 interface AlertResponseProps {
   message: string;

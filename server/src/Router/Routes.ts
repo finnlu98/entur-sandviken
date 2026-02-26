@@ -1,11 +1,11 @@
-import { Application, Request, Response, Router } from "express";
-import BrokerRouter from "../Modules/Broker/BrokerRouter";
-import StockRouter from "../Modules/Stock/StockRouter";
-import { HomeActionsRouter } from "../Modules/HomeActions/HomeActionsRouter";
-import { UserRouter } from "../Modules/User/UserRouter";
-import AuthorizationRouter from "../Modules/Authorization/AuthorizationRouter";
-import HomeRouter from "../Modules/Home/HomeRouter";
-import IntegrationRouter from "../Modules/Integration/IntegrationRouter";
+import { Router, type Application, type Request, type Response } from 'express';
+import BrokerRouter from '../Modules/Broker/BrokerRouter';
+import StockRouter from '../Modules/Stock/StockRouter';
+import { HomeActionsRouter } from '../Modules/HomeActions/HomeActionsRouter';
+import { UserRouter } from '../Modules/User/UserRouter';
+import AuthorizationRouter from '../Modules/Authorization/AuthorizationRouter';
+import HomeRouter from '../Modules/Home/HomeRouter';
+import IntegrationRouter from '../Modules/Integration/IntegrationRouter';
 
 export class Routes {
   app: Application;
@@ -19,8 +19,8 @@ export class Routes {
   }
 
   InitializeBaseEndpoint() {
-    this.router.get("", async (req: Request, res: Response) => {
-      res.send("Backened server for Heimr dashboard. Lets get building!👷🏼‍♂️");
+    this.router.get('', async (req: Request, res: Response) => {
+      res.send('Backened server for Heimr dashboard. Lets get building!👷🏼‍♂️');
     });
   }
 
@@ -33,13 +33,13 @@ export class Routes {
     const home = new HomeRouter();
     const integration = new IntegrationRouter();
 
-    this.app.use("/", this.router);
-    this.app.use("/api", broker.route);
-    this.app.use("/api", stock.route);
-    this.app.use("/api", homeActions.route);
-    this.app.use("/api", user.route);
-    this.app.use("/api", auth.route);
-    this.app.use("/api", home.route);
-    this.app.use("/api", integration.route);
+    this.app.use('/', this.router);
+    this.app.use('/api', broker.route);
+    this.app.use('/api', stock.route);
+    this.app.use('/api', homeActions.route);
+    this.app.use('/api', user.route);
+    this.app.use('/api', auth.route);
+    this.app.use('/api', home.route);
+    this.app.use('/api', integration.route);
   }
 }

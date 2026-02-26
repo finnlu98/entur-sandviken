@@ -1,21 +1,27 @@
-import "./travel-card-configuration.css";
-import { TravelCardConfig, TravelRoute } from "../../TravelCardWidget";
-import { IoAddCircle } from "react-icons/io5";
-import { MdDelete } from "react-icons/md";
-import { Fragment, useRef, useState } from "react";
-import UploadImageCircle from "../../../../core/shared/imageCirlce/UploadImageCircle";
-import SearchStop, { SearchStopHandle } from "./SearchStop";
-import { TravelStop } from "../../model/StopSearchResponse";
-import { TiArrowRightOutline } from "react-icons/ti";
-import { TripIdentifier } from "../../model/enum/TripIdentifier";
+import './travel-card-configuration.css';
+import type { TravelCardConfig, TravelRoute } from '../../TravelCardWidget';
+import { IoAddCircle } from 'react-icons/io5';
+import { MdDelete } from 'react-icons/md';
+import { Fragment, useRef, useState } from 'react';
+import UploadImageCircle from '../../../../core/shared/imageCirlce/UploadImageCircle';
+import SearchStop, { type SearchStopHandle } from './SearchStop';
+import type { TravelStop } from '../../model/StopSearchResponse';
+import { TiArrowRightOutline } from 'react-icons/ti';
+import { TripIdentifier } from '../../model/enum/TripIdentifier';
 
 const defaultConfigMeta = { numRows: 3, minFilter: 3 };
 const defaultColors = { general: 10, green: 7, yellow: 5 };
 
 const defaultTravelRoute: TravelRoute = {
-  imgIdentifier: "",
-  startPlace: { geometry: { coordinates: [0, 0] }, properties: { id: "", label: "", name: "", county: "" } },
-  stopPlace: { geometry: { coordinates: [0, 0] }, properties: { id: "", label: "", name: "", county: "" } },
+  imgIdentifier: '',
+  startPlace: {
+    geometry: { coordinates: [0, 0] },
+    properties: { id: '', label: '', name: '', county: '' },
+  },
+  stopPlace: {
+    geometry: { coordinates: [0, 0] },
+    properties: { id: '', label: '', name: '', county: '' },
+  },
   configCard: defaultConfigMeta,
   configColor: defaultColors,
 };
@@ -30,11 +36,20 @@ interface TravelCardConfigurationProps {
   setConfig: (config: TravelCardConfig) => void;
 }
 
-const TravelCardConfiguration: React.FC<TravelCardConfigurationProps> = ({ config = defaultConfig, setConfig }) => {
+const TravelCardConfiguration: React.FC<TravelCardConfigurationProps> = ({
+  config = defaultConfig,
+  setConfig,
+}) => {
   const [travelRoute, setTravelRoute] = useState<TravelRoute>({
-    imgIdentifier: "",
-    startPlace: { geometry: { coordinates: [0, 0] }, properties: { id: "", label: "", name: "", county: "" } },
-    stopPlace: { geometry: { coordinates: [0, 0] }, properties: { id: "", label: "", name: "", county: "" } },
+    imgIdentifier: '',
+    startPlace: {
+      geometry: { coordinates: [0, 0] },
+      properties: { id: '', label: '', name: '', county: '' },
+    },
+    stopPlace: {
+      geometry: { coordinates: [0, 0] },
+      properties: { id: '', label: '', name: '', county: '' },
+    },
     configCard: defaultConfigMeta,
     configColor: defaultColors,
   });
@@ -44,7 +59,9 @@ const TravelCardConfiguration: React.FC<TravelCardConfigurationProps> = ({ confi
   const endStopRef = useRef<SearchStopHandle>(null);
 
   function removeTravelRoute(startPlace: TravelStop, stopPlace: TravelStop) {
-    const updatedRoutes = config.travelRoutes.filter((t) => t.startPlace !== startPlace && t.stopPlace !== stopPlace);
+    const updatedRoutes = config.travelRoutes.filter(
+      (t) => t.startPlace !== startPlace && t.stopPlace !== stopPlace
+    );
     const updatedConfig = {
       ...config,
       travelRoutes: updatedRoutes,
@@ -65,7 +82,7 @@ const TravelCardConfiguration: React.FC<TravelCardConfigurationProps> = ({ confi
     endStopRef.current?.clear();
   }
 
-  function onImageChange(dataUrl: string | null, file: File | null) {
+  function onImageChange(dataUrl: string | null) {
     if (!dataUrl) return;
     setTravelRoute((prev) => {
       return {
@@ -132,7 +149,9 @@ const TravelCardConfiguration: React.FC<TravelCardConfigurationProps> = ({ confi
                 <div>
                   {travelIdentifier === TripIdentifier.img && (
                     <UploadImageCircle
-                      onImageChange={(dataUrl) => onUpdateImage(dataUrl, route.startPlace, route.stopPlace)}
+                      onImageChange={(dataUrl) =>
+                        onUpdateImage(dataUrl, route.startPlace, route.stopPlace)
+                      }
                       imgPath={route.imgIdentifier}
                     />
                   )}

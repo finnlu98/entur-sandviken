@@ -1,5 +1,5 @@
 import configuration from "../../../Configuration";
-import { NewsResponse } from "../model/NewsResponse";
+import type { NewsResponse } from "../model/NewsResponse";
 import BaseWidgetApi from "../../core/api/BaseWidgetApi";
 
 class NewsApi extends BaseWidgetApi {

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Address } from "../../../model/Adress";
+import type { Address } from "../../../model/Adress";
 import useAddressSearch from "./AdressHook";
 import SearchInput from "../searchInput/SearchInput";
 

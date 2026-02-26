@@ -25,7 +25,7 @@ export default class AuthorizationRouter extends BaseRouter {
       const email = emailRaw.trim().toLowerCase();
       if (!email.includes("@")) return res.status(400).json({ error: "Invalid email" });
 
-      var invite = await this.authorizationService.generateInvite(email);
+      const invite = await this.authorizationService.generateInvite(email);
       console.log("MAGIC LINK:", invite);
       return res.status(200).json({ message: "Invite created", link: invite });
     });

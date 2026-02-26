@@ -1,5 +1,5 @@
-import { SunriseResponse } from "../response/SunriseResponse";
-import { WeatherForecast } from "./WeatherForecast";
+import type { SunriseResponse } from "../response/SunriseResponse";
+import type { WeatherForecast } from "./WeatherForecast";
 
 export class WeatherData {
     constructor(weatherForecast: WeatherForecast, sunriseData: SunriseResponse) {

@@ -3,7 +3,7 @@ import { useAuth } from "../../context/AuthContext";
 import { IoAddCircleOutline } from "react-icons/io5";
 import "./HomeProfile.css";
 import AdressSearch from "../shared/adressSearch/AdressSearch";
-import { Address } from "../../model/Adress";
+import type { Address } from "../../model/Adress";
 import LoadingButton from "../../feedback/loading/components/Loading/LoadingButton";
 
 interface HomeProfileProps {

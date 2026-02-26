@@ -1,5 +1,5 @@
 import { WidgetEnum } from "../../../../widgets/core/model/widget-type";
-import { GridItem } from "../../grid/model/grid-models";
+import type { GridItem } from "../../grid/model/grid-models";
 
 const defaultTemplate: GridItem[] = [
   {

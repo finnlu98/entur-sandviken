@@ -1,7 +1,7 @@
 import configuration from "../../../Configuration";
 import BaseWidgetApi from "../../core/api/BaseWidgetApi";
-import { WeatherResponse } from "../model/response/WeatherResponse";
-import { SunriseResponse } from "../model/response/SunriseResponse";
+import type { WeatherResponse } from "../model/response/WeatherResponse";
+import type { SunriseResponse } from "../model/response/SunriseResponse";
 import { WeatherForecast } from "../model/data/WeatherForecast";
 import { WeatherData } from "../model/data/WeatherData";
 

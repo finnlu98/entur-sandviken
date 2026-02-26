@@ -1,6 +1,6 @@
-import { useState } from "react";
-import SearchAdressFetcher from "./AdressApi";
-import { Address } from "../../../model/Adress";
+import { useState } from 'react';
+import SearchAdressFetcher from './AdressApi';
+import type { Address } from '../../../model/Adress';
 
 const useAddressSearch = () => {
   const [results, setResults] = useState<Address[]>([]);
@@ -19,8 +19,8 @@ const useAddressSearch = () => {
     try {
       const addresses = await SearchAdressFetcher(searchTerm);
       setResults(addresses);
-    } catch (err) {
-      setError("Failed to fetch addresses");
+    } catch {
+      setError('Failed to fetch addresses');
       setResults([]);
     } finally {
       setIsLoading(false);

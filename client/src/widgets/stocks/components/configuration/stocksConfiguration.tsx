@@ -1,7 +1,7 @@
 import { IoAddCircle } from "react-icons/io5";
 import { useState } from "react";
 import { MdDelete } from "react-icons/md";
-import { StocksConfig } from "../../StocksWidget";
+import type { StocksConfig } from "../../StocksWidget";
 
 interface StocksConfigurationProps {
   config?: StocksConfig;

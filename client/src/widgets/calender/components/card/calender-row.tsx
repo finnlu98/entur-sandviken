@@ -1,5 +1,5 @@
-import moment, { Moment } from "moment";
-import { CalendarEvent } from "../../api/calender-ical-fetcher";
+import moment, { type Moment } from 'moment';
+import type { CalendarEvent } from '../../api/calender-ical-fetcher';
 
 interface CalenderRowProps {
   item: CalendarEvent;
@@ -8,11 +8,11 @@ interface CalenderRowProps {
 
 const CalenderRow: React.FC<CalenderRowProps> = ({ item, hiearchy }) => {
   function formatDate(date: Moment | undefined) {
-    if (date === undefined) return "Unkown date";
+    if (date === undefined) return 'Unkown date';
 
     const now = moment();
     const momentDate = moment.isMoment(date) ? date : moment(date);
-    const diffDays = momentDate.clone().startOf("day").diff(now.startOf("day"), "days");
+    const diffDays = momentDate.clone().startOf('day').diff(now.startOf('day'), 'days');
 
     if (diffDays === 0) {
       return `Today`;
@@ -23,12 +23,12 @@ const CalenderRow: React.FC<CalenderRowProps> = ({ item, hiearchy }) => {
     } else if (diffDays === 3) {
       return `In 3 days`;
     } else {
-      return momentDate.format("dddd MMM Do");
+      return momentDate.format('dddd MMM Do');
     }
   }
 
   function formatSummary(summary: string | undefined) {
-    return summary ?? "Unkown activity";
+    return summary ?? 'Unkown activity';
   }
 
   return (
@@ -37,7 +37,9 @@ const CalenderRow: React.FC<CalenderRowProps> = ({ item, hiearchy }) => {
         <div className="date-row">
           <div className={`${hiearchy}-item-date`}>🗓️ {item && formatDate(item.start)}</div>
         </div>
-        <div className={`summary ${hiearchy}-item-summary`}>{item && formatSummary(item.summary)}</div>
+        <div className={`summary ${hiearchy}-item-summary`}>
+          {item && formatSummary(item.summary)}
+        </div>
       </div>
     </div>
   );

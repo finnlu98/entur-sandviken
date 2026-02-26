@@ -1,4 +1,4 @@
-import IBaseResponse from "./IBaseResponse";
+import type IBaseResponse from "./IBaseResponse";
 
 export default class BaseResponse implements IBaseResponse {
     Identifier!: string

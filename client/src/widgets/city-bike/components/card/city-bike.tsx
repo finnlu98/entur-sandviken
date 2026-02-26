@@ -1,10 +1,10 @@
 import "./city-bike.css";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import L from "leaflet";
-import { CityBikeConfig } from "../../CityBikeWidget";
+import type { CityBikeConfig } from "../../CityBikeWidget";
 import LoadingHelperWidget from "../../../core/components/LoadingHelperWidget";
 import { WidgetEnum } from "../../../core/model/widget-type";
-import { CityBikeData } from "../../model/CityBikeData";
+import type { CityBikeData } from "../../model/CityBikeData";
 
 const homeIcon = L.divIcon({
   className: "home-label-icon",
@@ -19,7 +19,7 @@ interface CityBikeProps {
 
 const CityBike: React.FC<CityBikeProps> = ({ data, config }) => {
   function formatMarker(available: number) {
-    var formattedClass = "bike-label";
+    let formattedClass = "bike-label";
 
     if (available === 0) formattedClass += " empty";
 

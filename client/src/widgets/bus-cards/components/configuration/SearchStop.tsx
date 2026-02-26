@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import SearchInput from "../../../../core/shared/searchInput/SearchInput";
-import { TravelStop } from "../../model/StopSearchResponse";
+import type { TravelStop } from "../../model/StopSearchResponse";
 import useStopSearch from "../../hooks/stop-hook";
 
 interface SearchStopProps {

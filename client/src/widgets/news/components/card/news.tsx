@@ -1,4 +1,4 @@
-import { NewsResponse } from "../../model/NewsResponse";
+import type { NewsResponse } from "../../model/NewsResponse";
 import "./news.css";
 import LoadingHelperWidget from "../../../core/components/LoadingHelperWidget";
 import { WidgetEnum } from "../../../core/model/widget-type";

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import "./home-avatar.css";
-import ImageCircle from "../../shared/imageCirlce/ImageCircle";
+import React from 'react';
+import './home-avatar.css';
+import ImageCircle from '../../shared/imageCirlce/ImageCircle';
 interface HomeAvatarProps {
   imgPath: string;
 }

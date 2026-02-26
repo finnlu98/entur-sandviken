@@ -15,7 +15,7 @@ export class ComponentData {
 }
 
 export class Datasets {
-  data: Number[]
+  data: number[]
   backgroundColor: string[]
   defaultColor = 'rgba(0, 184, 241, 0.8)'
   highlightindexes?: HighlightIndex

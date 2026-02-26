@@ -1,13 +1,13 @@
-import Tab from "../../../shared/tab/Tab";
-import { IoSettingsOutline } from "react-icons/io5";
-import { CiCircleInfo } from "react-icons/ci";
-import "./widget-configuration.css";
-import { Widgets } from "../../../../widgets/core/model/widgets";
-import { WidgetEnum } from "../../../../widgets/core/model/widget-type";
-import { useWidgetQuery } from "../../../../widgets/core/hooks/useWidgetQueryResult";
-import { useWidgetConfig } from "../../../../widgets/core/hooks/useWidgetConfig";
-import { useState } from "react";
-import { useDashboard } from "../../../../context/dashboard-context";
+import Tab from '../../../shared/tab/Tab';
+import { IoSettingsOutline } from 'react-icons/io5';
+import { CiCircleInfo } from 'react-icons/ci';
+import './widget-configuration.css';
+import { Widgets } from '../../../../widgets/core/model/widgets';
+import type { WidgetEnum } from '../../../../widgets/core/model/widget-type';
+import { useWidgetQuery } from '../../../../widgets/core/hooks/useWidgetQueryResult';
+import { useWidgetConfig } from '../../../../widgets/core/hooks/useWidgetConfig';
+import { useState } from 'react';
+import { useDashboard } from '../../../../context/dashboard-context';
 
 interface WidgetConfigurationProps {
   widget: WidgetEnum;
@@ -42,7 +42,7 @@ const WidgetConfiguration: React.FC<WidgetConfigurationProps> = ({ widget, onClo
                     const ConfigComponent = Widgets[widget].widgetConfig?.component;
                     return ConfigComponent ? (
                       <ConfigComponent
-                        {...(config != null ? { config } : {})}
+                        {...(config !== null ? { config } : {})}
                         setConfig={setConfig}
                         data={widgetData?.data}
                       />
@@ -78,7 +78,7 @@ const WidgetConfiguration: React.FC<WidgetConfigurationProps> = ({ widget, onClo
                   data={widgetData?.data}
                   isLoading={widgetData?.isLoading}
                   error={widgetData?.error}
-                  {...(config != null ? { config } : {})}
+                  {...(config !== null ? { config } : {})}
                 />
               );
             })()}

@@ -1,4 +1,4 @@
-import { Session, SessionData } from "express-session";
+import type { Session, SessionData } from "express-session";
 import BaseFetcherEndpoint from "../Common/BaseFetcherEndpoint";
 import IntegrationService from "../Integration/IntegrationService";
 

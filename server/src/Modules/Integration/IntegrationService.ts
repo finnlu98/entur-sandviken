@@ -1,4 +1,4 @@
-import { Session, SessionData } from "express-session";
+import type { Session, SessionData } from "express-session";
 import { encrypt, decrypt } from "../../Lib/encryption";
 import BaseFetcherEndpoint from "../Common/BaseFetcherEndpoint";
 
@@ -27,8 +27,8 @@ export default class IntegrationService {
 
       try {
         await this.testIntegration.getData(`test_${key}`);
-      } catch (error) {
-        console.log("Failed to validate integration:");
+      } catch {
+        console.error("Failed to validate integration:");
         return false;
       }
 

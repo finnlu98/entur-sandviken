@@ -1,15 +1,15 @@
-import { ImPower } from "react-icons/im";
-import ElectricyConsumption from "./components/electricity-consumption/electricity-consumption";
-import ElectricityConfiguration from "./components/configuration/electricity-configuration";
-import { WidgetDefinition, WidgetEnum } from "../core/model/widget-type";
-import { ELECTRICITY_FETCH_INTERVAL } from "./electricity-constants";
-import { useElviaConsumptionQuery } from "./hook/electricity-hook";
-import { ElectricityData } from "./model/ElectricityData";
-import ElectricityDocumentation from "./components/documentation/electricity-documentation";
+import { ImPower } from 'react-icons/im';
+import ElectricyConsumption from './components/electricity-consumption/electricity-consumption';
+import ElectricityConfiguration from './components/configuration/electricity-configuration';
+import { WidgetEnum, type WidgetDefinition } from '../core/model/widget-type';
+import { ELECTRICITY_FETCH_INTERVAL } from './electricity-constants';
+import { useElviaConsumptionQuery } from './hook/electricity-hook';
+import type { ElectricityData } from './model/ElectricityData';
+import ElectricityDocumentation from './components/documentation/electricity-documentation';
 
-export const ElectricityWidget: WidgetDefinition<ElectricityConfig, ElectricityData> = {
+export const ElectricityWidget: WidgetDefinition<object, ElectricityData> = {
   id: WidgetEnum.electricity,
-  friendlyName: "Electricity",
+  friendlyName: 'Electricity',
   widgetIcon: <ImPower />,
   useQuery: useElviaConsumptionQuery,
   widgetComponent: ElectricyConsumption,
@@ -21,5 +21,3 @@ export const ElectricityWidget: WidgetDefinition<ElectricityConfig, ElectricityD
   defaultRowSpan: 6,
   fetchtingInterval: ELECTRICITY_FETCH_INTERVAL,
 };
-
-export interface ElectricityConfig {}

@@ -1,6 +1,6 @@
-import { ElviaService } from "../services/ElviaService";
-import { ComponentData } from "./ElectricityPrices";
-import { TimeSerie } from "./ElviaConsumptionResponse";
+import type { ElviaService } from "../services/ElviaService";
+import type { ComponentData } from "./ElectricityPrices";
+import type { TimeSerie } from "./ElviaConsumptionResponse";
 
 export class ElectricityData {
   constructor(elviaService: ElviaService) {

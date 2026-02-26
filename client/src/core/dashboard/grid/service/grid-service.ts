@@ -1,5 +1,5 @@
-import { Coordinates, Transform } from "@dnd-kit/utilities";
-import { GridItem, GridMetaData, PreviewState, Rect } from "../model/grid-models";
+import type { Coordinates, Transform } from "@dnd-kit/utilities";
+import type { GridItem, GridMetaData, PreviewState, Rect } from "../model/grid-models";
 import { MoveType } from "../model/move-type";
 import { ResizeDirection } from "../model/resize-direction";
 
@@ -27,13 +27,13 @@ export default class GridService {
     const baseY = gridItem.row * gridData.colHeight;
 
     const leftGap = gridItem.col !== 0 ? gridData.gap : 0;
-    let finalX = baseX + transform.x + leftGap;
+    const finalX = baseX + transform.x + leftGap;
     let rightGap = gridItem.col !== gridData.columns - gridItem.colSpan ? gridData.gap * 2 : gridData.gap;
     rightGap = gridItem.col === 0 ? rightGap - gridData.gap : rightGap;
 
-    let widthPx = gridItem.colSpan * gridData.colWidth - rightGap;
-    let finalY = baseY + transform.y + gridData.gap;
-    let heightPx = gridItem.rowSpan * gridData.colHeight - gridData.gap * 2;
+    const widthPx = gridItem.colSpan * gridData.colWidth - rightGap;
+    const finalY = baseY + transform.y + gridData.gap;
+    const heightPx = gridItem.rowSpan * gridData.colHeight - gridData.gap * 2;
 
     return {
       position: "absolute",
@@ -136,7 +136,7 @@ export default class GridService {
     moveType: MoveType,
     direction?: ResizeDirection,
   ): PreviewState | undefined {
-    var shadowBox: GridItem | null = null;
+    let shadowBox: GridItem | null = null;
 
     if (moveType === MoveType.move) shadowBox = this.computeMove(moveBox, gridData, delta);
 

@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
-import "./screen-size-selector.css";
-import { useDashboard } from "../../../context/dashboard-context";
-import ScreenSize from "../model/ScreenSize";
-import { MdOutlineKeyboardBackspace } from "react-icons/md";
-import PopupButton from "../../shared/popup/Popup";
-import { GiPencilRuler } from "react-icons/gi";
-import { FaRulerCombined } from "react-icons/fa";
+import React, { useEffect, useState } from 'react';
+import './screen-size-selector.css';
+import { useDashboard } from '../../../context/dashboard-context';
+import type ScreenSize from '../model/ScreenSize';
+import { MdOutlineKeyboardBackspace } from 'react-icons/md';
+import PopupButton from '../../shared/popup/Popup';
+import { FaRulerCombined } from 'react-icons/fa';
 
 const PRESETS = [
-  { name: "Tablet (Portrait)", width: 768, height: 1024 },
-  { name: "Tablet (Landscape)", width: 1024, height: 768 },
+  { name: 'Tablet (Portrait)', width: 768, height: 1024 },
+  { name: 'Tablet (Landscape)', width: 1024, height: 768 },
 ];
 
 export const ScreenSizeSelector: React.FC = () => {
@@ -98,14 +97,18 @@ export const ScreenSizeSelector: React.FC = () => {
                       type="number"
                       placeholder="Width"
                       value={customSize.width}
-                      onChange={(e) => onSetCustomSize({ ...customSize, width: parseInt(e.target.value) })}
+                      onChange={(e) =>
+                        onSetCustomSize({ ...customSize, width: parseInt(e.target.value) })
+                      }
                     />
                     <span>×</span>
                     <input
                       type="number"
                       placeholder="Height"
                       value={customSize.height}
-                      onChange={(e) => onSetCustomSize({ ...customSize, height: parseInt(e.target.value) })}
+                      onChange={(e) =>
+                        onSetCustomSize({ ...customSize, height: parseInt(e.target.value) })
+                      }
                     />
                     <button onClick={handleCustomSubmit} disabled={!isDirty}>
                       Apply

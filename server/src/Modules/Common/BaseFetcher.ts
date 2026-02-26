@@ -1,5 +1,5 @@
 import { Caches } from "../../Cache/Cache";
-import IFetcher from "../../Model/Interface/IFetcher";
+import type IFetcher from "../../Model/Interface/IFetcher";
 
 export default abstract class BaseFetcher implements IFetcher {
   caches: Caches;

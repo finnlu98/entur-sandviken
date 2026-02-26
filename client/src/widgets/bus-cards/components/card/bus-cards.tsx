@@ -2,10 +2,10 @@ import moment from "moment";
 import BusCard from "./bus-card";
 import React from "react";
 import "./bus-cards.css";
-import { TripPatterns } from "../../model/TravelResponse";
+import type { TripPatterns } from "../../model/TravelResponse";
 import ImageCircle from "../../../../core/shared/imageCirlce/ImageCircle";
 import { TripIdentifier } from "../../model/enum/TripIdentifier";
-import { TravelRoute } from "../../TravelCardWidget";
+import type { TravelRoute } from "../../TravelCardWidget";
 import { Mode } from "../../model/enum/Mode";
 
 interface BusCardsProps {

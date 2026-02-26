@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect, ReactNode } from "react";
-import { LoadingContextValue } from "../types/loading.types";
-import { loadingManager } from "../utils/loading-manager";
+import { createContext, useState, useEffect, type ReactNode } from 'react';
+import type { LoadingContextValue } from '../types/loading.types';
+import { loadingManager } from '../utils/loading-manager';
 
 export const LoadingContext = createContext<LoadingContextValue | null>(null);
 

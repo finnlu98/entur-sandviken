@@ -1,5 +1,5 @@
-import { GridItem } from "../core/dashboard/grid/model/grid-models";
-import { WidgetEnum } from "../widgets/core/model/widget-type";
+import type { GridItem } from "../core/dashboard/grid/model/grid-models";
+import type { WidgetEnum } from "../widgets/core/model/widget-type";
 
 export type HomeConfig = {
   widgetPositions: GridItem[] | null;

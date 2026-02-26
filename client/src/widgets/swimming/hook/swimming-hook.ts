@@ -1,7 +1,7 @@
 import { useWidgetQuery } from "../../core/hooks/useWidgetQuery";
 import swimmingApi from "../api/swimming-fetcher";
-import { SwimmingResponse } from "../model/swimming-response";
-import { SwimmingConfig } from "../swimming-widget";
+import type { SwimmingResponse } from "../model/swimming-response";
+import type { SwimmingConfig } from "../swimming-widget";
 
 import { SWIMMING_FETCH_INTERVAL } from "../swimming-constants";
 

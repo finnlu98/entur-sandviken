@@ -1,9 +1,9 @@
 import { MdInfoOutline } from "react-icons/md";
 import AdressSearch from "../../../../core/shared/adressSearch/AdressSearch";
 import PopupButton from "../../../../core/shared/popup/Popup";
-import { Address } from "../../../../model/Adress";
-import { SwimmingResponse } from "../../model/swimming-response";
-import { SwimmingConfig } from "../../swimming-widget";
+import type { Address } from "../../../../model/Adress";
+import type { SwimmingResponse } from "../../model/swimming-response";
+import type { SwimmingConfig } from "../../swimming-widget";
 import "./swimming-configuration.css";
 import { useLoading } from "../../../../feedback/loading/hooks/useLoading";
 import LoadingOverlay from "../../../../feedback/loading/components/Loading/LoadingOverlay";

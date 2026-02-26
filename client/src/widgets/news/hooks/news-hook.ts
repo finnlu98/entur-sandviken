@@ -1,6 +1,6 @@
 import { useWidgetQuery } from "../../core/hooks/useWidgetQuery";
 import newsApi from "../api/news-fetcher";
-import { NewsResponse } from "../model/NewsResponse";
+import type { NewsResponse } from "../model/NewsResponse";
 
 import { NEWS_FETCH_INTERVAL } from "../news-constants";
 

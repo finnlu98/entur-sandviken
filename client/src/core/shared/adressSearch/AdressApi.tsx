@@ -1,7 +1,7 @@
 import axios from "axios";
 import configuration from "../../../Configuration";
-import { SearchAddressResponse } from "./model/AdressRespone";
-import { Address } from "../../../model/Adress";
+import type { SearchAddressResponse } from "./model/AdressRespone";
+import type { Address } from "../../../model/Adress";
 
 const SearchAdressFetcher = async (searchString: string) => {
   try {

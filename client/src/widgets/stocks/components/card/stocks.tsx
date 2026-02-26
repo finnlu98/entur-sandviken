@@ -1,7 +1,7 @@
 import "./stocks.css";
 import { MdOutlineArrowDropDown } from "react-icons/md";
 import { IoMdArrowDropup } from "react-icons/io";
-import { StockResponse } from "../../model/StockResponse";
+import type { StockResponse } from "../../model/StockResponse";
 
 interface StocksProps {
   data?: StockResponse;

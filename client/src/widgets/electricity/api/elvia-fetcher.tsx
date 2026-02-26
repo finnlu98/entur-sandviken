@@ -1,7 +1,7 @@
 import configuration from "../../../Configuration";
 import BaseWidgetApi from "../../core/api/BaseWidgetApi";
 import { ElectricityData } from "../model/ElectricityData";
-import { ElviaConsumptionResponse } from "../model/ElviaConsumptionResponse";
+import type { ElviaConsumptionResponse } from "../model/ElviaConsumptionResponse";
 import { ElviaService } from "../services/ElviaService";
 import moment from "moment";
 

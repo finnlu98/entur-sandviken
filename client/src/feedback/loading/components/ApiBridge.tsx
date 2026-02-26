@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { AxiosInstance } from "axios";
+import type { AxiosInstance } from "axios";
 import { loadingManager } from "../utils/loading-manager";
-import { RequestMeta } from "../types/loading.types";
+import type { RequestMeta } from "../types/loading.types";
 
 interface ApiBridgeProps {
   apiClient: AxiosInstance;

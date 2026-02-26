@@ -1,14 +1,14 @@
 import axios from "axios";
 import moment from "moment";
 import Configuration from "../../../Configuration";
-import { ElectricityPrice } from "../model/ElectricityPrices";
+import type { ElectricityPrice } from "../model/ElectricityPrices";
 const FetchElectricityPrices = async () => {
   try {
     const year = moment().year();
     const month =  moment().format('MM');
     const day = moment().format('DD');
 
-    var endpoint = Configuration.getElectricityEndpoint()
+    let endpoint = Configuration.getElectricityEndpoint()
 
     endpoint = endpoint
                 .replace(":year", year.toString())

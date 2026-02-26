@@ -1,4 +1,4 @@
-import { Coordinate } from "./Coordinate";
+import type { Coordinate } from "./Coordinate";
 
 export interface Address {
   frienldyName: string;

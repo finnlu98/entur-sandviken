@@ -1,4 +1,4 @@
-import { WeatherResponse, TimeSeries } from "../response/WeatherResponse";
+import type { WeatherResponse, TimeSeries } from "../response/WeatherResponse";
 import moment from "moment";
 
 export class WeatherForecast {

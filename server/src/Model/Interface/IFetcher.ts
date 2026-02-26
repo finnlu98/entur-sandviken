@@ -1,4 +1,4 @@
-import { Caches } from "../../Cache/Cache";
+import type { Caches } from "../../Cache/Cache";
 
 export default interface IFetcher {
   caches: Caches | undefined;

@@ -4,7 +4,7 @@ import { Modal } from "../../shared/modal/modal";
 import WidgetConfiguration from "../grid/widget/widget-configuration";
 import ProfileOverview from "../../auth/ProfileOverview";
 import LayoutTemplates from "../default/LayoutTemplates";
-import { WidgetEnum } from "../../../widgets/core/model/widget-type";
+import type { WidgetEnum } from "../../../widgets/core/model/widget-type";
 
 interface EditEntityProps {
   onClose: () => void;

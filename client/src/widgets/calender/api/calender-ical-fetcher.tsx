@@ -1,4 +1,4 @@
-import { Moment } from "moment";
+import type { Moment } from "moment";
 
 import BaseWidgetApi from "../../core/api/BaseWidgetApi";
 import { calenderMapper } from "../mapper/calender-mappers";

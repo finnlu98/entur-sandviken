@@ -1,15 +1,13 @@
-import { useState } from "react";
-import moment from "moment";
-import "./laundry-week.css";
+import { useState } from 'react';
+import moment from 'moment';
+import './laundry-week.css';
 
-import { SlArrowDown } from "react-icons/sl";
-import { SlArrowUp } from "react-icons/sl";
-import { LaundryWeekConfig } from "../LaundryWeekWidget";
-import EditWidget from "../../core/components/EditWidget";
-import { WidgetEnum } from "../../core/model/widget-type";
-import LoadingHelperWidget from "../../core/components/LoadingHelperWidget";
+import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
+import type { LaundryWeekConfig } from '../LaundryWeekWidget';
+import { WidgetEnum } from '../../core/model/widget-type';
+import LoadingHelperWidget from '../../core/components/LoadingHelperWidget';
 
-const washingEmojis = ["✨", "💧", "🛁", "🧴", "🧼", "🧽", "🚿", "🧹", "🧤", "🫧"];
+const washingEmojis = ['✨', '💧', '🛁', '🧴', '🧼', '🧽', '🚿', '🧹', '🧤', '🫧'];
 
 interface LaundryWeekProps {
   config?: LaundryWeekConfig;
@@ -40,7 +38,9 @@ const LaundryWeek: React.FC<LaundryWeekProps> = ({ config = defaultConfig }) => 
   };
 
   const allWeeks = createLaundryList(1, 52, config?.responsibles ?? []);
-  const displayedWeeks = isExpanded ? allWeeks : allWeeks.filter((week) => week.week === currentWeek);
+  const displayedWeeks = isExpanded
+    ? allWeeks
+    : allWeeks.filter((week) => week.week === currentWeek);
 
   return (
     <LoadingHelperWidget widgetKey={WidgetEnum.laundryWeek} showConfig={() => !config}>
@@ -52,7 +52,7 @@ const LaundryWeek: React.FC<LaundryWeekProps> = ({ config = defaultConfig }) => 
           <>
             {displayedWeeks.map((week, weekIndex) => (
               <div
-                className={`week-row ${isExpanded ? "expand" : ""} ${week.week === currentWeek ? "highlight" : ""}`}
+                className={`week-row ${isExpanded ? 'expand' : ''} ${week.week === currentWeek ? 'highlight' : ''}`}
                 key={weekIndex}
               >
                 {isExpanded ? (
@@ -72,7 +72,12 @@ const LaundryWeek: React.FC<LaundryWeekProps> = ({ config = defaultConfig }) => 
               {isExpanded ? <SlArrowUp /> : <SlArrowDown />}
             </div>
             <div className="rodt-slogan">
-              <img src={"./img/laundry-week/rodt_logo.png"} width={40} height={40} alt="Fordi felleskap fungerer" />
+              <img
+                src={'./img/laundry-week/rodt_logo.png'}
+                width={40}
+                height={40}
+                alt="Fordi felleskap fungerer"
+              />
               <p>Fordi felleskap fungerer</p>
             </div>
           </>

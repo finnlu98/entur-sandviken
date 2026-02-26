@@ -1,5 +1,4 @@
-import { Session, SessionData } from "express-session";
-import IFetcher from "./IFetcher";
+import type IFetcher from './IFetcher';
 
 export default interface IFethcerEndpoint extends IFetcher {
   endpoint?: string;

@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { useWidgetQuery } from "../../core/hooks/useWidgetQuery";
 import type { CityBikeConfig } from "../CityBikeWidget";
-import { CityBikeData } from "../model/CityBikeData";
-import { CityBikeResponse, Station } from "../model/CityBikeResponse";
+import type { CityBikeData } from "../model/CityBikeData";
+import type { CityBikeResponse, Station } from "../model/CityBikeResponse";
 import CityBikeService from "../service/CityBikeService";
-import { CityBikeStatusResponse } from "../model/CityBikeStatusResponse";
+import type { CityBikeStatusResponse } from "../model/CityBikeStatusResponse";
 import { cityBikeStatusMapper } from "../mapper/city-bike-mapper";
 import cityBikeApi from "../api/city-bike-fetcher";
 

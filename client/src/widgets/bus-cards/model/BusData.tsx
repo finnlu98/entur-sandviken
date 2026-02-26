@@ -1,5 +1,5 @@
-import { TravelRoute } from "../TravelCardWidget";
-import { TravelResponse } from "./TravelResponse";
+import type { TravelRoute } from "../TravelCardWidget";
+import type { TravelResponse } from "./TravelResponse";
 
 export class BusData {
   constructor(travelResponse: TravelResponse, travelRoute: TravelRoute) {

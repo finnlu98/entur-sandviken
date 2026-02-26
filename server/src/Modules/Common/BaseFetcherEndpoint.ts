@@ -1,4 +1,4 @@
-import IFethcerEndpoint from "../../Model/Interface/IFethcerEndpoint";
+import type IFethcerEndpoint from "../../Model/Interface/IFethcerEndpoint";
 import BaseFetcher from "./BaseFetcher";
 import axios from "axios";
 

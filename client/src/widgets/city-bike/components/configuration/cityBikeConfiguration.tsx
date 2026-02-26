@@ -1,9 +1,9 @@
-import { CityBikeConfig } from "../../CityBikeWidget";
+import type { CityBikeConfig } from "../../CityBikeWidget";
 import { useEffect } from "react";
 import { MapContainer, Marker, TileLayer, useMap, useMapEvents, ZoomControl } from "react-leaflet";
 import L from "leaflet";
 import AdressSearch from "../../../../core/shared/adressSearch/AdressSearch";
-import { Address } from "../../../../model/Adress";
+import type { Address } from "../../../../model/Adress";
 import "./cityBikeConfiguration.css";
 import { useCityBikeStationQuery, useClosestCityBikeStations } from "../../hook/city-bike-hook";
 
@@ -81,7 +81,7 @@ const CityBikeConfiguration: React.FC<CityBikeConfigurationProps> = ({ config = 
   };
 
   function formatMarker(stationId: string) {
-    var selected = "☑️";
+    let selected = "☑️";
 
     if (config?.stations?.length > 0 && config?.stations.includes(stationId)) selected = "✅";
 

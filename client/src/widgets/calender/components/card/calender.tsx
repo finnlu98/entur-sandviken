@@ -3,7 +3,7 @@ import CalenderRow from "./calender-row";
 import { v4 as uuidv4 } from "uuid";
 import LoadingHelperWidget from "../../../core/components/LoadingHelperWidget";
 import { WidgetEnum } from "../../../core/model/widget-type";
-import { CalendarEvent } from "../../api/calender-ical-fetcher";
+import type { CalendarEvent } from "../../api/calender-ical-fetcher";
 
 interface CalenderProps {
   data?: CalendarEvent[] | undefined;

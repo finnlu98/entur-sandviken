@@ -1,9 +1,9 @@
 import { FaThermometerFull } from "react-icons/fa";
 import LoadingHelperWidget from "../../../core/components/LoadingHelperWidget";
 import { WidgetEnum } from "../../../core/model/widget-type";
-import { SwimmingResponse } from "../../model/swimming-response";
+import type { SwimmingResponse } from "../../model/swimming-response";
 import "./swimming.css";
-import { SwimmingConfig } from "../../swimming-widget";
+import type { SwimmingConfig } from "../../swimming-widget";
 import { MdStarRate } from "react-icons/md";
 
 interface SwimmingProps {

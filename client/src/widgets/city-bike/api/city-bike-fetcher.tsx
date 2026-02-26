@@ -1,6 +1,6 @@
 import configuration from "../../../Configuration";
-import { CityBikeStationResponse } from "../model/CityBikeStationsResponse";
-import { CityBikeStatusResponse } from "../model/CityBikeStatusResponse";
+import type { CityBikeStationResponse } from "../model/CityBikeStationsResponse";
+import type { CityBikeStatusResponse } from "../model/CityBikeStatusResponse";
 import externalApiClient from "../../../api/ExternalApiClient";
 import BaseWidgetApi from "../../core/api/BaseWidgetApi";
 

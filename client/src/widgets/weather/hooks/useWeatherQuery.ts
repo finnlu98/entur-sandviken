@@ -1,4 +1,4 @@
-import { WeatherData } from "../model/data/WeatherData";
+import type { WeatherData } from "../model/data/WeatherData";
 import weatherApi from "../api/WeatherApi";
 import type { WeatherConfig } from "../WeatherWidget";
 import { useWidgetQuery } from "../../core/hooks/useWidgetQuery";

@@ -1,5 +1,5 @@
 import BaseRouter from "../Common/BaseRouter";
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import { HomeActionsFetcher } from "./HomeActionsFetcher";
 
 export class HomeActionsRouter extends BaseRouter {

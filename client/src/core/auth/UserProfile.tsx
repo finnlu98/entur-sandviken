@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { User } from "../../model/User";
+import type { User } from "../../model/User";
 import ImageCircle from "../shared/imageCirlce/ImageCircle";
 import UploadImageCircle from "../shared/imageCirlce/UploadImageCircle";
 import { useAuth } from "../../context/AuthContext";

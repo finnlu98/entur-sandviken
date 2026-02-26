@@ -1,7 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 import configuration from "../../../Configuration";
-import { CalenderResponse } from "../model/CalenderResponse";
+import type { CalenderResponse } from "../model/CalenderResponse";
 const CalenderFetcher = async (calenderKey: string, calenderId: string) => {
   if (
     !calenderKey ||
@@ -17,7 +17,7 @@ const CalenderFetcher = async (calenderKey: string, calenderId: string) => {
 
     const config = configuration.getCalenderConfig();
 
-    var endoint = config.Endpoint.replace(":CAL_ID", calenderId)
+    const endoint = config.Endpoint.replace(":CAL_ID", calenderId)
       .replace(":API_KEY", calenderKey)
       .replace(":TIME_MIN", TIME_MIN)
       .replace(":MAX_RESULTS", config.maxResults.toString());

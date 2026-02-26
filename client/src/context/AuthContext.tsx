@@ -1,7 +1,7 @@
 import { useState, useEffect, createContext, useContext, useMemo, useCallback } from "react";
 import apiClient from "../api/ApiClient";
-import { User } from "../model/User";
-import { Home } from "../model/Home";
+import type { User } from "../model/User";
+import type { Home } from "../model/Home";
 import { useSearchParams } from "react-router-dom";
 
 interface AuthContextProps {

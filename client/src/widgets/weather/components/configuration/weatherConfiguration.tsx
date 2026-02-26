@@ -1,6 +1,6 @@
-import { WeatherConfig } from "../../WeatherWidget";
+import type { WeatherConfig } from "../../WeatherWidget";
 import AdressSearch from "../../../../core/shared/adressSearch/AdressSearch";
-import { Address } from "../../../../model/Adress";
+import type { Address } from "../../../../model/Adress";
 
 interface WeatherConfigurationProps {
   setConfig: (config: WeatherConfig) => void;

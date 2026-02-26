@@ -1,4 +1,4 @@
-import { CityBikeResponse, Station } from "../model/CityBikeResponse";
+import type { CityBikeResponse, Station } from "../model/CityBikeResponse";
 
 class CityBikeService {
   static getClosestStations(

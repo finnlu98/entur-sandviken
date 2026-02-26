@@ -1,4 +1,4 @@
-import { JsonValue } from "@prisma/client/runtime/client";
+import type { JsonValue } from "@prisma/client/runtime/client";
 
 export interface HomeConfigDto {
   widgetPositions: JsonValue | null;

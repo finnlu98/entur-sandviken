@@ -1,6 +1,6 @@
 import LoadingOverlay from "../../../feedback/loading/components/Loading/LoadingOverlay";
 import { useLoading } from "../../../feedback/loading/hooks/useLoading";
-import { WidgetEnum } from "../model/widget-type";
+import type { WidgetEnum } from "../model/widget-type";
 import EditWidget from "./EditWidget";
 
 interface LoadingHelperWidgetProps {

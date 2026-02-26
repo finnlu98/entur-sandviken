@@ -1,26 +1,26 @@
-import prisma from "../../Lib/prisma";
-import { StorageService } from "../../Shared/Storage/StorageService";
-import path from "path";
-import { StoragePath } from "../../Shared/Storage/StoragePath";
-import { Home, User } from "../../generated/prisma";
-import { Location } from "../../Model/data/Location";
-import moment from "moment";
-import { generateToken, hashToken } from "../../Lib/encryption";
+import prisma from '../../Lib/prisma';
+import { StorageService } from '../../Shared/Storage/StorageService';
+import path from 'path';
+import { StoragePath } from '../../Shared/Storage/StoragePath';
+import type { Home, User } from '../../generated/prisma';
+import type { Location } from '../../Model/data/Location';
+import moment from 'moment';
+import { generateToken, hashToken } from '../../Lib/encryption';
 
 export default class AuthorizationService {
   private storageService: StorageService;
   constructor() {
     this.storageService = new StorageService(
       path.join(process.cwd(), StoragePath.StorageRoot),
-      `/${StoragePath.MediaEndpoint}`,
+      `/${StoragePath.MediaEndpoint}`
     );
   }
 
   async generateInvite(email: string): Promise<string> {
     const user = await prisma.user.upsert({
       where: { email },
-      update: { status: "invited" },
-      create: { email, status: "invited", created_at: new Date() },
+      update: { status: 'invited' },
+      create: { email, status: 'invited', created_at: new Date() },
     });
 
     if (!user.home_id) {
@@ -39,7 +39,7 @@ export default class AuthorizationService {
       data: {
         user_id: user.id,
         token_hash: tokenHash,
-        purpose: "invite",
+        purpose: 'invite',
         expires_at: expiresAt,
         created_at: new Date(),
       },
@@ -62,21 +62,21 @@ export default class AuthorizationService {
     });
 
     if (!record) {
-      return { success: false, error: "Invalid token" };
+      return { success: false, error: 'Invalid token' };
     }
 
     if (record.used_at) {
-      return { success: false, error: "Token already used" };
+      return { success: false, error: 'Token already used' };
     }
 
     if (record.expires_at.getTime() < Date.now()) {
-      return { success: false, error: "Token expired" };
+      return { success: false, error: 'Token expired' };
     }
 
     const user = record.user;
 
-    if (user.status === "disabled") {
-      return { success: false, error: "User disabled" };
+    if (user.status === 'disabled') {
+      return { success: false, error: 'User disabled' };
     }
 
     await prisma.loginTokens.update({
@@ -84,10 +84,10 @@ export default class AuthorizationService {
       data: { used_at: new Date() },
     });
 
-    if (user.status !== "active") {
+    if (user.status !== 'active') {
       await prisma.user.update({
         where: { id: user.id },
-        data: { status: "active" },
+        data: { status: 'active' },
       });
     }
 
@@ -109,7 +109,7 @@ export default class AuthorizationService {
     const updateData: { name?: string; avatar_img_key?: string } = {};
 
     const user = await prisma.user.findUnique({ where: { id: userId } });
-    if (!user) throw new Error("User not found");
+    if (!user) throw new Error('User not found');
 
     if (file) {
       updateData.avatar_img_key = await this.uploadImage(file, StoragePath.UserPath);
@@ -137,7 +137,7 @@ export default class AuthorizationService {
 
   async getUserHome(userId: any): Promise<any> {
     const user = await prisma.user.findUnique({ where: { id: userId } });
-    if (!user) throw new Error("User not found");
+    if (!user) throw new Error('User not found');
 
     if (!user?.home_id) {
       return null;
@@ -153,9 +153,12 @@ export default class AuthorizationService {
 
   async createUserHome(userId: any): Promise<Home> {
     const user = await prisma.user.findUnique({ where: { id: userId } });
-    if (!user) throw new Error("User not found");
+    if (!user) throw new Error('User not found');
     if (user.home_id) {
-      const existingHome = await prisma.home.findUnique({ where: { id: user.home_id }, include: { users: true } });
+      const existingHome = await prisma.home.findUnique({
+        where: { id: user.home_id },
+        include: { users: true },
+      });
       if (existingHome) {
         return existingHome;
       }
@@ -170,9 +173,13 @@ export default class AuthorizationService {
     return home;
   }
 
-  async updateHome(userId: any, homeData: Partial<Home>, file?: Express.Multer.File): Promise<Home> {
+  async updateHome(
+    userId: any,
+    homeData: Partial<Home>,
+    file?: Express.Multer.File
+  ): Promise<Home> {
     const user = await prisma.user.findUnique({ where: { id: userId } });
-    if (!user) throw new Error("User not found");
+    if (!user) throw new Error('User not found');
 
     let homeId = user.home_id;
 
@@ -181,7 +188,7 @@ export default class AuthorizationService {
       homeId = home.id;
     }
 
-    const { id, ...updateData } = homeData;
+    const { ...updateData } = homeData;
     const filteredUpdateData: any = {};
 
     if (file) {
@@ -196,16 +203,19 @@ export default class AuthorizationService {
 
     if (updateData.location !== undefined) {
       try {
-        const parsed = typeof updateData.location === "string" ? JSON.parse(updateData.location) : updateData.location;
+        const parsed =
+          typeof updateData.location === 'string'
+            ? JSON.parse(updateData.location)
+            : updateData.location;
 
-        if (parsed && typeof parsed === "object" && "lat" in parsed && "lon" in parsed) {
+        if (parsed && typeof parsed === 'object' && 'lat' in parsed && 'lon' in parsed) {
           const loc: Location = {
             lat: parsed.lat,
             lon: parsed.lon,
           };
           filteredUpdateData.location = loc;
         }
-      } catch (e) {
+      } catch {
         filteredUpdateData.location = null;
       }
     }
@@ -221,7 +231,7 @@ export default class AuthorizationService {
 
   async addHomeMember(userId: string, addUserEmail: string): Promise<User | null> {
     const user = await prisma.user.findUnique({ where: { id: userId } });
-    if (!user) throw new Error("User not found");
+    if (!user) throw new Error('User not found');
 
     if (!user.home_id) {
       return null;
@@ -232,7 +242,7 @@ export default class AuthorizationService {
       const newUser = await prisma.user.create({
         data: {
           email: addUserEmail,
-          status: "invited",
+          status: 'invited',
           created_at: moment().toDate(),
           home_id: user.home_id,
         },
@@ -253,10 +263,10 @@ export default class AuthorizationService {
     userId: string,
     updateUserEmail: string,
     name: string,
-    file?: Express.Multer.File,
+    file?: Express.Multer.File
   ): Promise<User | null> {
     const user = await prisma.user.findUnique({ where: { id: userId } });
-    if (!user) throw new Error("User not found");
+    if (!user) throw new Error('User not found');
     if (!user.home_id) {
       return null;
     }
@@ -290,18 +300,21 @@ export default class AuthorizationService {
     return this.transformUser(res);
   }
 
-  async removeHomeMember(userId: string, email: string): Promise<{ success: boolean; message?: string }> {
+  async removeHomeMember(
+    userId: string,
+    email: string
+  ): Promise<{ success: boolean; message?: string }> {
     const user = await prisma.user.findUnique({ where: { id: userId } });
-    if (!user) throw new Error("User not found");
+    if (!user) throw new Error('User not found');
     if (!user.home_id) {
-      return { success: false, message: "User has no home" };
+      return { success: false, message: 'User has no home' };
     }
     const removeUser = await prisma.user.findUnique({ where: { email } });
     if (!removeUser) {
-      return { success: false, message: "User not found" };
+      return { success: false, message: 'User not found' };
     }
     if (removeUser.home_id !== user.home_id) {
-      return { success: false, message: "User is not a member of your home" };
+      return { success: false, message: 'User is not a member of your home' };
     }
 
     await prisma.user.update({

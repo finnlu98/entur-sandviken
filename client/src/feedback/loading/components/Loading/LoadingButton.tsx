@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 import "./loading-button.css";
 import { useLoading } from "../../hooks/useLoading";
 

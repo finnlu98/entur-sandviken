@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import './electricity-prices.css'
-import moment from "moment";
+import React, { useState, useEffect } from 'react';
+import './electricity-prices.css';
+import moment from 'moment';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,38 +9,27 @@ import {
   Title,
   Tooltip,
   Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-import FetchElectricityPrices from "../../api/electricity-price-fetcher";
-import { ElectricityPrice, ComponentData, Datasets } from "../../model/ElectricityPrices";
-import BarChart from "../charts/bar-chart";
+} from 'chart.js';
+import FetchElectricityPrices from '../../api/electricity-price-fetcher';
+import { ComponentData, Datasets, type ElectricityPrice } from '../../model/ElectricityPrices';
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-  );
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const ElectrictyPrices: React.FC = () => {
   const [elecPrices, setElecPrices] = useState<ElectricityPrice[]>();
   const [dynamicData, setData] = useState<ComponentData>();
 
-  const todaysDate = moment().format('DD/MM/YY')
-
   useEffect(() => {
-    const setAndFetchElecPrices = async () => setElecPrices(await FetchElectricityPrices())
-    setAndFetchElecPrices()
-  }, [])
+    const setAndFetchElecPrices = async () => setElecPrices(await FetchElectricityPrices());
+    setAndFetchElecPrices();
+  }, []);
 
   useEffect(() => {
     if (elecPrices && elecPrices.length > 0) {
-      const labels = elecPrices.map((entry) => moment(entry.time_start).format('HH') );
+      const labels = elecPrices.map((entry) => moment(entry.time_start).format('HH'));
       const nokData = elecPrices.map((entry) => entry.NOK_per_kWh);
-  
-      setData(new ComponentData(labels, [new Datasets(nokData)]))
+
+      setData(new ComponentData(labels, [new Datasets(nokData)]));
     }
   }, [elecPrices]);
 
@@ -53,6 +42,6 @@ const ElectrictyPrices: React.FC = () => {
       {/* <BarChart title={`${todaysDate} - NOK per kWh`} chartData={dynamicData} /> */}
     </div>
   );
-}
+};
 
 export default ElectrictyPrices;

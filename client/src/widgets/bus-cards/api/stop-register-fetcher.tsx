@@ -1,6 +1,6 @@
 import axios from "axios";
 import Configuration from "../../../Configuration";
-import { StopSearchResponse } from "../model/StopSearchResponse";
+import type { StopSearchResponse } from "../model/StopSearchResponse";
 
 const SearchStopFetcher = async (searchTrerm: string) => {
   const config = Configuration.getEnturConfig();

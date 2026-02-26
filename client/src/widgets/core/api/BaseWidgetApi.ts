@@ -1,6 +1,6 @@
 import { XMLParser } from "fast-xml-parser";
 import externalApiClient from "../../../api/ExternalApiClient";
-import { AxiosInstance } from "axios";
+import type { AxiosInstance } from "axios";
 import apiClient from "../../../api/ApiClient";
 
 export default abstract class BaseWidgetApi {

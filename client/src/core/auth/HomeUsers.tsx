@@ -1,10 +1,10 @@
-import { IoAddCircleOutline } from "react-icons/io5";
-import { useAuth } from "../../context/AuthContext";
-import UserProfile from "./UserProfile";
-import PopupButton from "../shared/popup/Popup";
-import { IoMdSend } from "react-icons/io";
-import { useState } from "react";
-import LoadingButton from "../../feedback/loading/components/Loading/LoadingButton";
+import { IoAddCircleOutline } from 'react-icons/io5';
+import { useAuth } from '../../context/AuthContext';
+import UserProfile from './UserProfile';
+import PopupButton from '../shared/popup/Popup';
+import { IoMdSend } from 'react-icons/io';
+import { useState } from 'react';
+import LoadingButton from '../../feedback/loading/components/Loading/LoadingButton';
 
 interface HomeUsersProps {
   editMode: boolean;
@@ -13,7 +13,7 @@ interface HomeUsersProps {
 
 const HomeUsers: React.FC<HomeUsersProps> = ({ editMode, onSave }) => {
   const { home, user, addHomeMember } = useAuth();
-  const [addEmail, setAddEmail] = useState("");
+  const [addEmail, setAddEmail] = useState('');
   async function addEmailToHome(email: string, closePopup: () => void) {
     await addHomeMember(email);
     closePopup();
@@ -25,7 +25,9 @@ const HomeUsers: React.FC<HomeUsersProps> = ({ editMode, onSave }) => {
         {home?.users &&
           home.users
             .filter((u) => u?.email !== user?.email)
-            .map((user, index) => <UserProfile key={user.email} user={user} editMode={editMode} onSave={onSave} />)}
+            .map((user) => (
+              <UserProfile key={user.email} user={user} editMode={editMode} onSave={onSave} />
+            ))}
         {editMode && (
           <div className="h-row center">
             <PopupButton position="bottom">

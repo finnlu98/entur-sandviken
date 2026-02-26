@@ -1,4 +1,4 @@
-import moment, { Moment } from "moment";
+import moment, { type Moment } from 'moment';
 
 export class Caches {
   caches: Map<string, Cache>;

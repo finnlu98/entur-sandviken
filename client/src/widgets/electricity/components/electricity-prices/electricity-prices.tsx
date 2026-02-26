@@ -11,7 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import FetchElectricityPrices from '../../api/electricity-price-fetcher';
-import { ComponentData, Datasets, type ElectricityPrice } from '../../model/ElectricityPrices';
+import { ComponentData, Datasets, type ElectricityPrice } from '../../model/electricity-prices';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 

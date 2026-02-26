@@ -1,8 +1,8 @@
 import { useQueries } from '@tanstack/react-query';
 import calenderApi, { type CalendarEvent } from '../api/calender-ical-fetcher';
-import type { CalenderConfig } from '../CalenderWidget';
+import type { CalenderConfig } from '../calender-widget';
 import { calenderMapper } from '../mapper/calender-mappers';
-import { AlertVariant } from '../../../feedback/alert/model/AlertTypes';
+import { AlertVariant } from '../../../feedback/alert/model/alert-types';
 
 import { CALENDER_FETCH_INTERVAL } from '../calender-constants';
 

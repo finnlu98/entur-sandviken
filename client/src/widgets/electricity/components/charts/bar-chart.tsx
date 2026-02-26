@@ -1,4 +1,4 @@
-import type { ComponentData } from '../../model/ElectricityPrices';
+import type { ComponentData } from '../../model/electricity-prices';
 import {
   Chart as ChartJS,
   CategoryScale,

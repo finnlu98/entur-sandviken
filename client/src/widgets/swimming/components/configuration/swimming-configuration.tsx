@@ -1,12 +1,12 @@
-import { MdInfoOutline } from "react-icons/md";
-import AdressSearch from "../../../../core/shared/adressSearch/AdressSearch";
-import PopupButton from "../../../../core/shared/popup/Popup";
-import type { Address } from "../../../../model/Adress";
-import type { SwimmingResponse } from "../../model/swimming-response";
-import type { SwimmingConfig } from "../../swimming-widget";
-import "./swimming-configuration.css";
-import { useLoading } from "../../../../feedback/loading/hooks/useLoading";
-import LoadingOverlay from "../../../../feedback/loading/components/Loading/LoadingOverlay";
+import { MdInfoOutline } from 'react-icons/md';
+import AdressSearch from '../../../../core/shared/adress-search/adress-search';
+import PopupButton from '../../../../core/shared/popup/popup';
+import type { Address } from '../../../../model/adress';
+import type { SwimmingResponse } from '../../model/swimming-response';
+import type { SwimmingConfig } from '../../swimming-widget';
+import './swimming-configuration.css';
+import { useLoading } from '../../../../feedback/loading/hooks/use-loading';
+import LoadingOverlay from '../../../../feedback/loading/components/loading/loading-overlay';
 
 interface SwimmingConfigurationProps {
   setConfig: (config: SwimmingConfig) => void;
@@ -14,9 +14,13 @@ interface SwimmingConfigurationProps {
   data?: SwimmingResponse[] | undefined;
 }
 
-const SwimmingConfiguration: React.FC<SwimmingConfigurationProps> = ({ setConfig, config, data }) => {
+const SwimmingConfiguration: React.FC<SwimmingConfigurationProps> = ({
+  setConfig,
+  config,
+  data,
+}) => {
   const { isLoading: checkLoading } = useLoading();
-  const loadingKeys = ["fetch-swimming"];
+  const loadingKeys = ['fetch-swimming'];
   const loading = loadingKeys ? loadingKeys.some((key) => checkLoading(key)) : false;
 
   function handleAddressSelect(address: Address) {
@@ -57,9 +61,9 @@ const SwimmingConfiguration: React.FC<SwimmingConfigurationProps> = ({ setConfig
                     <MdInfoOutline />
                   </span>,
                   <div>
-                    This list will change through out the year based on people sending in temperatures. You can always
-                    come back to select areas you want to highlight. Picking an area will make it show up in the top of
-                    your card.
+                    This list will change through out the year based on people sending in
+                    temperatures. You can always come back to select areas you want to highlight.
+                    Picking an area will make it show up in the top of your card.
                   </div>,
                 ]}
               </PopupButton>
@@ -69,7 +73,7 @@ const SwimmingConfiguration: React.FC<SwimmingConfigurationProps> = ({ setConfig
                 data.map((location) => (
                   <button
                     key={location.locationId}
-                    className={`h-row fill-width secondary ${config?.keepIds?.includes(location.locationId) ? "selected" : ""}`}
+                    className={`h-row fill-width secondary ${config?.keepIds?.includes(location.locationId) ? 'selected' : ''}`}
                     onClick={() => handleKeepLocation(location.locationId)}
                   >
                     <span>📍 {location.locationName}</span>

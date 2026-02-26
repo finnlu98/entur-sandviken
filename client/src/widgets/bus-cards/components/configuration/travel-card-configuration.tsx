@@ -1,13 +1,13 @@
 import './travel-card-configuration.css';
-import type { TravelCardConfig, TravelRoute } from '../../TravelCardWidget';
+import type { TravelCardConfig, TravelRoute } from '../../travel-card-widget';
 import { IoAddCircle } from 'react-icons/io5';
 import { MdDelete } from 'react-icons/md';
 import { Fragment, useRef, useState } from 'react';
-import UploadImageCircle from '../../../../core/shared/imageCirlce/UploadImageCircle';
-import SearchStop, { type SearchStopHandle } from './SearchStop';
-import type { TravelStop } from '../../model/StopSearchResponse';
+import UploadImageCircle from '../../../../core/shared/image-cirlce/upload-image-circle';
+import SearchStop, { type SearchStopHandle } from './search-stop';
+import type { TravelStop } from '../../model/stop-search-response';
 import { TiArrowRightOutline } from 'react-icons/ti';
-import { TripIdentifier } from '../../model/enum/TripIdentifier';
+import { TripIdentifier } from '../../model/enum/trip-identifier';
 
 const defaultConfigMeta = { numRows: 3, minFilter: 3 };
 const defaultColors = { general: 10, green: 7, yellow: 5 };
@@ -28,7 +28,7 @@ const defaultTravelRoute: TravelRoute = {
 
 const defaultConfig: TravelCardConfig = {
   travelRoutes: [],
-  tripIdentifier: TripIdentifier.title,
+  tripIdentifier: TripIdentifier.Title,
 };
 
 interface TravelCardConfigurationProps {
@@ -126,8 +126,8 @@ const TravelCardConfiguration: React.FC<TravelCardConfigurationProps> = ({
             type="radio"
             name="title"
             value="title"
-            checked={travelIdentifier === TripIdentifier.title}
-            onChange={() => onSetTravelIdentifier(TripIdentifier.title)}
+            checked={travelIdentifier === TripIdentifier.Title}
+            onChange={() => onSetTravelIdentifier(TripIdentifier.Title)}
           />
         </label>
         <label className="h-row">
@@ -136,8 +136,8 @@ const TravelCardConfiguration: React.FC<TravelCardConfigurationProps> = ({
             type="radio"
             name="image"
             value="image"
-            checked={travelIdentifier === TripIdentifier.img}
-            onChange={() => onSetTravelIdentifier(TripIdentifier.img)}
+            checked={travelIdentifier === TripIdentifier.Img}
+            onChange={() => onSetTravelIdentifier(TripIdentifier.Img)}
           />
         </label>
       </div>
@@ -147,7 +147,7 @@ const TravelCardConfiguration: React.FC<TravelCardConfigurationProps> = ({
             return (
               <Fragment key={`${route.startPlace.properties.id}-${route.stopPlace.properties.id}`}>
                 <div>
-                  {travelIdentifier === TripIdentifier.img && (
+                  {travelIdentifier === TripIdentifier.Img && (
                     <UploadImageCircle
                       onImageChange={(dataUrl) =>
                         onUpdateImage(dataUrl, route.startPlace, route.stopPlace)
@@ -171,7 +171,7 @@ const TravelCardConfiguration: React.FC<TravelCardConfigurationProps> = ({
             );
           })}
         <div>
-          {travelIdentifier === TripIdentifier.img && (
+          {travelIdentifier === TripIdentifier.Img && (
             <UploadImageCircle onImageChange={onImageChange} imgPath={travelRoute.imgIdentifier} />
           )}
         </div>

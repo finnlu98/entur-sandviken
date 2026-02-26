@@ -1,12 +1,12 @@
-import moment from "moment";
-import BusCard from "./bus-card";
-import React from "react";
-import "./bus-cards.css";
-import type { TripPatterns } from "../../model/TravelResponse";
-import ImageCircle from "../../../../core/shared/imageCirlce/ImageCircle";
-import { TripIdentifier } from "../../model/enum/TripIdentifier";
-import type { TravelRoute } from "../../TravelCardWidget";
-import { Mode } from "../../model/enum/Mode";
+import moment from 'moment';
+import BusCard from './bus-card';
+import React from 'react';
+import './bus-cards.css';
+import type { TripPatterns } from '../../model/travel-response';
+import ImageCircle from '../../../../core/shared/image-cirlce/image-circle';
+import { TripIdentifier } from '../../model/enum/trip-identifier';
+import type { TravelRoute } from '../../travel-card-widget';
+import { Mode } from '../../model/enum/mode';
 
 interface BusCardsProps {
   tripIdentifier: TripIdentifier;
@@ -18,7 +18,7 @@ const BusCards: React.FC<BusCardsProps> = ({ tripIdentifier, travelRoute, tripPa
   function calculateMinutesUntil(startTime: string) {
     const now = moment().utc();
     const tripStartTime = moment(startTime).utc();
-    const diffInMinutes = tripStartTime.diff(now, "minutes");
+    const diffInMinutes = tripStartTime.diff(now, 'minutes');
     return diffInMinutes;
   }
 
@@ -30,9 +30,9 @@ const BusCards: React.FC<BusCardsProps> = ({ tripIdentifier, travelRoute, tripPa
         ...tripPattern,
         legs: tripPattern.legs.filter(
           (leg) =>
-            leg.mode.toUpperCase() !== Mode.foot &&
-            leg.mode.toUpperCase() !== Mode.leg &&
-            calculateMinutesUntil(leg.expectedStartTime) >= 10,
+            leg.mode.toUpperCase() !== Mode.Foot &&
+            leg.mode.toUpperCase() !== Mode.Leg &&
+            calculateMinutesUntil(leg.expectedStartTime) >= 10
         ),
       }))
       .filter((tripPattern) => tripPattern.legs.length === 1);
@@ -40,13 +40,15 @@ const BusCards: React.FC<BusCardsProps> = ({ tripIdentifier, travelRoute, tripPa
 
   return (
     <div className="h-column">
-      {tripIdentifier === TripIdentifier.title && (
+      {tripIdentifier === TripIdentifier.Title && (
         <div className="trip-identifier">
-          <p>{travelRoute.startPlace.properties.name} - {travelRoute.stopPlace.properties.name} </p>
+          <p>
+            {travelRoute.startPlace.properties.name} - {travelRoute.stopPlace.properties.name}{' '}
+          </p>
         </div>
       )}
       <div className="bus-cards">
-        {tripIdentifier === TripIdentifier.img && (
+        {tripIdentifier === TripIdentifier.Img && (
           <ImageCircle imgPath={travelRoute.imgIdentifier} alt="Bus stop arrival" />
         )}
 

@@ -1,4 +1,4 @@
-import config from './Configuration.json';
+import config from './configuration.json';
 
 class Configuration {
   private readonly configuration: AppConfiguration;

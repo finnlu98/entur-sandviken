@@ -1,7 +1,7 @@
-import type { NewsResponse } from "../../model/NewsResponse";
-import "./news.css";
-import LoadingHelperWidget from "../../../core/components/LoadingHelperWidget";
-import { WidgetEnum } from "../../../core/model/widget-type";
+import type { NewsResponse } from '../../model/news-response';
+import './news.css';
+import LoadingHelperWidget from '../../../core/components/loading-helper-widget';
+import { WidgetEnum } from '../../../core/model/widget-type';
 
 interface NewsProps {
   data?: NewsResponse;
@@ -9,7 +9,7 @@ interface NewsProps {
 
 const News: React.FC<NewsProps> = ({ data }) => {
   return (
-    <LoadingHelperWidget widgetKey={WidgetEnum.news} loadingKeys={["fetch-news"]}>
+    <LoadingHelperWidget widgetKey={WidgetEnum.News} loadingKeys={['fetch-news']}>
       <div className="h-column fill-width widget-overflow">
         <div className="widget-title">
           <div>Current news 📰</div>
@@ -23,7 +23,11 @@ const News: React.FC<NewsProps> = ({ data }) => {
                   <div className="news-img-container right-align">
                     <img
                       className="news-img"
-                      src={newsItem?.media_content?.url ? `${newsItem.media_content.url}` : "./img/news/newspaper.png"}
+                      src={
+                        newsItem?.media_content?.url
+                          ? `${newsItem.media_content.url}`
+                          : './img/news/newspaper.png'
+                      }
                       alt="news-image"
                     />
                   </div>

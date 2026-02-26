@@ -3,10 +3,10 @@ import { IoMdAdd, IoMdArrowDropright } from 'react-icons/io';
 import { CiEdit } from 'react-icons/ci';
 import './sidebar.css';
 import { useEffect, useState } from 'react';
-import Profile from '../../auth/Profile';
+import Profile from '../../auth/profile';
 import { FaAngleDoubleLeft, FaAngleDoubleRight, FaCaretRight } from 'react-icons/fa';
-import EditEntity from '../editMode/edit-entity';
-import { EditingKey } from '../model/EditMode';
+import EditEntity from '../edit-mode/edit-entity';
+import { EditingKey } from '../model/edit-mode';
 import { Widgets } from '../../../widgets/core/model/widgets';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { AiOutlineLayout } from 'react-icons/ai';
@@ -44,7 +44,7 @@ const Sidebar: React.FC = () => {
                 <div className="item friendly-display-item">Home settings</div>
               </div>
               <div className="item widget-action-buttons">
-                <button className="small" onClick={() => setEditingKey(EditingKey.profile)}>
+                <button className="small" onClick={() => setEditingKey(EditingKey.Profile)}>
                   <FaCaretRight />
                 </button>
               </div>
@@ -57,7 +57,7 @@ const Sidebar: React.FC = () => {
                 <div className="item friendly-display-item">Layout templates</div>
               </div>
               <div className="item widget-action-buttons">
-                <button className="small" onClick={() => setEditingKey(EditingKey.layoutTemplate)}>
+                <button className="small" onClick={() => setEditingKey(EditingKey.LayoutTemplate)}>
                   <FaCaretRight />
                 </button>
               </div>

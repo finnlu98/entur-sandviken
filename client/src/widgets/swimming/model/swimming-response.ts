@@ -1,4 +1,4 @@
-import type { Coordinate } from "../../../model/Coordinate";
+import type { Coordinate } from '../../../model/coordinate';
 
 export class SwimmingResponse {
   locationName!: string;

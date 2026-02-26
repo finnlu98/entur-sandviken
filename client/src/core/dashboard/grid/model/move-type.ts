@@ -1,4 +1,4 @@
 export enum MoveType {
-  resize = "resize",
-  move = "move",
+  Resize = 'resize',
+  Move = 'move',
 }

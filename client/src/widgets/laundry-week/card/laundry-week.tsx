@@ -3,9 +3,9 @@ import moment from 'moment';
 import './laundry-week.css';
 
 import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
-import type { LaundryWeekConfig } from '../LaundryWeekWidget';
+import type { LaundryWeekConfig } from '../laundry-week-widget';
 import { WidgetEnum } from '../../core/model/widget-type';
-import LoadingHelperWidget from '../../core/components/LoadingHelperWidget';
+import LoadingHelperWidget from '../../core/components/loading-helper-widget';
 
 const washingEmojis = ['✨', '💧', '🛁', '🧴', '🧼', '🧽', '🚿', '🧹', '🧤', '🫧'];
 
@@ -43,7 +43,7 @@ const LaundryWeek: React.FC<LaundryWeekProps> = ({ config = defaultConfig }) => 
     : allWeeks.filter((week) => week.week === currentWeek);
 
   return (
-    <LoadingHelperWidget widgetKey={WidgetEnum.laundryWeek} showConfig={() => !config}>
+    <LoadingHelperWidget widgetKey={WidgetEnum.LaundryWeek} showConfig={() => !config}>
       <div className="laundry-week">
         <div className="laundry-week-header widget-title">
           <div>Washing in week {currentWeek}</div>

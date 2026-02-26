@@ -1,28 +1,28 @@
-import configuration from "../../../Configuration";
-import BaseWidgetApi from "../../core/api/BaseWidgetApi";
-import { ElectricityData } from "../model/ElectricityData";
-import type { ElviaConsumptionResponse } from "../model/ElviaConsumptionResponse";
-import { ElviaService } from "../services/ElviaService";
-import moment from "moment";
+import configuration from '../../../configuration';
+import BaseWidgetApi from '../../core/api/base-widget-api';
+import { ElectricityData } from '../model/electricity-data';
+import type { ElviaConsumptionResponse } from '../model/elvia-consumption-response';
+import { ElviaService } from '../services/elvia-service';
+import moment from 'moment';
 
 class ElviaApi extends BaseWidgetApi {
   async fetchConsumptionData(): Promise<ElectricityData> {
     const consumptionEndpoint = configuration.getElviaConfig().Consumption.Endpoint;
-    const brokerEndpoint = "/broker";
+    const brokerEndpoint = '/broker';
     const formattedEndpoint = new URL(consumptionEndpoint);
-    formattedEndpoint.searchParams.set("startTime", moment().startOf("month").format());
+    formattedEndpoint.searchParams.set('startTime', moment().startOf('month').format());
     try {
       const response = await this.postInternalJson<ElviaConsumptionResponse>(
         brokerEndpoint,
         {},
-        { endpoint: formattedEndpoint.toString(), integration: "Elvia" },
-        "fetch-elvia-consumption",
+        { endpoint: formattedEndpoint.toString(), integration: 'Elvia' },
+        'fetch-elvia-consumption'
       );
 
       const elecService = new ElviaService(response);
       return new ElectricityData(elecService);
     } catch (error) {
-      console.error("Failed to fetch Elvia consumption data", error);
+      console.error('Failed to fetch Elvia consumption data', error);
       throw error;
     }
   }
@@ -32,30 +32,30 @@ class ElviaApi extends BaseWidgetApi {
 
     try {
       const res = await this.postInternalJson<{ success: boolean }>(
-        "/integration",
+        '/integration',
         {},
-        { provider: "Elvia", key: formatKey, endpoint: this.formatEndpoint() },
-        "post-elvia-key",
+        { provider: 'Elvia', key: formatKey, endpoint: this.formatEndpoint() },
+        'post-elvia-key'
       );
       return res.success;
     } catch (error) {
-      console.error("Failed to post Elvia key", error);
+      console.error('Failed to post Elvia key', error);
       throw error;
     }
   }
 
   async getHasElviaKey(): Promise<boolean> {
     try {
-      const res = await this.getInternalJson<{ integration: string | null }>("/integration", {
-        params: { provider: "Elvia" },
+      const res = await this.getInternalJson<{ integration: string | null }>('/integration', {
+        params: { provider: 'Elvia' },
         meta: {
-          loadingKey: "has-elvia-key",
-          errorMessage: "Failed to get Elvia key status",
+          loadingKey: 'has-elvia-key',
+          errorMessage: 'Failed to get Elvia key status',
         },
       });
       return res.integration !== null;
     } catch (error) {
-      console.error("Failed to get Elvia key status", error);
+      console.error('Failed to get Elvia key status', error);
       return false;
     }
   }
@@ -63,7 +63,7 @@ class ElviaApi extends BaseWidgetApi {
   formatEndpoint(): string {
     const consumptionEndpoint = configuration.getElviaConfig().Consumption.Endpoint;
     const formattedEndpoint = new URL(consumptionEndpoint);
-    formattedEndpoint.searchParams.set("startTime", moment().startOf("month").format());
+    formattedEndpoint.searchParams.set('startTime', moment().startOf('month').format());
     return formattedEndpoint.toString();
   }
 }

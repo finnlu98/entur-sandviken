@@ -1,7 +1,7 @@
-import type { Coordinates, Transform } from "@dnd-kit/utilities";
-import type { GridItem, GridMetaData, PreviewState, Rect } from "../model/grid-models";
-import { MoveType } from "../model/move-type";
-import { ResizeDirection } from "../model/resize-direction";
+import type { Coordinates, Transform } from '@dnd-kit/utilities';
+import type { GridItem, GridMetaData, PreviewState, Rect } from '../model/grid-models';
+import { MoveType } from '../model/move-type';
+import { ResizeDirection } from '../model/resize-direction';
 
 export default class GridService {
   static compactLayout(widgets: GridItem[], gridData: GridMetaData): GridItem[] {
@@ -19,7 +19,7 @@ export default class GridService {
     gridItem: GridItem,
     moveTransform: Transform | null,
     gridData: GridMetaData,
-    editMode: boolean,
+    editMode: boolean
   ): React.CSSProperties {
     const transform = moveTransform ?? { x: 0, y: 0 };
 
@@ -28,7 +28,8 @@ export default class GridService {
 
     const leftGap = gridItem.col !== 0 ? gridData.gap : 0;
     const finalX = baseX + transform.x + leftGap;
-    let rightGap = gridItem.col !== gridData.columns - gridItem.colSpan ? gridData.gap * 2 : gridData.gap;
+    let rightGap =
+      gridItem.col !== gridData.columns - gridItem.colSpan ? gridData.gap * 2 : gridData.gap;
     rightGap = gridItem.col === 0 ? rightGap - gridData.gap : rightGap;
 
     const widthPx = gridItem.colSpan * gridData.colWidth - rightGap;
@@ -36,13 +37,13 @@ export default class GridService {
     const heightPx = gridItem.rowSpan * gridData.colHeight - gridData.gap * 2;
 
     return {
-      position: "absolute",
+      position: 'absolute',
       width: widthPx,
       height: heightPx,
-      cursor: editMode ? "grab" : "",
+      cursor: editMode ? 'grab' : '',
       transform: `translate(${finalX}px, ${finalY}px)`,
-      touchAction: "none",
-      userSelect: "none",
+      touchAction: 'none',
+      userSelect: 'none',
     };
   }
 
@@ -66,7 +67,12 @@ export default class GridService {
     return Math.max(0, Math.min(maxDimension, boxTarget));
   }
 
-  static hasCollison(moveId: string, candidate: Rect, boxes: GridItem[], gridData: GridMetaData): boolean {
+  static hasCollison(
+    moveId: string,
+    candidate: Rect,
+    boxes: GridItem[],
+    gridData: GridMetaData
+  ): boolean {
     boxes.some((item) => {
       if (item.id === moveId) return true;
 
@@ -91,7 +97,7 @@ export default class GridService {
     moveBox: GridItem,
     gridData: GridMetaData,
     delta: Coordinates,
-    direction: ResizeDirection = ResizeDirection.BottomRight,
+    direction: ResizeDirection = ResizeDirection.BottomRight
   ): GridItem {
     const deltaCols = Math.round(delta.x / gridData.colWidth);
     const deltaRows = Math.round(delta.y / gridData.colHeight);
@@ -134,17 +140,28 @@ export default class GridService {
     gridData: GridMetaData,
     delta: Coordinates,
     moveType: MoveType,
-    direction?: ResizeDirection,
+    direction?: ResizeDirection
   ): PreviewState | undefined {
     let shadowBox: GridItem | null = null;
 
-    if (moveType === MoveType.move) shadowBox = this.computeMove(moveBox, gridData, delta);
+    if (moveType === MoveType.Move) shadowBox = this.computeMove(moveBox, gridData, delta);
 
-    if (moveType === MoveType.resize)
-      shadowBox = this.computeResize(moveBox, gridData, delta, direction || ResizeDirection.BottomRight);
+    if (moveType === MoveType.Resize)
+      shadowBox = this.computeResize(
+        moveBox,
+        gridData,
+        delta,
+        direction || ResizeDirection.BottomRight
+      );
 
     if (shadowBox) {
-      return { id: id, col: shadowBox.col, row: shadowBox.row, colSpan: shadowBox.colSpan, rowSpan: shadowBox.rowSpan };
+      return {
+        id: id,
+        col: shadowBox.col,
+        row: shadowBox.row,
+        colSpan: shadowBox.colSpan,
+        rowSpan: shadowBox.rowSpan,
+      };
     }
 
     return undefined;

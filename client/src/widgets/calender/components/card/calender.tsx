@@ -1,9 +1,9 @@
-import "./calender.css";
-import CalenderRow from "./calender-row";
-import { v4 as uuidv4 } from "uuid";
-import LoadingHelperWidget from "../../../core/components/LoadingHelperWidget";
-import { WidgetEnum } from "../../../core/model/widget-type";
-import type { CalendarEvent } from "../../api/calender-ical-fetcher";
+import './calender.css';
+import CalenderRow from './calender-row';
+import { v4 as uuidv4 } from 'uuid';
+import LoadingHelperWidget from '../../../core/components/loading-helper-widget';
+import { WidgetEnum } from '../../../core/model/widget-type';
+import type { CalendarEvent } from '../../api/calender-ical-fetcher';
 
 interface CalenderProps {
   data?: CalendarEvent[] | undefined;
@@ -14,7 +14,11 @@ const Calender: React.FC<CalenderProps> = ({ data }) => {
 
   function setCalenderRows() {
     if (data?.length === 0)
-      return <div className="empty-calender">No activities planned here, come on guys. Have some fun 🤦‍♂️</div>;
+      return (
+        <div className="empty-calender">
+          No activities planned here, come on guys. Have some fun 🤦‍♂️
+        </div>
+      );
 
     return (
       <div className="secondary-items-container">
@@ -26,7 +30,11 @@ const Calender: React.FC<CalenderProps> = ({ data }) => {
   }
 
   return (
-    <LoadingHelperWidget widgetKey={WidgetEnum.calender} showConfig={() => !data} loadingKeys={["fetch-ical-events"]}>
+    <LoadingHelperWidget
+      widgetKey={WidgetEnum.Calender}
+      showConfig={() => !data}
+      loadingKeys={['fetch-ical-events']}
+    >
       <div className="widget-overflow fill-width">
         <div className="main-item-container">
           <div className="widget-title">Next activities..</div>

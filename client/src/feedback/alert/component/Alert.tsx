@@ -1,5 +1,5 @@
-import { AlertTypeIcons, type AlertItem } from '../model/AlertTypes';
-import './Alert.css';
+import { AlertTypeIcons, type AlertItem } from '../model/alert-types';
+import './alert.css';
 import { IoMdClose } from 'react-icons/io';
 
 const AlertContainer: React.FC<{ alerts: AlertItem[]; onDismiss: (id: string) => void }> = ({

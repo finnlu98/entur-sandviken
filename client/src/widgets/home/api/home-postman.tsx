@@ -1,4 +1,4 @@
-import configuration from '../../../Configuration';
+import configuration from '../../../configuration';
 import axios from 'axios';
 
 const HomePostMan = async (event: string, selectedOption?: string) => {

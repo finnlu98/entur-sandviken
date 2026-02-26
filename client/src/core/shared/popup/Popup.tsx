@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import './Popup.css';
+import './popup.css';
 
 interface PopupProps {
   children: (closePopup: () => void) => React.ReactNode[] | React.ReactNode[];

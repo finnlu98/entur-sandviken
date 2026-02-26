@@ -11,9 +11,9 @@ import GridService from './service/grid-service';
 import { MoveType } from './model/move-type';
 import { ResizeDirection } from './model/resize-direction';
 import { useDashboard } from '../../../context/dashboard-context';
-import DefaultDashboardActions from '../default/DefaultDashboardActions';
+import DefaultDashboardActions from '../default/default-dashboard-actions';
 import './grid.css';
-import { isDefaultView } from '../util/isDefaultView';
+import { isDefaultView } from '../util/is-default-view';
 
 const COLUMNS = 24;
 const GAP = 5;
@@ -56,7 +56,7 @@ export const Grid: React.FC = () => {
     const { active, delta } = event;
     const id = active.id as string;
 
-    const isResize = id.includes(MoveType.resize);
+    const isResize = id.includes(MoveType.Resize);
     const baseId = isResize ? getBaseId(id) : id;
 
     const current = widgets.find((b) => b.id === baseId);
@@ -65,7 +65,7 @@ export const Grid: React.FC = () => {
       return;
     }
 
-    const moveType = isResize ? MoveType.resize : MoveType.move;
+    const moveType = isResize ? MoveType.Resize : MoveType.Move;
     const direction = getDirectionFromId(id);
 
     const shadowBox = GridService.computeShadow(
@@ -87,13 +87,13 @@ export const Grid: React.FC = () => {
     const { active, delta } = event;
     const id = active.id;
 
-    const isResize = id.toString().includes(MoveType.resize);
+    const isResize = id.toString().includes(MoveType.Resize);
     const baseId = isResize ? getBaseId(id) : id;
 
     const box = widgets.find((b) => b.id === baseId);
 
     if (box && gridMetaData) {
-      if (id.toString().includes(MoveType.resize)) {
+      if (id.toString().includes(MoveType.Resize)) {
         const direction = getDirectionFromId(id.toString());
         const updateItemResize = GridService.computeResize(box, gridMetaData, delta, direction);
         setPreview(null);

@@ -1,11 +1,11 @@
 import { Router, type Application, type Request, type Response } from 'express';
-import BrokerRouter from '../Modules/Broker/BrokerRouter';
-import StockRouter from '../Modules/Stock/StockRouter';
-import { HomeActionsRouter } from '../Modules/HomeActions/HomeActionsRouter';
-import { UserRouter } from '../Modules/User/UserRouter';
-import AuthorizationRouter from '../Modules/Authorization/AuthorizationRouter';
-import HomeRouter from '../Modules/Home/HomeRouter';
-import IntegrationRouter from '../Modules/Integration/IntegrationRouter';
+import BrokerRouter from '../modules/broker/broker-router';
+import StockRouter from '../modules/stock/stock-router';
+import { HomeActionsRouter } from '../modules/home-actions/home-actions-router';
+import { UserRouter } from '../modules/user/user-router';
+import AuthorizationRouter from '../modules/authorization/authorization-router';
+import HomeRouter from '../modules/home/home-router';
+import IntegrationRouter from '../modules/integration/integration-router';
 
 export class Routes {
   app: Application;

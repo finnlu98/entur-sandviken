@@ -1,13 +1,13 @@
-import "./city-bike.css";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
-import L from "leaflet";
-import type { CityBikeConfig } from "../../CityBikeWidget";
-import LoadingHelperWidget from "../../../core/components/LoadingHelperWidget";
-import { WidgetEnum } from "../../../core/model/widget-type";
-import type { CityBikeData } from "../../model/CityBikeData";
+import './city-bike.css';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import L from 'leaflet';
+import type { CityBikeConfig } from '../../city-bike-widget';
+import LoadingHelperWidget from '../../../core/components/loading-helper-widget';
+import { WidgetEnum } from '../../../core/model/widget-type';
+import type { CityBikeData } from '../../model/city-bike-data';
 
 const homeIcon = L.divIcon({
-  className: "home-label-icon",
+  className: 'home-label-icon',
   iconSize: [30, 30],
   iconAnchor: [15, 30],
 });
@@ -19,12 +19,12 @@ interface CityBikeProps {
 
 const CityBike: React.FC<CityBikeProps> = ({ data, config }) => {
   function formatMarker(available: number) {
-    let formattedClass = "bike-label";
+    let formattedClass = 'bike-label';
 
-    if (available === 0) formattedClass += " empty";
+    if (available === 0) formattedClass += ' empty';
 
     return L.divIcon({
-      className: "bike-label-icon",
+      className: 'bike-label-icon',
       html: `<div class="${formattedClass}">${available}</div>`,
       iconSize: [30, 30],
       iconAnchor: [15, 30],
@@ -33,15 +33,19 @@ const CityBike: React.FC<CityBikeProps> = ({ data, config }) => {
 
   return (
     <LoadingHelperWidget
-      widgetKey={WidgetEnum.cityBike}
-      loadingKeys={["fetch-city-bike-status", "fetch-city-bike-stations"]}
+      widgetKey={WidgetEnum.CityBike}
+      loadingKeys={['fetch-city-bike-status', 'fetch-city-bike-stations']}
       showConfig={() => !config && !data}
     >
       {config && (
         <div className="city-bikes-container">
           <div className="widget-title">
             <div>Available city bikes</div>
-            <img className="header-icon" src="/img/city-bike/bicycle-parking.png" alt="bicycle"></img>
+            <img
+              className="header-icon"
+              src="/img/city-bike/bicycle-parking.png"
+              alt="bicycle"
+            ></img>
           </div>
           <div className="map">
             <MapContainer

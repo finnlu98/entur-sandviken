@@ -1,19 +1,19 @@
 import { useState, useEffect, createContext, useContext, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import type { GridItem, GridMetaData } from '../core/dashboard/grid/model/grid-models';
-import apiClient from '../api/ApiClient';
-import { HomeConfigUtils, type HomeConfig } from '../model/HomeConfigState';
-import { useAuth } from './AuthContext';
+import apiClient from '../api/api-client';
+import { HomeConfigUtils, type HomeConfig } from '../model/home-config-state';
+import { useAuth } from './auth-context';
 import { ConfigMigration } from '../lib/version';
 import GridService from '../core/dashboard/grid/service/grid-service';
-import type { EditingKey, EditModeState } from '../core/dashboard/model/EditMode';
-import LoadServerConfig from '../core/dashboard/loadServerConfig/load-server-config';
-import { isDefaultView } from '../core/dashboard/util/isDefaultView';
-import { useAlert } from '../feedback/alert/provider/AltertProvider';
-import { AlertVariant } from '../feedback/alert/model/AlertTypes';
+import type { EditingKey, EditModeState } from '../core/dashboard/model/edit-mode';
+import LoadServerConfig from '../core/dashboard/load-server-config/load-server-config';
+import { isDefaultView } from '../core/dashboard/util/is-default-view';
+import { useAlert } from '../feedback/alert/provider/alert-provider';
+import { AlertVariant } from '../feedback/alert/model/alert-types';
 import { WidgetEnum, type WidgetDefinition } from '../widgets/core/model/widget-type';
 import { WidgetConfigs, Widgets } from '../widgets/core/model/widgets';
-import type ScreenSize from '../core/dashboard/model/ScreenSize';
+import type ScreenSize from '../core/dashboard/model/screen-size';
 
 type DashboardActions = {
   setWidgets: (widgets: GridItem[]) => void;
@@ -42,7 +42,7 @@ type DashboardState = {
 };
 
 const initialWidgets: GridItem[] = [
-  { widget: WidgetEnum.header, id: uuidv4(), col: 0, row: 0, colSpan: 24, rowSpan: 3 },
+  { widget: WidgetEnum.Header, id: uuidv4(), col: 0, row: 0, colSpan: 24, rowSpan: 3 },
 ];
 
 const defaultDashboardSize: ScreenSize = { width: 800, height: 1064 };

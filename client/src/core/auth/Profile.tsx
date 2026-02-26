@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import './Profile.css';
+import './profile.css';
 import { Modal } from '../shared/modal/modal';
-import { useAuth } from '../../context/AuthContext';
-import ImageCircle from '../shared/imageCirlce/ImageCircle';
-import ProfileOverview from './ProfileOverview';
+import { useAuth } from '../../context/auth-context';
+import ImageCircle from '../shared/image-cirlce/image-circle';
+import ProfileOverview from './profile-overview';
 
 const Profile: React.FC = () => {
   const [editProfile, setEditProfile] = useState(false);

@@ -1,28 +1,28 @@
-import { HeaderWidget } from '../../header/HeaderWidget';
-import { TravelCardWidget } from '../../bus-cards/TravelCardWidget';
-import { CalenderWidget } from '../../calender/CalenderWidget';
-import { CityBikeWidget } from '../../city-bike/CityBikeWidget';
-import { ElectricityWidget } from '../../electricity/ElectricityWidget';
-import { HomeActionsWidget } from '../../home/HomeWidget';
-import { LaundryWeekWidget } from '../../laundry-week/LaundryWeekWidget';
-import { NewsWidget } from '../../news/NewsWidget';
-import { StocksWidget } from '../../stocks/StocksWidget';
-import { WeatherWidget } from '../../weather/WeatherWidget';
+import { HeaderWidget } from '../../header/header-widget';
+import { TravelCardWidget } from '../../bus-cards/travel-card-widget';
+import { CalenderWidget } from '../../calender/calender-widget';
+import { CityBikeWidget } from '../../city-bike/city-bike-widget';
+import { ElectricityWidget } from '../../electricity/electricity-widget';
+import { HomeActionsWidget } from '../../home/home-widget';
+import { NewsWidget } from '../../news/news-widget';
+import { StocksWidget } from '../../stocks/stocks-widget';
+import { WeatherWidget } from '../../weather/weather-widget';
 import { WidgetEnum, type WidgetDefinition } from './widget-type';
 import { SwimmingWidget } from '../../swimming/swimming-widget';
+import { LaundryWeekWidget } from '../../laundry-week/laundry-week-widget';
 
 export const Widgets: Record<WidgetEnum, WidgetDefinition<any>> = {
-  [WidgetEnum.header]: HeaderWidget,
-  [WidgetEnum.weather]: WeatherWidget,
-  [WidgetEnum.stocks]: StocksWidget,
-  [WidgetEnum.news]: NewsWidget,
-  [WidgetEnum.laundryWeek]: LaundryWeekWidget,
-  [WidgetEnum.homeActions]: HomeActionsWidget,
-  [WidgetEnum.electricity]: ElectricityWidget,
-  [WidgetEnum.cityBike]: CityBikeWidget,
-  [WidgetEnum.calender]: CalenderWidget,
-  [WidgetEnum.busCards]: TravelCardWidget,
-  [WidgetEnum.swimming]: SwimmingWidget,
+  [WidgetEnum.Header]: HeaderWidget,
+  [WidgetEnum.Weather]: WeatherWidget,
+  [WidgetEnum.Stocks]: StocksWidget,
+  [WidgetEnum.News]: NewsWidget,
+  [WidgetEnum.LaundryWeek]: LaundryWeekWidget,
+  [WidgetEnum.HomeActions]: HomeActionsWidget,
+  [WidgetEnum.Electricity]: ElectricityWidget,
+  [WidgetEnum.CityBike]: CityBikeWidget,
+  [WidgetEnum.Calender]: CalenderWidget,
+  [WidgetEnum.BusCards]: TravelCardWidget,
+  [WidgetEnum.Swimming]: SwimmingWidget,
 };
 
 export const WidgetConfigs: Record<WidgetEnum, object> = (

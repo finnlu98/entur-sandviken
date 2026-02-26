@@ -1,15 +1,21 @@
-import { useQueries } from "@tanstack/react-query";
-import { busApi } from "../api/bus-time-fetcher";
-import { BusData } from "../model/BusData";
-import type { TravelCardConfig } from "../TravelCardWidget";
+import { useQueries } from '@tanstack/react-query';
+import { busApi } from '../api/bus-time-fetcher';
+import { BusData } from '../model/bus-data';
+import type { TravelCardConfig } from '../travel-card-widget';
 
-import { TRAVEL_CARD_FETCH_INTERVAL } from "../bus-cards-constants";
+import { TRAVEL_CARD_FETCH_INTERVAL } from '../bus-cards-constants';
 
-export function useBusQueries(config: TravelCardConfig | undefined): { data: BusData[] | undefined } {
+export function useBusQueries(config: TravelCardConfig | undefined): {
+  data: BusData[] | undefined;
+} {
   const routes = config?.travelRoutes ?? [];
   const results = useQueries({
     queries: routes.map((travelRoute) => ({
-      queryKey: ["busTimes", travelRoute?.startPlace.properties.id, travelRoute?.stopPlace.properties.id],
+      queryKey: [
+        'busTimes',
+        travelRoute?.startPlace.properties.id,
+        travelRoute?.stopPlace.properties.id,
+      ],
       queryFn: () => {
         if (!travelRoute) return Promise.resolve(undefined);
 

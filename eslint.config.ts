@@ -2,6 +2,7 @@ import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import globals from 'globals';
+import checkFile from 'eslint-plugin-check-file';
 
 export default tseslint.config(
   // --- Base recommended rules for all files ---
@@ -19,6 +20,7 @@ export default tseslint.config(
       '**/build/**',
       '**/__generated__/**',
       '**/generated/**',
+      '**/*.css', // CSS files are not parsed by ESLint — only checked for filename naming
     ],
   },
 
@@ -36,6 +38,16 @@ export default tseslint.config(
       eqeqeq: ['error', 'always'],
       'no-duplicate-imports': 'error',
       '@typescript-eslint/no-explicit-any': 'off', // Disabled for now
+
+      // --- PascalCase for classes, interfaces, type aliases, and enums ---
+      '@typescript-eslint/naming-convention': [
+        'warn',
+        { selector: 'class', format: ['PascalCase'] },
+        { selector: 'interface', format: ['PascalCase'] },
+        { selector: 'typeAlias', format: ['PascalCase'] },
+        { selector: 'enum', format: ['PascalCase'] },
+        { selector: 'enumMember', format: ['PascalCase', 'UPPER_CASE'] },
+      ],
     },
   },
 
@@ -72,6 +84,40 @@ export default tseslint.config(
       globals: {
         ...globals.jest,
       },
+    },
+  },
+
+  // --- File & folder naming conventions (TS/JS/TSX/JSX) ---
+  {
+    files: ['client/src/**/*.{ts,tsx,js,jsx}', 'server/src/**/*.{ts,js}'],
+    plugins: { 'check-file': checkFile },
+    rules: {
+      // All filenames must be kebab-case (e.g. my-component.tsx, use-auth.ts)
+      'check-file/filename-naming-convention': [
+        'warn',
+        {
+          'client/src/**/*.{ts,tsx,js,jsx}': 'KEBAB_CASE',
+          'server/src/**/*.{ts,js}': 'KEBAB_CASE',
+        },
+      ],
+      // All folders must be kebab-case (e.g. my-feature/, bus-cards/)
+      'check-file/folder-naming-convention': [
+        'warn',
+        {
+          'client/src/**/': 'KEBAB_CASE',
+          'server/src/**/': 'KEBAB_CASE',
+        },
+      ],
+    },
+  },
+
+  // --- CSS filename naming convention (uses processor — no code parsing) ---
+  {
+    files: ['client/src/**/*.css'],
+    plugins: { 'check-file': checkFile },
+    processor: checkFile.processors?.['eslint-processor-check-file'],
+    rules: {
+      'check-file/filename-naming-convention': ['warn', { 'client/src/**/*.css': 'KEBAB_CASE' }],
     },
   }
 );

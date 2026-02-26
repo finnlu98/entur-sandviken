@@ -1,5 +1,5 @@
-import apiClient from '../../../api/ApiClient';
-import type { StockResponse } from '../model/StockResponse';
+import apiClient from '../../../api/api-client';
+import type { StockResponse } from '../model/stock-response';
 
 const StockFetcher = async (tickers: string[]) => {
   try {

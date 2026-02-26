@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { TravelStop } from '../model/StopSearchResponse';
+import type { TravelStop } from '../model/stop-search-response';
 import SearchStopFetcher from '../api/stop-register-fetcher';
 
 const useStopSearch = () => {

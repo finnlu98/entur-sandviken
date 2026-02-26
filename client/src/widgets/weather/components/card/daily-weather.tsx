@@ -3,9 +3,9 @@ import './daily-weather.css';
 import DailyweatherRow from './daily-weather-row';
 import moment from 'moment';
 import { GiSunset, GiSunrise } from 'react-icons/gi';
-import { WeatherType } from '../../model/Enum/WeatherType';
-import LoadingHelperWidget from '../../../core/components/LoadingHelperWidget';
-import type { WeatherData } from '../../model/data/WeatherData';
+import { WeatherType } from '../../model/enum/weather-type';
+import LoadingHelperWidget from '../../../core/components/loading-helper-widget';
+import type { WeatherData } from '../../model/data/weather-data';
 import { WidgetEnum } from '../../../core/model/widget-type';
 
 interface DailyweatherProps {
@@ -31,7 +31,7 @@ const Dailyweather: React.FC<DailyweatherProps> = ({ data: weatherData }) => {
 
   return (
     <LoadingHelperWidget
-      widgetKey={WidgetEnum.weather}
+      widgetKey={WidgetEnum.Weather}
       showConfig={() => !weatherData}
       loadingKeys={['fetch-weather', 'fetch-sunrise']}
     >

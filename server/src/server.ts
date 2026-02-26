@@ -3,8 +3,8 @@ import express from 'express';
 import { Routes } from './router/routes';
 import cors from 'cors';
 import { sessionMiddleware } from './lib/session';
-import { registerMediaRoute } from './Shared/storage/media';
-import { globalLimiter } from './Shared/rate-limiting/limiters';
+import { registerMediaRoute } from './shared/storage/media';
+import { globalLimiter } from './shared/rate-limiting/limiters';
 import { registerDelay } from './lib/delay';
 
 class Server {

@@ -22,7 +22,6 @@
 - need to fix calender name
 - move config for header from home profile
 
-- add linting rules to repo
 - implement shared cache for dashboards
 
 ## Improvements

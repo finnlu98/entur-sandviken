@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: process.env.REACT_APP_HEIMR_BACKEND_ENDPOINT ?? "/api",
+  baseURL: import.meta.env.VITE_HEIMR_BACKEND_ENDPOINT ?? '/api',
   withCredentials: true,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 

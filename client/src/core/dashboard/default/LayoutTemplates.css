@@ -10,7 +10,7 @@
   border: 2px solid black;
   border-radius: 8px;
   background-color: var(--color-off-white);
-  background-image: url("../../../../public/img/layout/DefaultLayout.png");
+  background-image: url("/img/layout/DefaultLayout.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

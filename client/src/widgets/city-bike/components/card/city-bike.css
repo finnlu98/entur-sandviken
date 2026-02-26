@@ -23,11 +23,11 @@
 }
 
 .bike-label-icon {
-  background: url("../../../../../public/img/city-bike/bicycle-parking.png") center/contain no-repeat;
+  background: url("/img/city-bike/bicycle-parking.png") center/contain no-repeat;
 }
 
 .home-label-icon {
-  background: url("../../../../../public/img/city-bike/home.png") center/contain no-repeat;
+  background: url("/img/city-bike/home.png") center/contain no-repeat;
 }
 
 .bike-label {

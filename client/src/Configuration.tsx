@@ -6,8 +6,8 @@ class Configuration {
   constructor() {
     this.configuration = config as AppConfiguration;
     this.getHomeAssistantConfig().secretToken =
-      process.env.REACT_APP_HOME_ASSISTANT_SECRET_TOKEN ?? '';
-    this.configuration.Stocks.StockData.Endpoint = process.env.REACT_APP_STOCK_ENDPOINT ?? '';
+      import.meta.env.VITE_HOME_ASSISTANT_SECRET_TOKEN ?? '';
+    this.configuration.Stocks.StockData.Endpoint = import.meta.env.VITE_STOCK_ENDPOINT ?? '';
   }
 
   public getHomeConfig(): Home {

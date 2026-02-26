@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import type { AxiosInstance } from "axios";
-import { loadingManager } from "../utils/loading-manager";
-import type { RequestMeta } from "../types/loading.types";
+import { useEffect } from 'react';
+import type { AxiosInstance } from 'axios';
+import { loadingManager } from '../utils/loading-manager';
+import { RequestMeta } from '../types/loading-types';
 
 interface ApiBridgeProps {
   apiClient: AxiosInstance;
 }
 
-declare module "axios" {
+declare module 'axios' {
   export interface AxiosRequestConfig {
     meta?: RequestMeta;
   }
@@ -23,7 +23,7 @@ export const ApiBridge = ({ apiClient }: ApiBridgeProps) => {
       },
       (error) => {
         return Promise.reject(error);
-      },
+      }
     );
 
     const responseInterceptor = apiClient.interceptors.response.use(
@@ -34,10 +34,10 @@ export const ApiBridge = ({ apiClient }: ApiBridgeProps) => {
       },
       (error) => {
         const loadingKey = error.config?.meta?.loadingKey;
-        console.error("ApiBridge: Response error", { url: error.config?.url, loadingKey, error });
+        console.error('ApiBridge: Response error', { url: error.config?.url, loadingKey, error });
         loadingManager.stop(loadingKey);
         return Promise.reject(error);
-      },
+      }
     );
 
     return () => {

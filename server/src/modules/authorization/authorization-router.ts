@@ -1,9 +1,9 @@
 import prisma from '../../lib/prisma';
-import { StorageService } from '../../shared/storage/storage-service';
+import { StorageService } from '../../Shared/storage/storage-service';
 import BaseRouter from '../common/base-router';
 import AuthorizationService from './authorization-service';
 import path from 'path';
-import { upload } from '../../shared/storage/upload';
+import { upload } from '../../Shared/storage/upload';
 
 export default class AuthorizationRouter extends BaseRouter {
   private authorizationService: AuthorizationService;

@@ -1,7 +1,7 @@
 import prisma from '../../lib/prisma';
-import { StorageService } from '../../shared/storage/storage-service';
+import { StorageService } from '../../Shared/storage/storage-service';
 import path from 'path';
-import { StoragePath } from '../../shared/storage/storage-path';
+import { StoragePath } from '../../Shared/storage/storage-path';
 import type { Home, User } from '../../generated/prisma';
 import type { Location } from '../../model/data/location';
 import moment from 'moment';

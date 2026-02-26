@@ -21,6 +21,7 @@ const Profile: React.FC = () => {
           <div>Heimr</div>
         )}
       </div>
+
       {editProfile && (
         <Modal open={editProfile} onClose={() => setEditProfile(false)} title="Profile settings">
           <ProfileOverview />

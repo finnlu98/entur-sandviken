@@ -1,7 +1,7 @@
-import { Moment } from "moment";
+import type { Moment } from 'moment';
 
-import BaseWidgetApi from "../../core/api/BaseWidgetApi";
-import { calenderMapper } from "../mapper/calender-mappers";
+import BaseWidgetApi from '../../core/api/base-widget-api';
+import { calenderMapper } from '../mapper/calender-mappers';
 
 export interface CalendarEvent {
   id: string;
@@ -15,7 +15,12 @@ export interface CalendarEvent {
 
 class CalenderApi extends BaseWidgetApi {
   async fetchICalEvents(endpoint: string): Promise<CalendarEvent[]> {
-    const response = await this.postInternalJson<string>("/broker", {}, { endpoint: endpoint }, "fetch-ical-events");
+    const response = await this.postInternalJson<string>(
+      '/broker',
+      {},
+      { endpoint: endpoint },
+      'fetch-ical-events'
+    );
     return calenderMapper.parseICalEvents(response);
   }
 }

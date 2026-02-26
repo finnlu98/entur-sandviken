@@ -1,0 +1,39 @@
+{
+  "name": "heimr",
+  "version": "1.0.0",
+  "description": "Heimr is a home dashboard that provides useful information about your household and local conditions.",
+  "homepage": "https://github.com/finnlu98/entur-sandviken#readme",
+  "bugs": {
+    "url": "https://github.com/finnlu98/entur-sandviken/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finnlu98/entur-sandviken.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-check-file": "^3.3.1",
+    "globals": "^17.3.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
+  },
+  "dependencies": {
+    "jiti": "^2.6.1"
+  }
+}

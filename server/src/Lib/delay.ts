@@ -1,4 +1,4 @@
-import express from "express";
+import type express from "express";
 
 export function registerDelay(app: express.Express) {
   if (process.env.NODE_ENV !== "DEV") return;

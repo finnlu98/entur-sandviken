@@ -4,8 +4,8 @@ export enum Protocol {
     HTTPS = "https"
 }
 
-export namespace ProtocolFormatter {
-    export function format(p: Protocol): string {
+export class ProtocolFormatter {
+    static format(p: Protocol): string {
         return `${p}${Protocol.BASE.toString()}`;
     }
 }

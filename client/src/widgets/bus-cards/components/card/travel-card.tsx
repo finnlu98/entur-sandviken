@@ -1,10 +1,10 @@
-import BusCards from "./bus-cards";
-import "./travel-card.css";
-import LoadingHelperWidget from "../../../core/components/LoadingHelperWidget";
-import { WidgetEnum } from "../../../core/model/widget-type";
-import { BusData } from "../../model/BusData";
-import { TravelCardConfig } from "../../TravelCardWidget";
-import { TripIdentifier } from "../../model/enum/TripIdentifier";
+import BusCards from './bus-cards';
+import './travel-card.css';
+import LoadingHelperWidget from '../../../core/components/loading-helper-widget';
+import { WidgetEnum } from '../../../core/model/widget-type';
+import type { BusData } from '../../model/bus-data';
+import type { TravelCardConfig } from '../../travel-card-widget';
+import { TripIdentifier } from '../../model/enum/trip-identifier';
 
 interface TravelCardProps {
   data?: BusData[] | undefined;
@@ -14,19 +14,20 @@ interface TravelCardProps {
 const TravelCard: React.FC<TravelCardProps> = ({ data, config }) => {
   return (
     <LoadingHelperWidget
-      widgetKey={WidgetEnum.busCards}
-      loadingKeys={["fetch-bus-card"]}
+      widgetKey={WidgetEnum.BusCards}
+      loadingKeys={['fetch-bus-card']}
       showConfig={() => !data || data.length === 0}
     >
       <div className="travel-container">
         <div className="widget-title">
-          Public transport <img className="widget-title-icon" src="./img/bus-card/sign.png" alt="sign" />
+          Public transport{' '}
+          <img className="widget-title-icon" src="./img/bus-card/sign.png" alt="sign" />
         </div>
         <div className="travel-rows">
           {data?.map((busData) => (
             <BusCards
               key={busData.travelRoute.stopPlace.properties.id}
-              tripIdentifier={config?.tripIdentifier ?? TripIdentifier.title}
+              tripIdentifier={config?.tripIdentifier ?? TripIdentifier.Title}
               travelRoute={busData.travelRoute}
               tripPatterns={busData.travelResponse.data.trip.tripPatterns}
             />

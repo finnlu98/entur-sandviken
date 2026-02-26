@@ -1,15 +1,15 @@
 export enum WidgetEnum {
-  header = "Header",
-  weather = "Weather",
-  stocks = "Stocks",
-  news = "News",
-  laundryWeek = "Laundry Week",
-  homeActions = "Home Actions",
-  electricity = "Electricity",
-  cityBike = "City Bike",
-  calender = "Calender",
-  busCards = "Bus Cards",
-  swimming = "Swimming",
+  Header = 'Header',
+  Weather = 'Weather',
+  Stocks = 'Stocks',
+  News = 'News',
+  LaundryWeek = 'Laundry Week',
+  HomeActions = 'Home Actions',
+  Electricity = 'Electricity',
+  CityBike = 'City Bike',
+  Calender = 'Calender',
+  BusCards = 'Bus Cards',
+  Swimming = 'Swimming',
 }
 
 export interface WidgetDefinition<TConfig, TData = unknown, TError = unknown> {

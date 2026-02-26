@@ -1,14 +1,14 @@
-import moment from "moment";
-import "./electricity-consumption.css";
-import { ImPower } from "react-icons/im";
-import { MdPriceChange } from "react-icons/md";
-import { GiLevelTwo } from "react-icons/gi";
-import { IoIosTimer } from "react-icons/io";
-import BarChart from "../charts/bar-chart";
-import { ElectricityLevelFormatter } from "../../model/enum/ElectricityLevel";
-import LoadingHelperWidget from "../../../core/components/LoadingHelperWidget";
-import { WidgetEnum } from "../../../core/model/widget-type";
-import { ElectricityData } from "../../model/ElectricityData";
+import moment from 'moment';
+import './electricity-consumption.css';
+import { ImPower } from 'react-icons/im';
+import { MdPriceChange } from 'react-icons/md';
+import { GiLevelTwo } from 'react-icons/gi';
+import { IoIosTimer } from 'react-icons/io';
+import BarChart from '../charts/bar-chart';
+import { ElectricityLevelFormatter } from '../../model/enum/electricity-level';
+import LoadingHelperWidget from '../../../core/components/loading-helper-widget';
+import { WidgetEnum } from '../../../core/model/widget-type';
+import type { ElectricityData } from '../../model/electricity-data';
 
 interface ElectricityConsumptionProps {
   data?: ElectricityData;
@@ -17,8 +17,8 @@ interface ElectricityConsumptionProps {
 const ElectricyConsumption: React.FC<ElectricityConsumptionProps> = ({ data }) => {
   return (
     <LoadingHelperWidget
-      widgetKey={WidgetEnum.electricity}
-      loadingKeys={["post-elvia-key", "fetch-elvia-consumption", "has-elvia-key"]}
+      widgetKey={WidgetEnum.Electricity}
+      loadingKeys={['post-elvia-key', 'fetch-elvia-consumption', 'has-elvia-key']}
       showConfig={() => !data}
     >
       {data && (
@@ -34,26 +34,28 @@ const ElectricyConsumption: React.FC<ElectricityConsumptionProps> = ({ data }) =
             </div>
             <div className="consumption-card h-column gap-tiny">
               <div className="level-header">
-                <GiLevelTwo className="react-icon-orange" />{" "}
+                <GiLevelTwo className="react-icon-orange" />{' '}
                 {ElectricityLevelFormatter.formatLevel(data?.capacityLevel)}
               </div>
-              <div className="font-small">{ElectricityLevelFormatter.formatInterval(data?.capacityLevel)} kwh</div>
+              <div className="font-small">
+                {ElectricityLevelFormatter.formatInterval(data?.capacityLevel)} kwh
+              </div>
             </div>
             <div className="consumption-card h-column gap-tiny">
               <div className="level-header">
-                <IoIosTimer className="react-icon-gray" />{" "}
-                {moment(data?.consumptionHighestHour?.startTime).format("h a")}
+                <IoIosTimer className="react-icon-gray" />{' '}
+                {moment(data?.consumptionHighestHour?.startTime).format('h a')}
               </div>
               <div className="font-small">{data?.consumptionHighestHour?.value} kwh</div>
             </div>
           </div>
 
           <div className="bar-chart-container h-column center text-align-center font-small">
-            Peak kwh per day in {moment().format("MMMM")}
+            Peak kwh per day in {moment().format('MMMM')}
             {data?.chartFormattedData && (
               <BarChart
                 chartData={data.chartFormattedData}
-                title={`Highest avg kWh per day in ${moment().format("MMMM")}`}
+                title={`Highest avg kWh per day in ${moment().format('MMMM')}`}
                 meanMax={data.meanMaxLevel ?? -1}
               />
             )}

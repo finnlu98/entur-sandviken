@@ -1,5 +1,5 @@
 import { useDraggable } from "@dnd-kit/core";
-import { GridItem } from "./model/grid-models";
+import type { GridItem } from "./model/grid-models";
 import { ResizeDirection, ResizeDirectionType } from "./model/resize-direction";
 import "./resize-handles.css";
 

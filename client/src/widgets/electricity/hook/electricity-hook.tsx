@@ -1,10 +1,10 @@
-import ElviaFetcher from "../api/elvia-fetcher";
-import { useWidgetQuery } from "../../core/hooks/useWidgetQuery";
-import { ElectricityData } from "../model/ElectricityData";
-import { useElviaKeyQuery } from "./electricity-key-hook";
-import { ELVIA_CONSUMPTION_QUERY_KEY } from "./electricity-query-keys";
+import ElviaFetcher from '../api/elvia-fetcher';
+import { useWidgetQuery } from '../../core/hooks/use-widget-query';
+import type { ElectricityData } from '../model/electricity-data';
+import { useElviaKeyQuery } from './electricity-key-hook';
+import { ELVIA_CONSUMPTION_QUERY_KEY } from './electricity-query-keys';
 
-const ELECTRICITY_FETCH_INTERVAL = 60 * 60 * 1000;
+import { ELECTRICITY_FETCH_INTERVAL } from '../electricity-constants';
 
 export function useElviaConsumptionQuery() {
   const hasKeyQuery = useElviaKeyQuery();

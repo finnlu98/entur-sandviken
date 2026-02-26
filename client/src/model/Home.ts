@@ -1,4 +1,4 @@
-import { User } from "./User";
+import type { User } from './user';
 
 export type Home = {
   name?: string;

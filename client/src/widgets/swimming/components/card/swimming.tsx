@@ -1,10 +1,10 @@
-import { FaThermometerFull } from "react-icons/fa";
-import LoadingHelperWidget from "../../../core/components/LoadingHelperWidget";
-import { WidgetEnum } from "../../../core/model/widget-type";
-import { SwimmingResponse } from "../../model/swimming-response";
-import "./swimming.css";
-import { SwimmingConfig } from "../../swimming-widget";
-import { MdStarRate } from "react-icons/md";
+import { FaThermometerFull } from 'react-icons/fa';
+import LoadingHelperWidget from '../../../core/components/loading-helper-widget';
+import { WidgetEnum } from '../../../core/model/widget-type';
+import type { SwimmingResponse } from '../../model/swimming-response';
+import './swimming.css';
+import type { SwimmingConfig } from '../../swimming-widget';
+import { MdStarRate } from 'react-icons/md';
 
 interface SwimmingProps {
   data?: SwimmingResponse[];
@@ -13,10 +13,10 @@ interface SwimmingProps {
 
 const Swimming: React.FC<SwimmingProps> = ({ data, config }) => {
   const getTemperatureClass = (temp: number | null): string => {
-    if (temp === null) return "";
-    if (temp < 15) return "cold";
-    if (temp >= 15 && temp < 22) return "warm";
-    return "hot";
+    if (temp === null) return '';
+    if (temp < 15) return 'cold';
+    if (temp >= 15 && temp < 22) return 'warm';
+    return 'hot';
   };
 
   const getAverageTemperature = (): number | null => {
@@ -26,12 +26,20 @@ const Swimming: React.FC<SwimmingProps> = ({ data, config }) => {
   };
 
   const avgTemperature = data ? getAverageTemperature() : null;
-  const highlightedLocations = data ? data.filter((location) => config?.keepIds?.includes(location.locationId)) : [];
-  const otherLocations = data ? data.filter((location) => !config?.keepIds?.includes(location.locationId)) : [];
+  const highlightedLocations = data
+    ? data.filter((location) => config?.keepIds?.includes(location.locationId))
+    : [];
+  const otherLocations = data
+    ? data.filter((location) => !config?.keepIds?.includes(location.locationId))
+    : [];
   const sortedLocations = [...highlightedLocations, ...otherLocations];
 
   return (
-    <LoadingHelperWidget widgetKey={WidgetEnum.swimming} showConfig={() => !data} loadingKeys={["fetch-swimming"]}>
+    <LoadingHelperWidget
+      widgetKey={WidgetEnum.Swimming}
+      showConfig={() => !data}
+      loadingKeys={['fetch-swimming']}
+    >
       <div className="fill-width h-column widget-overflow">
         <div className="widget-title h-column">
           <span>Swimming temperatures 🏊🏻‍♂️</span>
@@ -54,7 +62,7 @@ const Swimming: React.FC<SwimmingProps> = ({ data, config }) => {
 
                   <div className="h-column">
                     <div
-                      className={`h-row gap-small ${index < highlightedLocations.length ? "swimming-highlight" : ""}`}
+                      className={`h-row gap-small ${index < highlightedLocations.length ? 'swimming-highlight' : ''}`}
                     >
                       <span>{location.locationName}</span>
                       {index < highlightedLocations.length && (

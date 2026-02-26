@@ -1,8 +1,8 @@
-import { useCallback } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useWidgetQuery } from "../../core/hooks/useWidgetQuery";
-import { ELVIA_CONSUMPTION_QUERY_KEY, HAS_ELVIA_KEY_QUERY_KEY } from "./electricity-query-keys";
-import elviaApi from "../api/elvia-fetcher";
+import { useCallback } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useWidgetQuery } from '../../core/hooks/use-widget-query';
+import { ELVIA_CONSUMPTION_QUERY_KEY, HAS_ELVIA_KEY_QUERY_KEY } from './electricity-query-keys';
+import elviaApi from '../api/elvia-fetcher';
 
 type ElviaKeyState = {
   hasElviaKey: boolean;
@@ -37,7 +37,7 @@ export function useElviaKeyManagement(): ElviaKeyState {
       }
     },
     onError: (error) => {
-      console.error("Failed to post Elvia key", error);
+      console.error('Failed to post Elvia key', error);
       queryClient.setQueryData(HAS_ELVIA_KEY_QUERY_KEY, false);
     },
   });
@@ -51,7 +51,7 @@ export function useElviaKeyManagement(): ElviaKeyState {
         return false;
       }
     },
-    [postKeyMutation],
+    [postKeyMutation]
   );
 
   return {

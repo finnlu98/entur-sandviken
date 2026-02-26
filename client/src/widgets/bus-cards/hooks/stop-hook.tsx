@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { TravelStop } from "../model/StopSearchResponse";
-import SearchStopFetcher from "../api/stop-register-fetcher";
+import { useState } from 'react';
+import type { TravelStop } from '../model/stop-search-response';
+import SearchStopFetcher from '../api/stop-register-fetcher';
 
 const useStopSearch = () => {
   const [results, setResults] = useState<TravelStop[]>([]);
@@ -19,8 +19,8 @@ const useStopSearch = () => {
     try {
       const stops = await SearchStopFetcher(searchTerm);
       setResults(stops);
-    } catch (err) {
-      setError("Failed to fetch addresses");
+    } catch {
+      setError('Failed to fetch addresses');
       setResults([]);
     } finally {
       setIsLoading(false);

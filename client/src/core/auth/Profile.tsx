@@ -1,10 +1,9 @@
-import { useState } from "react";
-import "./Profile.css";
-import { Modal } from "../shared/modal/modal";
-import { useAuth } from "../../context/AuthContext";
-import ImageCircle from "../shared/imageCirlce/ImageCircle";
-import ProfileOverview from "./ProfileOverview";
-import { CiLogin } from "react-icons/ci";
+import { useState } from 'react';
+import './profile.css';
+import { Modal } from '../shared/modal/modal';
+import { useAuth } from '../../context/auth-context';
+import ImageCircle from '../shared/image-cirlce/image-circle';
+import ProfileOverview from './profile-overview';
 
 const Profile: React.FC = () => {
   const [editProfile, setEditProfile] = useState(false);
@@ -22,6 +21,7 @@ const Profile: React.FC = () => {
           <div>Heimr</div>
         )}
       </div>
+
       {editProfile && (
         <Modal open={editProfile} onClose={() => setEditProfile(false)} title="Profile settings">
           <ProfileOverview />

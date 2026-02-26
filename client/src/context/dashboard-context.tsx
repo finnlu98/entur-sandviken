@@ -1,20 +1,19 @@
-import { useState, useEffect, createContext, useContext, useCallback } from "react";
-import { GridItem } from "../core/dashboard/grid/model/grid-models";
-import { v4 as uuidv4 } from "uuid";
-import { GridMetaData } from "../core/dashboard/grid/model/grid-models";
-import apiClient from "../api/ApiClient";
-import { HomeConfig, HomeConfigUtils } from "../model/HomeConfigState";
-import { useAuth } from "./AuthContext";
-import { ConfigMigration } from "../lib/version";
-import GridService from "../core/dashboard/grid/service/grid-service";
-import { EditingKey, EditModeState } from "../core/dashboard/model/EditMode";
-import LoadServerConfig from "../core/dashboard/loadServerConfig/load-server-config";
-import { isDefaultView } from "../core/dashboard/util/isDefaultView";
-import { useAlert } from "../feedback/alert/provider/AltertProvider";
-import { AlertVariant } from "../feedback/alert/model/AlertTypes";
-import { WidgetDefinition, WidgetEnum } from "../widgets/core/model/widget-type";
-import { WidgetConfigs, Widgets } from "../widgets/core/model/wigets";
-import ScreenSize from "../core/dashboard/model/ScreenSize";
+import { useState, useEffect, createContext, useContext, useCallback } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import type { GridItem, GridMetaData } from '../core/dashboard/grid/model/grid-models';
+import apiClient from '../api/api-client';
+import { HomeConfigUtils, type HomeConfig } from '../model/home-config-state';
+import { useAuth } from './auth-context';
+import { ConfigMigration } from '../lib/version';
+import GridService from '../core/dashboard/grid/service/grid-service';
+import type { EditingKey, EditModeState } from '../core/dashboard/model/edit-mode';
+import LoadServerConfig from '../core/dashboard/load-server-config/load-server-config';
+import { isDefaultView } from '../core/dashboard/util/is-default-view';
+import { useAlert } from '../feedback/alert/provider/alert-provider';
+import { AlertVariant } from '../feedback/alert/model/alert-types';
+import { WidgetEnum, type WidgetDefinition } from '../widgets/core/model/widget-type';
+import { WidgetConfigs, Widgets } from '../widgets/core/model/widgets';
+import type ScreenSize from '../core/dashboard/model/screen-size';
 
 type DashboardActions = {
   setWidgets: (widgets: GridItem[]) => void;
@@ -43,7 +42,7 @@ type DashboardState = {
 };
 
 const initialWidgets: GridItem[] = [
-  { widget: WidgetEnum.header, id: uuidv4(), col: 0, row: 0, colSpan: 24, rowSpan: 3 },
+  { widget: WidgetEnum.Header, id: uuidv4(), col: 0, row: 0, colSpan: 24, rowSpan: 3 },
 ];
 
 const defaultDashboardSize: ScreenSize = { width: 800, height: 1064 };
@@ -74,16 +73,18 @@ const DashboardProvider: React.FC<DashboardContextProps> = ({ children }) => {
 
   const [state, setState] = useState<DashboardState>(() => {
     try {
-      const cachedLayout = localStorage.getItem("heimr-grid-layout");
-      const cachedConfig = localStorage.getItem("heimr-widget-config");
-      const cachedSize = localStorage.getItem("heimr-dashboard-size");
+      const cachedLayout = localStorage.getItem('heimr-grid-layout');
+      const cachedConfig = localStorage.getItem('heimr-widget-config');
+      const cachedSize = localStorage.getItem('heimr-dashboard-size');
 
       const parsedLayout = cachedLayout ? JSON.parse(cachedLayout) : null;
       const parsedConfig = cachedConfig ? JSON.parse(cachedConfig) : null;
       const parsedSize = cachedSize ? JSON.parse(cachedSize) : null;
 
       const widgetLayout = ConfigMigration.migrateLayout(parsedLayout ?? initialState.widgets);
-      const widgetConfig = ConfigMigration.migrateConfig(parsedConfig ?? initialState.widgetConfigs);
+      const widgetConfig = ConfigMigration.migrateConfig(
+        parsedConfig ?? initialState.widgetConfigs
+      );
 
       return {
         widgets: widgetLayout,
@@ -97,7 +98,7 @@ const DashboardProvider: React.FC<DashboardContextProps> = ({ children }) => {
         savedDashboardSize: parsedSize ?? defaultDashboardSize,
       };
     } catch (e) {
-      console.warn("Failed to load from localStorage:", e);
+      console.warn('Failed to load from localStorage:', e);
       return initialState;
     }
   });
@@ -110,16 +111,22 @@ const DashboardProvider: React.FC<DashboardContextProps> = ({ children }) => {
       const hasConfig = state.widgetConfigs && Object.keys(state.widgetConfigs).length > 0;
 
       try {
-        const response = await apiClient.get<HomeConfig>("me/home/config");
+        const response = await apiClient.get<HomeConfig>('me/home/config');
         const serverConfig = response.data;
 
         if (!hasLayout && !hasConfig) {
           setState((prev) => ({
             ...prev,
             widgets: ConfigMigration.migrateLayout(serverConfig?.widgetPositions ?? prev.widgets),
-            savedWidgets: ConfigMigration.migrateLayout(serverConfig?.widgetPositions ?? prev.widgets),
-            widgetConfigs: ConfigMigration.migrateConfig(serverConfig?.widgetConfig ?? prev.widgetConfigs),
-            savedWidgetConfigs: ConfigMigration.migrateConfig(serverConfig?.widgetConfig ?? prev.widgetConfigs),
+            savedWidgets: ConfigMigration.migrateLayout(
+              serverConfig?.widgetPositions ?? prev.widgets
+            ),
+            widgetConfigs: ConfigMigration.migrateConfig(
+              serverConfig?.widgetConfig ?? prev.widgetConfigs
+            ),
+            savedWidgetConfigs: ConfigMigration.migrateConfig(
+              serverConfig?.widgetConfig ?? prev.widgetConfigs
+            ),
             isDirty: false,
           }));
           return;
@@ -139,7 +146,7 @@ const DashboardProvider: React.FC<DashboardContextProps> = ({ children }) => {
           setServerConfig(serverConfig);
         }
       } catch (error) {
-        console.warn("Failed to fetch from backend:", error);
+        console.warn('Failed to fetch from backend:', error);
       }
     };
 
@@ -161,13 +168,13 @@ const DashboardProvider: React.FC<DashboardContextProps> = ({ children }) => {
 
   function updateConfig(widgets: GridItem[], widgetConfigs: Record<WidgetEnum, object>) {
     try {
-      apiClient.post("/me/home/config", {
+      apiClient.post('/me/home/config', {
         widgetPositions: ConfigMigration.wrapLayout(widgets),
         widgetConfig: ConfigMigration.wrapConfig(widgetConfigs),
       });
-      showAlert("Saved", AlertVariant.SUCCESS);
+      showAlert('Saved', AlertVariant.SUCCESS);
     } catch (error) {
-      console.error("Failed to initiate config save to backend:", error);
+      console.error('Failed to initiate config save to backend:', error);
       return;
     }
   }
@@ -175,18 +182,18 @@ const DashboardProvider: React.FC<DashboardContextProps> = ({ children }) => {
   useEffect(() => {
     try {
       const versionedLayout = ConfigMigration.wrapLayout(state.savedWidgets);
-      localStorage.setItem("heimr-grid-layout", JSON.stringify(versionedLayout));
+      localStorage.setItem('heimr-grid-layout', JSON.stringify(versionedLayout));
     } catch (e) {
-      console.warn("Failed to write heimr-grid-layout to localStorage", e);
+      console.warn('Failed to write heimr-grid-layout to localStorage', e);
     }
   }, [state.savedWidgets]);
 
   useEffect(() => {
     try {
       const versionedConfig = ConfigMigration.wrapConfig(state.savedWidgetConfigs);
-      localStorage.setItem("heimr-widget-config", JSON.stringify(versionedConfig));
+      localStorage.setItem('heimr-widget-config', JSON.stringify(versionedConfig));
     } catch (e) {
-      console.warn("Failed to write heimr-widget-config to localStorage", e);
+      console.warn('Failed to write heimr-widget-config to localStorage', e);
     }
   }, [state.savedWidgetConfigs]);
 
@@ -260,9 +267,9 @@ const DashboardProvider: React.FC<DashboardContextProps> = ({ children }) => {
   const saveEdit = () => {
     if (state.isDirty && !user) {
       showAlert(
-        "Your changes have not been saved to your profile since you are not logged in. Go to home settings and log in to save your changes.",
+        'Your changes have not been saved to your profile since you are not logged in. Go to home settings and log in to save your changes.',
         AlertVariant.INFO,
-        10000,
+        10000
       );
     }
 
@@ -302,7 +309,7 @@ const DashboardProvider: React.FC<DashboardContextProps> = ({ children }) => {
   };
 
   const setDashboardSize = (size: ScreenSize) => {
-    localStorage.setItem("heimr-dashboard-size", JSON.stringify(size));
+    localStorage.setItem('heimr-dashboard-size', JSON.stringify(size));
 
     setState((prev) => ({
       ...prev,
@@ -367,7 +374,7 @@ const DashboardProvider: React.FC<DashboardContextProps> = ({ children }) => {
 export const useDashboard = () => {
   const ctx = useContext(DashboardContext);
   if (!ctx) {
-    throw new Error("useDashboard must be used inside <DashboardProvider>");
+    throw new Error('useDashboard must be used inside <DashboardProvider>');
   }
   return ctx;
 };

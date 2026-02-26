@@ -1,4 +1,4 @@
-import { WidgetEnum } from "../../../../widgets/core/model/widget-type";
+import type { WidgetEnum } from "../../../../widgets/core/model/widget-type";
 
 export type GridItem = {
   id: string;

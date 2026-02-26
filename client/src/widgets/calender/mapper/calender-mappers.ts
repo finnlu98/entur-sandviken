@@ -1,6 +1,6 @@
 import moment from "moment";
 import ICAL from "ical.js";
-import { CalendarEvent } from "../api/calender-ical-fetcher";
+import type { CalendarEvent } from "../api/calender-ical-fetcher";
 
 export const calenderMapper = {
   parseICalEvents(icalData: string): CalendarEvent[] {

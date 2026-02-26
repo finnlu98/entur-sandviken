@@ -1,12 +1,12 @@
-import { useWidgetQuery } from "../../core/hooks/useWidgetQuery";
-import newsApi from "../api/news-fetcher";
-import { NewsResponse } from "../model/NewsResponse";
+import { useWidgetQuery } from '../../core/hooks/use-widget-query';
+import newsApi from '../api/news-fetcher';
+import type { NewsResponse } from '../model/news-response';
 
-const NEWS_FETCH_INTERVAL = 15 * 60 * 1000;
+import { NEWS_FETCH_INTERVAL } from '../news-constants';
 
 export function useNewsQuery() {
   return useWidgetQuery<NewsResponse | undefined>({
-    queryKey: ["news"],
+    queryKey: ['news'],
     queryFn: () => {
       return newsApi.getNewsData();
     },

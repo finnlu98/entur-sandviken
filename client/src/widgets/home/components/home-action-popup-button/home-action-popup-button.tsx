@@ -1,6 +1,6 @@
-import PopupButton from "../../../../core/shared/popup/Popup";
-import Options from "./options";
-import HomeActionButton from "../home-action-button/home-action-button";
+import PopupButton from '../../../../core/shared/popup/popup';
+import Options from './options';
+import HomeActionButton from '../home-action-button/home-action-button';
 
 interface HomeActionPopupButtonProps {
   Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;

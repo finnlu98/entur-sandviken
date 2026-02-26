@@ -1,17 +1,23 @@
-import React, { ReactNode } from "react";
-import "./modal.css";
-import { IoMdClose } from "react-icons/io";
-import { createPortal } from "react-dom";
+import React, { type ReactNode } from 'react';
+import './modal.css';
+import { IoMdClose } from 'react-icons/io';
+import { createPortal } from 'react-dom';
 
 type ModalProps = {
   title?: string;
   open: boolean;
   onClose: () => void;
   children: ReactNode;
-  size?: "small" | "medium" | "large";
+  size?: 'small' | 'medium' | 'large';
 };
 
-export const Modal: React.FC<ModalProps> = ({ title, children, open, onClose, size = "medium" }) => {
+export const Modal: React.FC<ModalProps> = ({
+  title,
+  children,
+  open,
+  onClose,
+  size = 'medium',
+}) => {
   if (!open) return null;
 
   return createPortal(
@@ -26,6 +32,6 @@ export const Modal: React.FC<ModalProps> = ({ title, children, open, onClose, si
         <div className="modal-content h-column">{children}</div>
       </div>
     </div>,
-    document.body,
+    document.body
   );
 };

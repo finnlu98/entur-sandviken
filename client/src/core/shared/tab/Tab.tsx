@@ -1,5 +1,5 @@
-import { useState } from "react";
-import "./Tab.css";
+import { useState } from 'react';
+import './tab.css';
 
 export interface TabItem {
   label: React.ReactNode;
@@ -20,7 +20,7 @@ const Tab: React.FC<TabProps> = ({ tabs, defaultActiveIndex = 0 }) => {
         {tabs.map((tab, index) => (
           <button
             key={index}
-            className={`tab-button ${index === activeIndex ? "active" : ""}`}
+            className={`tab-button ${index === activeIndex ? 'active' : ''}`}
             onClick={() => setActiveIndex(index)}
           >
             {tab.label}

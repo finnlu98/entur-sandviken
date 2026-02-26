@@ -1,12 +1,13 @@
-import config from "./Configuration.json";
+import config from './configuration.json';
 
 class Configuration {
   private readonly configuration: AppConfiguration;
 
   constructor() {
     this.configuration = config as AppConfiguration;
-    this.getHomeAssistantConfig().secretToken = process.env.REACT_APP_HOME_ASSISTANT_SECRET_TOKEN ?? "";
-    this.configuration.Stocks.StockData.Endpoint = process.env.REACT_APP_STOCK_ENDPOINT ?? "";
+    this.getHomeAssistantConfig().secretToken =
+      import.meta.env.VITE_HOME_ASSISTANT_SECRET_TOKEN ?? '';
+    this.configuration.Stocks.StockData.Endpoint = import.meta.env.VITE_STOCK_ENDPOINT ?? '';
   }
 
   public getHomeConfig(): Home {
@@ -107,13 +108,13 @@ interface EndpointConfig {
   Endpoint: string;
 }
 
-interface ElectricityPricesConfig extends EndpointConfig {}
+type ElectricityPricesConfig = EndpointConfig;
 
-interface KanyeQuoteConfig extends EndpointConfig {}
+type KanyeQuoteConfig = EndpointConfig;
 
-interface WeatherConfig extends EndpointConfig {}
+type WeatherConfig = EndpointConfig;
 
-interface SunriseConfig extends EndpointConfig {}
+type SunriseConfig = EndpointConfig;
 
 interface HomeAssitantConfig extends EndpointConfig {
   secretToken?: string;
@@ -145,7 +146,7 @@ interface KartverketConfig {
   AdressLookup: EndpointConfig;
 }
 
-interface SwimmingConfig extends EndpointConfig {}
+type SwimmingConfig = EndpointConfig;
 
 const configuration = new Configuration();
 export default configuration;
